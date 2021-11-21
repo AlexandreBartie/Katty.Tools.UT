@@ -1,14 +1,17 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MyDooggy.LIB.FILES;
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace Dooggy.Tests
+namespace Dooggy.Tests.LIB.PARSE
 {
     [TestClass()]
     public class xParseCSV_Test
     {
         string input;
         string output;
+
+        xParseCSV ParseCSV = new xParseCSV();
 
         [TestMethod()]
         public void TST010_FluxoCSV_Padrao()
@@ -223,14 +226,13 @@ namespace Dooggy.Tests
         {
 
             // assert
-            xParseCSV list = new xParseCSV(input);
+            ParseCSV.Parse(input, prmSeparador: ",", prmDelimitador: "|");
 
-            // build "result" to compare with "output"
-            string result = list.log;
+            string result = ParseCSV.log;
 
             // assert
             if (output != result)
-                Assert.Fail(string.Format("Expected: <{0}>, Actual: <{1}>, Memo: <{2}>", output, result, list.memo()));
+                Assert.Fail(string.Format("Expected: <{0}>, Actual: <{1}>, Memo: <{2}>", output, result, ParseCSV.csv));
 
         }
 
