@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Dooggy.LIB;
-using Dooggy.LIB.PARSE;
+using Dooggy.Lib.Parse;
 
 namespace Dooggy.Tests.LIB.PARSE
 {
@@ -22,7 +21,7 @@ namespace Dooggy.Tests.LIB.PARSE
 
             // arrange
             input = @"{ 'Nome': 'Alexandre', 'email': 'alexandre_bartie@hotmail.com' }";
-            output = @"[ { ""Nome"": ""Alexandre"", ""email"": ""alexandre_bartie@hotmail.com"" } ]";
+            output =  @"[Nome]: 'Alexandre', [email]: 'alexandre_bartie@hotmail.com'";
 
             //// act
             FluxoJSON = new xJSON(); FluxoJSON.Add(input);
@@ -33,12 +32,77 @@ namespace Dooggy.Tests.LIB.PARSE
         }
 
         [TestMethod()]
-        public void TST015_FluxoSimples_ErroFormatacao()
+        public void TST020_FluxoSimples_ValoresComAspas()
+        {
+
+            // arrange
+            input = @"{ 'tag': 'Aluno', 'sql': 'SELECT * from Alunos WHERE situacao = ok' }";
+            output =  @"[tag]: 'Aluno', [sql]: 'SELECT * from Alunos WHERE situacao = ok'";
+
+            //// act
+            FluxoJSON = new xJSON(); FluxoJSON.Add(input);
+
+            // act & assert
+            AssertJSON();
+
+        }
+
+        [TestMethod()]
+        public void TST030_FluxoSimples_ValoresComBarraNormal()
+        {
+
+            // arrange
+            input = @"{ 'path': 'c:\MassaTestes\', 'branch': '1084', 'porta': '1521' }";
+            output =  @"[path]: 'c:\MassaTestes\', [branch]: '1084', [porta]: '1521'";
+
+            //// act
+            FluxoJSON = new xJSON(); FluxoJSON.Add(input);
+
+            // act & assert
+            AssertJSON();
+
+        }
+
+        [TestMethod()]
+        public void TST040_FluxoSimples_ValoresComBarraDobrada()
+        {
+
+            // arrange
+            input = @"{ 'path': 'c:\\MassaTestes\\', 'branch': '1084', 'porta': '1521' }";
+            output =  @"[path]: 'c:\MassaTestes\', [branch]: '1084', [porta]: '1521'";
+
+            //// act
+            FluxoJSON = new xJSON(); FluxoJSON.Add(input);
+
+            // act & assert
+            AssertJSON();
+
+        }
+        
+        [TestMethod()]
+        public void TST050_FluxoSimples_ValoresComBarraInvertida()
+        {
+
+            // arrange
+            input = @"{ 'path': 'c:/MassaTestes/', 'branch': '1084', 'porta': '1521' }";
+            output =  @"[path]: 'c:/MassaTestes/', [branch]: '1084', [porta]: '1521'";
+
+            //// act
+            FluxoJSON = new xJSON(); FluxoJSON.Add(input);
+
+            // act & assert
+            AssertJSON();
+
+        }
+
+
+        [TestMethod()]
+        public void TST060_FluxoSimples_ErroFormatacao()
         {
 
             // arrange
             input = @"{'COD_MATRICULA': ####.##.#####-#' }";
-            output = @"[ ]";
+            output = @"";
 
             //// act
             FluxoJSON = new xJSON(); ; FluxoJSON.Add(input);
@@ -49,25 +113,29 @@ namespace Dooggy.Tests.LIB.PARSE
         }
 
         [TestMethod()]
-        public void TST020_FluxoMultiplo_Padrao()
+        public void TST070_FluxoMultiplo_Padrao()
         {
 
             // arrange
             inputA = @"{ 'Nome': 'Alexandre', 'email': 'alexandre_bartie@hotmail.com' }";
             inputB = @"{ 'Nome': 'Bartie', 'email': 'bartie.devops@outlook.com' }";
 
-            output = @"[ { ""Nome"": ""Alexandre"", ""email"": ""alexandre_bartie@hotmail.com"" }, { ""Nome"": ""Bartie"", ""email"": ""bartie.devops@outlook.com"" } ]";
+            output  = "";
+            output += @"[ ";
+            output += @"{ ""Nome"": ""Alexandre"", ""email"": ""alexandre_bartie@hotmail.com"" }, ";
+            output += @"{ ""Nome"": ""Bartie"", ""email"": ""bartie.devops@outlook.com"" }";
+            output += @" ]";
 
             //// act
             FluxoJSON = new xJSON(); FluxoJSON.Add(inputA); FluxoJSON.Add(inputB);
 
             // act & assert
-            AssertJSON();
+            AssertJSON(prmMultiplos: true);
 
         }
 
         [TestMethod()]
-        public void TST030_FluxoMultiplo_FluxoCombinado()
+        public void TST080_FluxoMultiplo_FluxoCombinado()
         {
 
             // arrange
@@ -83,12 +151,12 @@ namespace Dooggy.Tests.LIB.PARSE
             FluxoJSON = new xJSON(); FluxoJSON.Add(inputA,mestreA); FluxoJSON.Add(inputB, mestreB);
 
             // act & assert
-            AssertJSON();
+            AssertJSON(prmMultiplos: true);
 
         }
 
         [TestMethod()]
-        public void TST040_FluxoMultiplo_FluxoCombinadoExtendido()
+        public void TST090_FluxoMultiplo_FluxoCombinadoExtendido()
         {
 
             // arrange
@@ -104,16 +172,23 @@ namespace Dooggy.Tests.LIB.PARSE
             FluxoJSON = new xJSON(); FluxoJSON.Add(inputA, mestreA); FluxoJSON.Add(inputB, mestreB);
 
             // act & assert
-            AssertJSON();
+            AssertJSON(prmMultiplos: true);
 
         }
 
-        private void AssertJSON()
+        private void AssertJSON() => AssertJSON(prmMultiplos: false);
+
+        private void AssertJSON(bool prmMultiplos)
         {
 
             FluxoJSON.Save();
 
-            string result = FluxoJSON.fluxo;
+            string result;
+
+            if (prmMultiplos)
+                result = FluxoJSON.fluxo;
+            else
+                result = FluxoJSON.tuplas;
 
             // assert
             if (output != result)

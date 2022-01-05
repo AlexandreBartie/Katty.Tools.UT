@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MyDooggy.LIB.PARSE;
+using Dooggy.Lib.Parse;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -14,10 +14,10 @@ namespace Dooggy.Tests.LIB.PARSE
         xParseCSV ParseCSV = new xParseCSV();
 
         [TestMethod()]
-        public void TST010_FluxoCSV_Padrao()
+        public void TST010_ParseCSV_Padrao()
         {
 
-            // arrange
+            // arrange  
             input = "1234,2345,3,5,78";
             output = "4,4,1,1,2";
 
@@ -27,7 +27,7 @@ namespace Dooggy.Tests.LIB.PARSE
         }
 
         [TestMethod()]
-        public void TST020_FluxoCSV_Vazio()
+        public void TST020_ParseCSV_Vazio()
         {
             // arrange
             input = "";
@@ -38,7 +38,7 @@ namespace Dooggy.Tests.LIB.PARSE
         }
 
         [TestMethod()]
-        public void TST030_FluxoCSV_ItemUnico()
+        public void TST030_ParseCSV_ItemUnico()
         {
             // arrange
             input = "82";
@@ -49,7 +49,7 @@ namespace Dooggy.Tests.LIB.PARSE
         }
 
         [TestMethod()]
-        public void TST040_FluxoCSV_ItemVazio()
+        public void TST040_ParseCSV_ItemVazio()
         {
             // arrange
             input = "1234,,3,5,78";
@@ -60,7 +60,7 @@ namespace Dooggy.Tests.LIB.PARSE
         }
 
         [TestMethod()]
-        public void TST050_FluxoCSV_MultiplosVazios()
+        public void TST050_ParseCSV_MultiplosVazios()
         {
             // arrange
             input = " , , , , ";
@@ -70,7 +70,7 @@ namespace Dooggy.Tests.LIB.PARSE
             ActionParseCSV();
         }
         [TestMethod()]
-        public void TST060_FluxoCSV_IgnorarEspacos()
+        public void TST060_ParseCSV_IgnorarEspacos()
         {
             // arrange
             input = @"   Alexandre   ,    Bartie     , 376.52  ,   alexandre.bartie@hotmail.com   ";
@@ -81,7 +81,7 @@ namespace Dooggy.Tests.LIB.PARSE
         }
 
         [TestMethod()]
-        public void TST070_FluxoCSV_IgnorarDelimitadores()
+        public void TST070_ParseCSV_IgnorarDelimitadores()
         {
             // arrange
             input = @"Alexandre,Bartie,  3|76.5|2 , alexandre.bartie@hotmail.com";
@@ -92,7 +92,7 @@ namespace Dooggy.Tests.LIB.PARSE
         }
 
         [TestMethod()]
-        public void TST080_FluxoCSV_Delimitado_ItemNormal()
+        public void TST080_ParseCSV_Delimitado_ItemNormal()
         {
             // arrange
             input = @"Alexandre,Bartie,  |376.52|  ,alexandre.bartie@hotmail.com";
@@ -104,7 +104,7 @@ namespace Dooggy.Tests.LIB.PARSE
 
 
         [TestMethod()]
-        public void TST090_FluxoCSV_Delimitado_ItemNormalComEspacos()
+        public void TST090_ParseCSV_Delimitado_ItemNormalComEspacos()
         {
             // arrange
             input = @"Alexandre,Bartie,  | 376.52 |  ,alexandre.bartie@hotmail.com";
@@ -115,7 +115,7 @@ namespace Dooggy.Tests.LIB.PARSE
         }
         
         [TestMethod()]
-        public void TST100_FluxoCSV_Delimitado_ItemEspacos()
+        public void TST100_ParseCSV_Delimitado_ItemEspacos()
         {
             // arrange
             input = @"Alexandre,Bartie,  |     |  ,alexandre.bartie@hotmail.com";
@@ -126,7 +126,7 @@ namespace Dooggy.Tests.LIB.PARSE
         }
        
         [TestMethod()]
-        public void TST110_FluxoCSV_DelimitadoComVirgula_Padrao()
+        public void TST110_ParseCSV_DelimitadoComVirgula_Padrao()
         {
             // arrange
             input = @"Alexandre,Bartie,  | 376,52 |  ,alexandre.bartie@hotmail.com";
@@ -137,7 +137,7 @@ namespace Dooggy.Tests.LIB.PARSE
         }
 
         [TestMethod()]
-        public void TST120_FluxoCSV_DelimitadoComVirgula_MultiplasVirgulas()
+        public void TST120_ParseCSV_DelimitadoComVirgula_MultiplasVirgulas()
         {
             // arrange
             input = @"Alexandre,Bartie,  |,1,,376,52,,78,999,,3,|  ,alexandre.bartie@hotmail.com";
@@ -148,7 +148,7 @@ namespace Dooggy.Tests.LIB.PARSE
         }
 
         [TestMethod()]
-        public void TST130_FluxoCSV_DelimitadoComVirgula_MultiplasVirgulas_ComEspacamentos()
+        public void TST130_ParseCSV_DelimitadoComVirgula_MultiplasVirgulas_ComEspacamentos()
         {
             // arrange
             input = @"Alexandre,Bartie,  |  , 1 , , 376 , 52 ,, 78 , 999 , , 3   |  ,alexandre.bartie@hotmail.com";
@@ -159,7 +159,7 @@ namespace Dooggy.Tests.LIB.PARSE
         }
 
         [TestMethod()]
-        public void TST140_FluxoCSV_DelimitadoComVirgula_ExtraDelimitador()
+        public void TST140_ParseCSV_DelimitadoComVirgula_ExtraDelimitador()
         {
             // arrange
             input = @"Alexandre,Bartie,  | 37|6,52 |  ,alexandre.bartie@hotmail.com";
@@ -170,7 +170,7 @@ namespace Dooggy.Tests.LIB.PARSE
         }
 
         [TestMethod()]
-        public void TST150_FluxoCSV_DelimitadoComVirgula_ExtraDoubleSTART()
+        public void TST150_ParseCSV_DelimitadoComVirgula_ExtraDoubleSTART()
         {
             // arrange
             input = @"Alexandre,Bartie,  | 37|6,|52 |  ,alexandre.bartie@hotmail.com";
@@ -181,7 +181,7 @@ namespace Dooggy.Tests.LIB.PARSE
         }
         
         [TestMethod()]
-        public void TST160_FluxoCSV_DelimitadoComVirgula_DelimitadorNoSTART()
+        public void TST160_ParseCSV_DelimitadoComVirgula_DelimitadorNoSTART()
         {
             // arrange
             input = @"Alexandre,Bartie,  3|76,52 |  ,alexandre.bartie@hotmail.com";
@@ -192,7 +192,7 @@ namespace Dooggy.Tests.LIB.PARSE
         }
 
         [TestMethod()]
-        public void TST170_FluxoCSV_DelimitadoComVirgula_DelimitadorNoEND()
+        public void TST170_ParseCSV_DelimitadoComVirgula_DelimitadorNoEND()
         {
             // arrange
             input = @"Alexandre,Bartie, | 3|76,5|2  ,alexandre.bartie@hotmail.com";
@@ -203,7 +203,7 @@ namespace Dooggy.Tests.LIB.PARSE
         }
 
         [TestMethod()]
-        public void TST180_FluxoCSV_DelimitadoComVirgula_DelimitadorEND()
+        public void TST180_ParseCSV_DelimitadoComVirgula_DelimitadorEND()
         {
             // arrange
             input = @"Alexandre,Bartie, | 376|,52 |";
@@ -213,7 +213,7 @@ namespace Dooggy.Tests.LIB.PARSE
             ActionParseCSV();
         }
         [TestMethod()]
-        public void TST190_FluxoCSV_DelimitadoComVirgula_DelimitadorENDFake()
+        public void TST190_ParseCSV_DelimitadoComVirgula_DelimitadorENDFake()
         {
             // arrange
             input = @"Alexandre,Bartie, | 376,|52 |";

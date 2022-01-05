@@ -1,4 +1,5 @@
 ﻿using Dooggy;
+using Dooggy.Lib.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -28,11 +29,90 @@ namespace Dooggy.Tests.LIB.GENERIC
 
         }
 
-        private void ActionLista()
+        [TestMethod()]
+        public void TST020_FluxoCSV_ComEspacos()
+        {
+
+            // arrange
+            input = " 1234 , 2345 , 3 , 5 , 78 ";
+            output = "4,4,1,1,2";
+
+            // act & assert
+            ActionLista();
+
+        }
+
+        [TestMethod()]
+        public void TST030_FluxoCSV_Unico()
+        {
+
+            // arrange
+            input = " 923348 ";
+            output = "6";
+
+            // act & assert
+            ActionLista();
+
+        }
+
+        [TestMethod()]
+        public void TST040_FluxoCSV_Vazio()
+        {
+
+            // arrange
+            input = "";
+            output = "";
+
+            // act & assert
+            ActionLista();
+
+        }
+
+        [TestMethod()]
+        public void TST050_FluxoCSV_Espaco()
+        {
+
+            // arrange
+            input = "   ";
+            output = "";
+
+            // act & assert
+            ActionLista();
+
+        }
+
+        [TestMethod()]
+        public void TST060_FluxoCSV_Nulo()
+        {
+
+            // arrange
+            input = null;
+            output = "";
+
+            // act & assert
+            ActionLista();
+
+        }
+
+        [TestMethod()]
+        public void TST070_FluxoCSV_SeparadorModificado()
+        {
+
+            // arrange
+            input = " 12,3 $ 456,78 $ 3,23 ";
+            output = "4$6$4";
+
+            // act & assert
+            ActionLista(prmSeparador: "$");
+
+        }
+        
+        private void ActionLista() => ActionLista(prmSeparador: ",");
+        private void ActionLista(string prmSeparador)
         {
 
             // assert
-            Lista.Parse(input, prmSeparador: ",");
+            Lista.Parse(input, prmSeparador);
 
             string result = Lista.log;
 
@@ -53,7 +133,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         private xMask Mask;
 
         [TestMethod()]
-        public void TST010_Mask_MascaraUnica()
+        public void TST010_Mask_MascaraPadrao()
         {
             // arrange
             lista = "{ 'COD_MATRICULA': '####.##.#####-#' }"; chave = "COD_MATRICULA";
@@ -67,7 +147,35 @@ namespace Dooggy.Tests.LIB.GENERIC
         }
 
         [TestMethod()]
-        public void TST020_Mask_MascarasMultiplas()
+        public void TST020_Mask_MascaraMaiorValor()
+        {
+            // arrange
+            lista = "{ 'COD_MATRICULA': '##-#####.##.#####-#' }"; chave = "COD_MATRICULA";
+
+            input = "198402018831";
+            output = "1984.02.01883-1";
+
+            // act & assert
+            ActionMask();
+
+        }
+
+        [TestMethod()]
+        public void TST030_Mask_MascaraMenorValor()
+        {
+            // arrange
+            lista = "{ 'COD_MATRICULA': '##.##.#####-#' }"; chave = "COD_MATRICULA";
+
+            input = "198402018831";
+            output = "84.02.01883-1";
+
+            // act & assert
+            ActionMask();
+
+        }
+        
+        [TestMethod()]
+        public void TST040_Mask_MascarasMultiplas()
         {
             // arrange
             lista = "{ 'COD_MATRICULA': '####.##.#####-#', 'CPF': '###.###.###-##', 'CNPJ': '###.###.###-##' }"; chave = "CPF";
@@ -81,7 +189,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         }
 
         [TestMethod()]
-        public void TST030_Mask_MascaraVazia()
+        public void TST050_Mask_MascaraVazia()
         {
             // arrange
             lista = "{  }"; chave = "CPF";
@@ -95,7 +203,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         }
 
         [TestMethod()]
-        public void TST040_Mask_KeyInexistente()
+        public void TST060_Mask_KeyInexistente()
         {
             // arrange
             lista = "{ 'COD_MATRICULA': '####.##.#####-#', 'CPF': '###.###.###-##', 'CNPJ': '###.###.###-##' }"; chave = "RG";
