@@ -1,4 +1,5 @@
 ﻿using Dooggy;
+using Dooggy.Lib.Files;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -163,7 +164,6 @@ namespace Dooggy.Tests.LIB.FILES
                 Assert.Fail(string.Format("Actual: <{0}>, Expected: <{1}>", result, output));
 
         }
-
 
     }
 

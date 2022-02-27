@@ -8,7 +8,7 @@ using Dooggy.Lib.Data;
 using Dooggy.Factory.Data;
 using Dooggy.Factory;
 
-namespace Dooggy.Tests.LIB.DATA
+namespace Dooggy.Tests.DATA.CONNECTION
 {
     [TestClass()]
     public class DataBaseConnection_Test : DataConnection_Test
@@ -34,7 +34,7 @@ namespace Dooggy.Tests.LIB.DATA
         {
 
             // arrange
-            output = "SIM";
+            output = "NAO";
 
             // act
             ConnectDbOracle(prmSenha: "123456");
@@ -48,7 +48,7 @@ namespace Dooggy.Tests.LIB.DATA
         {
 
             // assert
-            string result = GetYesNo(prmOpcao: Pool.IsON());
+            string result = GetYesNo(prmOpcao: Pool.IsDbOK);
 
             // assert
             if (output != result)
@@ -63,14 +63,16 @@ namespace Dooggy.Tests.LIB.DATA
         public string input;
         public string output;
 
-         public TestDataPool Pool;
+        private TestFactory Fabrica;
+
+        public TestDataPool Pool => Fabrica.Pool;
 
         public void ConnectDbOracle() { ConnectDbOracle(prmSenha: "asdfg"); }
 
         public void ConnectDbOracle(string prmSenha)
         {
 
-            Pool = new TestDataPool();
+            Fabrica = new TestFactory();
 
             Pool.Connect.Oracle.user = "desenvolvedor_sia";
             Pool.Connect.Oracle.password = prmSenha;

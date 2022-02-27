@@ -1,21 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Dooggy;
 using Dooggy.Lib.Generic;
+using Dooggy.Lib.Vars;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Dooggy.Tests.LIB.VARS
+namespace Dooggy.Tests.LIB.STRING
 {
-       
-    [TestClass()]
-    public class xStrings_Test
-    {
 
-        string mask;
-        
-        string input;
-        string output;
-        string result;
+    [TestClass()]
+    public class myStringsByGetFirst_Test : myStrings_Test
+    {
 
         [TestMethod()]
         public void TST_GetFirst_010_Padrao()
@@ -77,65 +73,11 @@ namespace Dooggy.Tests.LIB.VARS
 
         }
 
-        [TestMethod()]
-        public void TST_GetLast_010_Padrao()
-        {
+    }
 
-            input = "Alexandre Bartie";
-            output = "e";
-
-            // act & assert
-            ActionGetLast();
-
-        }
-
-        [TestMethod()]
-        public void TST_GetLast_020_TextoCaracterUnico()
-        {
-
-            input = "X";
-            output = "X";
-
-            // act & assert
-            ActionGetLast();
-
-        }
-
-        [TestMethod()]
-        public void TST_GetLast_030_TextoComBrancos()
-        {
-
-            input = " X ";
-            output = " ";
-
-            // act & assert
-            ActionGetLast();
-
-        }
-
-        [TestMethod()]
-        public void TST_GetLast_040_TextoVazio()
-        {
-
-            input = "";
-            output = "";
-
-            // act & assert
-            ActionGetLast();
-
-        }
-
-        [TestMethod()]
-        public void TST_GetLast_050_TextoNulo()
-        {
-
-            input = null;
-            output = "";
-
-            // act & assert
-            ActionGetLast();
-
-        }
+    [TestClass()]
+    public class myStringsByGetFirstExt_Test : myStrings_Test
+    {
 
         [TestMethod()]
         public void TST_GetFirstExt_010_Padrao()
@@ -196,7 +138,7 @@ namespace Dooggy.Tests.LIB.VARS
             ActionGetFirstExt();
 
         }
-        
+
         [TestMethod()]
         public void TST_GetFirstExt_060_TextoComBrancos()
         {
@@ -248,7 +190,7 @@ namespace Dooggy.Tests.LIB.VARS
         {
 
             input = "abcdefg";
-            output = "";
+            output = "g";
 
             // act & assert
             ActionGetFirstExt(prmTamanho: -1);
@@ -298,6 +240,76 @@ namespace Dooggy.Tests.LIB.VARS
             ActionGetFirstExt(prmDelimitador: "|");
 
         }
+    }
+
+    [TestClass()]
+    public class myStringsByGetLast_Test : myStrings_Test
+    {
+
+        [TestMethod()]
+        public void TST_GetLast_010_Padrao()
+        {
+
+            input = "Alexandre Bartie";
+            output = "e";
+
+            // act & assert
+            ActionGetLast();
+
+        }
+
+        [TestMethod()]
+        public void TST_GetLast_020_TextoCaracterUnico()
+        {
+
+            input = "X";
+            output = "X";
+
+            // act & assert
+            ActionGetLast();
+
+        }
+
+        [TestMethod()]
+        public void TST_GetLast_030_TextoComBrancos()
+        {
+
+            input = " X ";
+            output = " ";
+
+            // act & assert
+            ActionGetLast();
+
+        }
+
+        [TestMethod()]
+        public void TST_GetLast_040_TextoVazio()
+        {
+
+            input = "";
+            output = "";
+
+            // act & assert
+            ActionGetLast();
+
+        }
+
+        [TestMethod()]
+        public void TST_GetLast_050_TextoNulo()
+        {
+
+            input = null;
+            output = "";
+
+            // act & assert
+            ActionGetLast();
+
+        }
+    }
+
+    [TestClass()]
+    public class myStringsByGetLastExt_Test : myStrings_Test
+    { 
         [TestMethod()]
         public void TST_GetLastExt_010_Padrao()
         {
@@ -417,7 +429,7 @@ namespace Dooggy.Tests.LIB.VARS
             ActionGetLastExt(prmTamanho: -1);
 
         }
-        
+
         [TestMethod()]
         public void TST_GetLastExt_110_Delimitador()
         {
@@ -462,77 +474,71 @@ namespace Dooggy.Tests.LIB.VARS
             ActionGetLastExt(prmDelimitador: "|");
 
         }
-
+    }
+    [TestClass()]
+    public class myStringsByGetFind_Test : myStrings_Test
+    {
         [TestMethod()]
-        public void TST_GetMask_010_MascaraPadrao()
+        public void TST_GetFind_010_BuscaPadrao()
         {
 
-            mask = "####.##.#####-#";
-
-            input = "198402018831";
-            output = "1984.02.01883-1";
+            input = "Alexandre Bartie";
+            output = "sim";
 
             // act & assert
-            ActionGetMask();
+            ActionGetFind(prmBuscar: "xan");
 
         }
 
         [TestMethod()]
-        public void TST_GetMask_020_MascaraMaiorValor()
+        public void TST_GetFind_020_BuscaPorDiferencaCaixa()
         {
 
-            mask = "###.####.##.#####-#";
-
-            input = "198402018831";
-            output = "1984.02.01883-1";
+            input = "Alexandre Bartie";
+            output = "sim";
 
             // act & assert
-            ActionGetMask();
+            ActionGetFind(prmBuscar: "alex");
 
         }
 
         [TestMethod()]
-        public void TST_GetMask_030_MascaraMenorValor()
+        public void TST_GetFind_030_BuscaPorMatchParcial()
         {
 
-            mask = "##.#####-#";
-
-            input = "198402018831";
-            output = "02.01883-1";
+            input = "Alexandre Bartie";
+            output = "nao";
 
             // act & assert
-            ActionGetMask();
+            ActionGetFind(prmBuscar: "Bartier");
 
         }
-
         [TestMethod()]
-        public void TST_GetMask_040_MascaraEntreAspas()
+        public void TST_GetFind_040_BuscaPorVazio()
         {
 
-            mask = @"""####.##.#####-#""";
-
-            input = "198402018831";
-            output = @"""1984.02.01883-1""";
+            input = "Alexandre Bartie";
+            output = "nao";
 
             // act & assert
-            ActionGetMask();
+            ActionGetFind(prmBuscar: "");
 
         }
-
         [TestMethod()]
-        public void TST_GetMask_050_MascaraComPrefixo()
+        public void TST_GetFind_050_BuscaPorNull()
         {
 
-            mask = "CPF: ###.####.##.#####-#";
-
-            input = "198402018831";
-            output = "CPF: 1984.02.01883-1";
+            input = "Alexandre Bartie";
+            output = "nao";
 
             // act & assert
-            ActionGetMask();
+            ActionGetFind(prmBuscar: null);
 
         }
-
+    }
+    [TestClass()]
+    public class myStringsByGetReverse_Test : myStrings_Test
+    {
         [TestMethod()]
         public void TST_GetReverse_010_Padrao()
         {
@@ -567,6 +573,10 @@ namespace Dooggy.Tests.LIB.VARS
             ActionGetReverse();
 
         }
+    }
+    [TestClass()]
+    public class myStringsByGetNoBlank_Test : myStrings_Test
+    {
 
         [TestMethod()]
         public void TST_GetNoBlank_010_Padrao()
@@ -603,7 +613,7 @@ namespace Dooggy.Tests.LIB.VARS
             ActionGetNoBlank();
 
         }
-        
+
         [TestMethod()]
         public void TST_GetNoBlank_040_Vazio()
         {
@@ -626,111 +636,354 @@ namespace Dooggy.Tests.LIB.VARS
             ActionGetNoBlank();
 
         }
+    }
+    [TestClass()]
+    public class myStringsByGetSubstituir_Test : myStrings_Test
+    {
 
-        private void ActionGetFirst()
+        [TestMethod()]
+        public void TST010_GetSubstituir_SubstituicaoPadrao()
+        {
+
+            input = "Alexandre Silva Bartie";
+            output = "Alexandre Jonas Bartie";
+
+            // act & assert
+            ActionGetSubstituir(prmVelho: "Silva", prmNovo: "Jonas");
+
+        }
+
+        [TestMethod()]
+        public void TST020_GetSubstituir_SubstituicoesMultiplas()
+        {
+
+            input = "Alexandre Silva Bartie Silva Soares";
+            output = "Alexandre Jonas Bartie Jonas Soares";
+
+            // act & assert
+            ActionGetSubstituir(prmVelho: "Silva", prmNovo: "Jonas");
+
+        }
+
+        [TestMethod()]
+        public void TST030_GetSubstituir_SubstituicoesEspacos()
+        {
+
+            input = "  Alexandre  Bartie  ";
+            output = "**Alexandre**Bartie**";
+
+            // act & assert
+            ActionGetSubstituir(prmVelho: " ", prmNovo: "*");
+
+        }
+
+        [TestMethod()]
+        public void TST040_GetSubstituir_SubstituicaoVazio()
+        {
+
+            input = "  Alexandre  Bartie  ";
+            output = "AlexandreBartie";
+
+            // act & assert
+            ActionGetSubstituir(prmVelho: " ", prmNovo: "");
+
+        }
+        [TestMethod()]
+        public void TST050_GetSubstituir_InputNull()
+        {
+
+            input = null;
+            output = "";
+
+            // act & assert
+            ActionGetSubstituir(prmVelho: "Silva", prmNovo: "Jonas");
+
+        }
+        [TestMethod()]
+        public void TST050_GetSubstituir_VelhoNull()
+        {
+
+            input = "Alexandre Silva Bartie";
+            output = "Alexandre Silva Bartie";
+
+            // act & assert
+            ActionGetSubstituir(prmVelho: null, prmNovo: "Jonas");
+
+        }
+
+        [TestMethod()]
+        public void TST050_GetSubstituir_NovoNull()
+        {
+
+            input = "Alexandre Silva Bartie";
+            output = "Alexandre  Bartie";
+
+            // act & assert
+            ActionGetSubstituir(prmVelho: "Silva", prmNovo: null);
+
+        }
+    }
+
+    [TestClass()]
+    public class myStringsByGetMask_Test : myStrings_Test
+    {
+        [TestMethod()]
+        public void TST_GetMask_010_MascaraPadrao()
+        {
+
+            mask = "###.###.###-##";
+
+            input = "14029092845";
+            output = "140.290.928-45";
+
+            // act & assert
+            ActionGetMask();
+
+        }
+
+        [TestMethod()]
+        public void TST_GetMask_020_MascaraAjustaTamanho()
+        {
+
+            mask = "###.###.###-##";
+
+            input = "4029092845";
+            output = "40.290.928-45";
+
+            // act & assert
+            ActionGetMask();
+
+        }
+
+        [TestMethod()]
+        public void TST_GetMask_030_MascaraCortaDados()
+        {
+
+            mask = "###.###.###-##";
+
+            input = "814029092845";
+            output = "140.290.928-45";
+
+            // act & assert
+            ActionGetMask();
+
+        }
+
+        [TestMethod()]
+        public void TST_GetMask_040_MascaraAjustaTamanho_IncluiMarcacao()
+        {
+
+            mask = "###.###.###-##";
+
+            input = "029092845";
+            output = "0.290.928-45";
+
+            // act & assert
+            ActionGetMask();
+
+        }
+        [TestMethod()]
+        public void TST_GetMask_050_MascaraAjustaTamanho_LimiteMarcacao()
+        {
+
+            mask = "###.###.###-##";
+
+            input = "29092845";
+            output = "290.928-45";
+
+            // act & assert
+            ActionGetMask();
+
+        }
+
+        [TestMethod()]
+        public void TST_GetMask_060_MascaraComPrefixo()
+        {
+
+            mask = "CPF: ###.###.###-##";
+
+            input = "14029092845";
+            output = "CPF: 140.290.928-45";
+
+            // act & assert
+            ActionGetMask();
+
+        }
+
+        [TestMethod()]
+        public void TST_GetMask_070_MascaraEntreApostrofes()
+        {
+
+            mask = @"'###.###.###-##'";
+
+            input = "14029092845";
+            output = "'140.290.928-45'";
+
+            // act & assert
+            ActionGetMask();
+
+        }
+
+        [TestMethod()]
+        public void TST_GetMask_080_MascaraZerosEsquerda()
+        {
+
+            mask = "000.000.###-##";
+
+            input = "192845";
+            output = "000.001.928-45";
+
+            // act & assert
+            ActionGetMask();
+
+        }
+        [TestMethod()]
+        public void TST_GetMask_090_MascaraZerosEsquerda_LimiteMarcacao()
+        {
+
+            mask = "000.000.###-##";
+
+            input = "92845";
+            output = "000.000.928-45";
+
+            // act & assert
+            ActionGetMask();
+
+        }
+    }
+    public class myStrings_Test
+    { 
+
+        public string mask;
+
+        public string input;
+        public string output;
+        public string result;
+
+        public void ActionGetFirst()
+        {
+
+        // assert
+        result = myString.GetFirst(input);
+
+        // assert
+        ActionGeneric();
+
+        }
+        public void ActionGetFirstExt() => ActionGetFirstExt(prmTamanho: 6);
+
+        public void ActionGetFirstExt(int prmTamanho)
+        {
+
+        // assert
+        result = myString.GetFirst(input, prmTamanho);
+
+        // assert
+        ActionGeneric();
+
+        }
+        public void ActionGetFirstExt(string prmDelimitador)
+        {
+
+        // assert
+        result = myString.GetFirst(input, prmDelimitador);
+
+        // assert
+        ActionGeneric();
+
+        }
+        public void ActionGetLast()
+        {
+
+        // assert
+        result = myString.GetLast(input);
+
+        // assert
+        ActionGeneric();
+
+        }
+        public void ActionGetLastExt() => ActionGetLastExt(prmTamanho: 6);
+        public void ActionGetLastExt(int prmTamanho)
+        {
+
+        // assert
+        result = myString.GetLast(input, prmTamanho);
+
+        // assert
+        ActionGeneric();
+
+        }
+        public void ActionGetLastExt(string prmDelimitador)
+        {
+
+        // assert
+        result = myString.GetLast(input, prmDelimitador);
+
+        // assert
+        ActionGeneric();
+
+        }
+
+        public void ActionGetMask()
+        {
+
+        // assert
+        result = myFormat.TextToString(input, mask);
+
+        // assert
+        ActionGeneric();
+
+        }
+
+        public void ActionGetFind(string prmBuscar)
+        {
+
+        // assert
+        result = myBool.IIf(myString.GetFind(input, prmBuscar), "sim", "nao");
+
+        // assert
+        ActionGeneric();
+
+        }
+        public void ActionGetReverse()
         {
 
             // assert
-            result = xString.GetFirst(input);
+            result = myString.GetReverse(input);
 
             // assert
             ActionGeneric();
 
         }
-        private void ActionGetFirstExt() => ActionGetFirstExt(prmTamanho: 6);
-        private void ActionGetFirstExt(int prmTamanho)
+        public void ActionGetNoBlank()
+        {
+
+        // assert
+        result = myString.GetNoBlank(input);
+
+        // assert
+        ActionGeneric();
+
+        }
+        public void ActionGetSubstituir(string prmVelho, string prmNovo)
         {
 
             // assert
-            result = xString.GetFirst(input, prmTamanho);
+            result = myString.GetSubstituir(input, prmVelho, prmNovo);
 
             // assert
             ActionGeneric();
 
         }
-        private void ActionGetFirstExt(string prmDelimitador)
+        public void ActionGeneric()
         {
 
-            // assert
-            result = xString.GetFirst(input, prmDelimitador);
-
-            // assert
-            ActionGeneric();
-
-        }
-        private void ActionGetLast()
-        {
-
-            // assert
-            result = xString.GetLast(input);
-
-            // assert
-            ActionGeneric();
-
-        }
-        private void ActionGetLastExt() => ActionGetLastExt(prmTamanho: 6);
-        private void ActionGetLastExt(int prmTamanho)
-        {
-
-            // assert
-            result = xString.GetLast(input, prmTamanho);
-
-            // assert
-            ActionGeneric();
-
-        }
-        private void ActionGetLastExt(string prmDelimitador)
-        {
-
-            // assert
-            result = xString.GetLast(input, prmDelimitador);
-
-            // assert
-            ActionGeneric();
+        // assert
+        if (output != result)
+            Assert.Fail(string.Format("Expected: <{0}>, Actual: <{1}>", output, result));
 
         }
 
-        private void ActionGetMask()
-        {
-
-            // assert
-            result = xString.GetMask(input, mask);
-
-            // assert
-            ActionGeneric();
-
-        }
-
-        private void ActionGetReverse()
-        {
-
-            // assert
-            result = xString.GetReverse(input);
-
-            // assert
-            ActionGeneric();
-
-        }
-
-        private void ActionGetNoBlank()
-        {
-
-            // assert
-            result = xString.GetNoBlank(input);
-
-            // assert
-            ActionGeneric();
-
-        }
-        
-        private void ActionGeneric()
-        {
-
-            // assert
-            if (output != result)
-                Assert.Fail(string.Format("Expected: <{0}>, Actual: <{1}>", output, result));
-
-        }
     }
 
 }

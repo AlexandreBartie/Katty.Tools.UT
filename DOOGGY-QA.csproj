@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>UT_DOOGGY</RootNamespace>
+    <RootNamespace>DOOGGY_QA</RootNamespace>
 
     <IsPackable>false</IsPackable>
 

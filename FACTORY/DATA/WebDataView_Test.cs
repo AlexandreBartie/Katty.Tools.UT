@@ -8,15 +8,15 @@ using System.Text;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace Dooggy.Tests.FACTORY.VIEW
+namespace Dooggy.Tests.DATA.VIEW
 {
 
     [TestClass()]
-    public class CAT10_DataView_Test : DataFactory_Test
+    public class CAT_010_DataViewByConsultas_Test : DataView_Test
     {
 
         [TestMethod()]
-        public void TST010_DataView_ViewUnicoResultado()
+        public void TST010_DataViewByConsultas_ConsultaUnica()
         {
 
             // arrange
@@ -27,7 +27,7 @@ namespace Dooggy.Tests.FACTORY.VIEW
 
             Dados.AddDataView(prmTag: "Aluno");
 
-            Dados.AddDataFluxo(prmTag: "Padrao", prmSQL: GetComandoSQL());
+            Dados.AddDataFlow(prmTag: "Padrao", prmSQL: GetComandoSQL());
 
             // & assert
             VerifyDadosDataView();
@@ -35,7 +35,7 @@ namespace Dooggy.Tests.FACTORY.VIEW
         }
 
         [TestMethod()]
-        public void TST020_DataView_ViewMultiplosResultados()
+        public void TST020_DataViewByConsultas_ConsultasMultiplas()
         {
 
             // arrange
@@ -46,7 +46,7 @@ namespace Dooggy.Tests.FACTORY.VIEW
 
             Dados.AddDataView(prmTag: "Aluno");
 
-            Dados.AddDataFluxo(prmTag: "Padrao", prmSQL: GetComandoSQL(prmUnico: false));
+            Dados.AddDataFlow(prmTag: "Padrao", prmSQL: GetComandoSQL(prmUnico: false));
 
             // & assert
             VerifyDadosDataView();
@@ -54,7 +54,7 @@ namespace Dooggy.Tests.FACTORY.VIEW
         }
 
         [TestMethod()]
-        public void TST030_DataView_CamposModificados()
+        public void TST030_DataViewByConsultas_ConsultasCamposAlias()
         {
 
             // arrange
@@ -65,7 +65,7 @@ namespace Dooggy.Tests.FACTORY.VIEW
 
             Dados.AddDataView(prmTag: "Aluno");
 
-            Dados.AddDataFluxo(prmTag: "=Padrao", prmSQL: GetComandoSQL_Alias());
+            Dados.AddDataFlow(prmTag: "=Padrao", prmSQL: GetComandoSQL_Alias());
 
             // & assert
             VerifyDadosDataView();
@@ -73,26 +73,7 @@ namespace Dooggy.Tests.FACTORY.VIEW
         }
 
         [TestMethod()]
-        public void TST040_DataView_MascaraResultados()
-        {
-
-            // arrange
-            output = "{ 'MATRICULA': '1984.02.01883-1', 'RESPONSAVEL': 'PAULO LOUREIRO FILHO', 'CPF': '805.545.047-15' }";
-
-            // act
-            ConnectDbOracle();
-
-            Dados.AddDataView(prmTag: "Aluno");
-
-            Dados.AddDataFluxo(prmTag: "=Padrao", prmSQL: GetComandoSQL_Alias(), prmMask: GetMaskAluno());
-
-            // & assert
-            VerifyDadosDataView();
-
-        }
-
-        [TestMethod()]
-        public void TST050_DataView_DadoVazio()
+        public void TST040_DataViewByConsultas_ConsultaCamposNulos()
         {
 
             // arrange
@@ -103,7 +84,7 @@ namespace Dooggy.Tests.FACTORY.VIEW
 
             Dados.AddDataView(prmTag: "Aluno");
 
-            Dados.AddDataFluxo(prmTag: "=Null", prmSQL: GetComandoSQL(prmSituacao: 12));
+            Dados.AddDataFlow(prmTag: "=Null", prmSQL: GetComandoSQL(prmSituacao: 12));
 
             // & assert
             VerifyDadosDataView();
@@ -111,7 +92,7 @@ namespace Dooggy.Tests.FACTORY.VIEW
         }
 
         [TestMethod()]
-        public void TST060_DataView_ResultadoVazio()
+        public void TST050_DataViewByConsultas_ConsultaRetornoNulo()
         {
 
             // arrange
@@ -122,7 +103,7 @@ namespace Dooggy.Tests.FACTORY.VIEW
 
             Dados.AddDataView(prmTag: "Aluno");
 
-            Dados.AddDataFluxo(prmTag: "=Nenhum", prmSQL: GetComandoSQL(prmSituacao: 91));
+            Dados.AddDataFlow(prmTag: "=Nenhum", prmSQL: GetComandoSQL(prmSituacao: 91));
 
             // & assert
             VerifyDadosDataView();
@@ -130,7 +111,7 @@ namespace Dooggy.Tests.FACTORY.VIEW
         }
 
         [TestMethod()]
-        public void TST070_DataView_ViewNaoEncontrada()
+        public void TST060_DataViewByConsultas_ConsultaNaoEncontrada()
         {
 
             // arrange
@@ -141,9 +122,9 @@ namespace Dooggy.Tests.FACTORY.VIEW
 
             Dados.AddDataView(prmTag: "Aluno");
 
-            Dados.AddDataFluxo(prmTag: "Errado", prmSQL: GetComandoSQL(prmSituacao: 4));
-            Dados.AddDataFluxo(prmTag: "Novato", prmSQL: GetComandoSQL(prmSituacao: 10));
-            Dados.AddDataFluxo(prmTag: "Padrao", prmSQL: GetComandoSQL(prmSituacao: 6));
+            Dados.AddDataFlow(prmTag: "Errado", prmSQL: GetComandoSQL(prmSituacao: 4));
+            Dados.AddDataFlow(prmTag: "Novato", prmSQL: GetComandoSQL(prmSituacao: 10));
+            Dados.AddDataFlow(prmTag: "Padrao", prmSQL: GetComandoSQL(prmSituacao: 6));
 
             // & assert
             VerifyDadosDataView("Login");
@@ -151,7 +132,7 @@ namespace Dooggy.Tests.FACTORY.VIEW
         }
 
         [TestMethod()]
-        public void TST080_DataView_ViewNaoExata_MenosCaracteres()
+        public void TST070_DataViewByConsultas_ConsultaNaoEncontrada_MenosCaracteres()
         {
 
             // arrange
@@ -162,9 +143,9 @@ namespace Dooggy.Tests.FACTORY.VIEW
 
             Dados.AddDataView(prmTag: "Aluno");
 
-            Dados.AddDataFluxo(prmTag: "Errado", prmSQL: GetComandoSQL(prmSituacao: 4));
-            Dados.AddDataFluxo(prmTag: "Novato", prmSQL: GetComandoSQL(prmSituacao: 10));
-            Dados.AddDataFluxo(prmTag: "Padrao", prmSQL: GetComandoSQL(prmSituacao: 6));
+            Dados.AddDataFlow(prmTag: "Errado", prmSQL: GetComandoSQL(prmSituacao: 4));
+            Dados.AddDataFlow(prmTag: "Novato", prmSQL: GetComandoSQL(prmSituacao: 10));
+            Dados.AddDataFlow(prmTag: "Padrao", prmSQL: GetComandoSQL(prmSituacao: 6));
 
             // & assert
             VerifyDadosDataView("Alun");
@@ -172,7 +153,7 @@ namespace Dooggy.Tests.FACTORY.VIEW
         }
 
         [TestMethod()]
-        public void TST090_DataView_ViewNaoExata_MaisCaracteres()
+        public void TST080_DataViewByConsultas_ConsultaNaoEncontrada_MaisCaracteres()
         {
 
             // arrange
@@ -183,17 +164,90 @@ namespace Dooggy.Tests.FACTORY.VIEW
 
             Dados.AddDataView(prmTag: "Aluno");
 
-            Dados.AddDataFluxo(prmTag: "Errado", prmSQL: GetComandoSQL(prmSituacao: 4));
-            Dados.AddDataFluxo(prmTag: "Novato", prmSQL: GetComandoSQL(prmSituacao: 10));
-            Dados.AddDataFluxo(prmTag: "Padrao", prmSQL: GetComandoSQL(prmSituacao: 6));
+            Dados.AddDataFlow(prmTag: "Errado", prmSQL: GetComandoSQL(prmSituacao: 4));
+            Dados.AddDataFlow(prmTag: "Novato", prmSQL: GetComandoSQL(prmSituacao: 10));
+            Dados.AddDataFlow(prmTag: "Padrao", prmSQL: GetComandoSQL(prmSituacao: 6));
 
             // & assert
             VerifyDadosDataView("Alunos");
 
         }
-        
+
+    }
+
+    [TestClass()]
+    public class CAT_020_DataViewByTipos_Test : DataView_Test
+    {
+
         [TestMethod()]
-        public void TST100_DataView_MultiplosArquivosJSON()
+        public void TST010_DataViewByTipos_MascaraStrings()
+        {
+
+            // arrange
+            output = "";
+            output += "ID 1984.02.01883-1,PAULO LOUREIRO FILHO,CPF 805.545.047-15" + Environment.NewLine;
+
+            // act
+            ConnectDbOracle();
+
+            bloco = "";
+            bloco += ">view: Aluno" + Environment.NewLine;
+            bloco += "  -name: test01_ValidarInformacoesDoAluno" + Environment.NewLine;
+            bloco += "      -output: matricula,NomeAluno,Responsavel" + Environment.NewLine;
+            bloco += "       -mask: cod_matricula = ID ####.##.#####-#, cpf_responsavel_pgto = CPF ###.###.###-##" + Environment.NewLine;
+            bloco += Environment.NewLine;
+            bloco += ">item: Padrao" + Environment.NewLine;
+            bloco += "   -sql: SELECT cod_matricula , nom_responsavel_pgto, cpf_responsavel_pgto" + Environment.NewLine;
+            bloco += "         FROM sia.aluno_curso" + Environment.NewLine;
+            bloco += "         WHERE cod_situacao_aluno = '6'" + Environment.NewLine;
+            bloco += Environment.NewLine;
+            bloco += ">save[csv]:" + Environment.NewLine;
+
+            Console.Play(prmCode: bloco);
+
+            // & assert
+            VerifyDadosDataView(prmTipo: eTipoFileFormat.csv);
+
+        }
+
+        [TestMethod()]
+        public void TST020_DataViewByTipos_MascaraDatas()
+        {
+
+            // arrange
+            output = "";
+            output += "1997-07-05" + Environment.NewLine;
+
+            // act
+            ConnectDbOracle();
+
+            bloco = "";
+            bloco += ">view: Aluno" + Environment.NewLine;
+            bloco += "  -name: test01_ConsultarDebitoPorNossoNumero" + Environment.NewLine;
+            bloco += "      -output: nVencimento[VENCIMENTO:AAAA-MM-DD]" + Environment.NewLine;
+            bloco += "        -mask: VENCIMENTO = AAAA-MM-DD" + Environment.NewLine;
+            bloco += Environment.NewLine;
+            bloco += ">item: Padrao" + Environment.NewLine;
+            bloco += "   -sql: select ac.DT_VENCIMENTO as VENCIMENTO" + Environment.NewLine;
+            bloco += "         from SIA.carne ac" + Environment.NewLine;
+            bloco += Environment.NewLine;
+            bloco += ">save[csv]:" + Environment.NewLine;
+
+            Console.Play(prmCode: bloco);
+
+            // & assert
+            VerifyDadosDataView(prmTipo: eTipoFileFormat.csv);
+
+        }
+
+    }
+
+    [TestClass()]
+    public class CAT_030_DataViewByFormatos_Test : DataView_Test
+    {
+
+        [TestMethod()]
+        public void TST010_DataViewByFormatos_MultiplosArquivosJSON()
         {
 
             // arrange
@@ -211,15 +265,15 @@ namespace Dooggy.Tests.FACTORY.VIEW
 
             Dados.AddDataView(prmTag: "Login");
 
-            Dados.AddDataFluxo(prmTag: "Marli", prmSQL: GetComandoSQL_Login(prmUsuario: 1016283));
+            Dados.AddDataFlow(prmTag: "Marli", prmSQL: GetComandoSQL_Login(prmUsuario: 1016283));
 
             // Tag:Aluno
 
             Dados.AddDataView(prmTag: "Aluno");
 
-            Dados.AddDataFluxo(prmTag: "Errado", prmSQL: GetComandoSQL_Aluno(prmSituacao: 4));
-            Dados.AddDataFluxo(prmTag: "Novato", prmSQL: GetComandoSQL_Aluno(prmSituacao: 10, prmCPF: false));
-            Dados.AddDataFluxo(prmTag: "Padrao", prmSQL: GetComandoSQL_Aluno(prmSituacao: 6));
+            Dados.AddDataFlow(prmTag: "Errado", prmSQL: GetComandoSQL_Aluno(prmSituacao: 4));
+            Dados.AddDataFlow(prmTag: "Novato", prmSQL: GetComandoSQL_Aluno(prmSituacao: 10, prmCPF: false));
+            Dados.AddDataFlow(prmTag: "Padrao", prmSQL: GetComandoSQL_Aluno(prmSituacao: 6));
 
             // & assert
             VerifyDadosDataView(prmTags: "Login + Aluno");
@@ -227,7 +281,7 @@ namespace Dooggy.Tests.FACTORY.VIEW
         }
        
         [TestMethod()]
-        public void TST110_DataView_MultiplosArquivosCSV()
+        public void TST020_DataViewByFormatos_MultiplosArquivosCSV()
         {
 
             // arrange
@@ -244,15 +298,17 @@ namespace Dooggy.Tests.FACTORY.VIEW
 
             Dados.AddDataView(prmTag: "Login");
 
-            Dados.AddDataFluxo(prmTag: "Marli", prmSQL: GetComandoSQL_Login(prmUsuario: 1016283));
+            Dados.AddDataFlow(prmTag: "Marli", prmSQL: GetComandoSQL_Login(prmUsuario: 1016283));
 
             // Tag:Aluno
 
             Dados.AddDataView(prmTag: "Aluno");
 
-            Dados.AddDataFluxo(prmTag: "Errado", prmSQL: GetComandoSQL_Aluno(prmSituacao: 4));
-            Dados.AddDataFluxo(prmTag: "Novato", prmSQL: GetComandoSQL_Aluno(prmSituacao: 10, prmCPF: false));
-            Dados.AddDataFluxo(prmTag: "Padrao", prmSQL: GetComandoSQL_Aluno(prmSituacao: 6));
+            Dados.AddDataFlow(prmTag: "Errado", prmSQL: GetComandoSQL_Aluno(prmSituacao: 4));
+            Dados.AddDataFlow(prmTag: "Novato", prmSQL: GetComandoSQL_Aluno(prmSituacao: 10, prmCPF: false));
+            Dados.AddDataFlow(prmTag: "Padrao", prmSQL: GetComandoSQL_Aluno(prmSituacao: 6));
+
+            //Console.s
 
             // & assert
             VerifyDadosDataView(prmTags: "Login + Aluno", prmTipo: eTipoFileFormat.csv);
@@ -260,7 +316,7 @@ namespace Dooggy.Tests.FACTORY.VIEW
         }
 
         [TestMethod()]
-        public void TST120_DataView_MultiplosArquivosTXT()
+        public void TST030_DataViewByFormatos_MultiplosArquivosTXT()
         {
 
             // arrange
@@ -280,15 +336,15 @@ namespace Dooggy.Tests.FACTORY.VIEW
 
             Dados.AddDataView(prmTag: "Login|testLoginAdmValido|login,senha,usuarioLogado");
 
-            Dados.AddDataFluxo(prmTag: "Marli", prmSQL: GetComandoSQL_Login(prmUsuario: 1016283));
+            Dados.AddDataFlow(prmTag: "Marli", prmSQL: GetComandoSQL_Login(prmUsuario: 1016283));
 
             // Tag:Aluno
 
             Dados.AddDataView(prmTag: "Aluno|test01_ValidarInformacoesDoAluno|matricula,getNomeAluno");
 
-            Dados.AddDataFluxo(prmTag: "Errado", prmSQL: GetComandoSQL_Aluno(prmSituacao: 4));
-            Dados.AddDataFluxo(prmTag: "Novato", prmSQL: GetComandoSQL_Aluno(prmSituacao: 10, prmCPF: false));
-            Dados.AddDataFluxo(prmTag: "Padrao", prmSQL: GetComandoSQL_Aluno(prmSituacao: 6));
+            Dados.AddDataFlow(prmTag: "Errado", prmSQL: GetComandoSQL_Aluno(prmSituacao: 4));
+            Dados.AddDataFlow(prmTag: "Novato", prmSQL: GetComandoSQL_Aluno(prmSituacao: 10, prmCPF: false));
+            Dados.AddDataFlow(prmTag: "Padrao", prmSQL: GetComandoSQL_Aluno(prmSituacao: 6));
 
             // & assert
             VerifyDadosDataView(prmTags: "Login + Aluno", prmTipo: eTipoFileFormat.txt);
@@ -296,7 +352,7 @@ namespace Dooggy.Tests.FACTORY.VIEW
         }
 
         [TestMethod()]
-        public void TST130_DataView_MultiplosArquivosTXTcomMascaramento()
+        public void TST040_DataViewByFormatos_MultiplosArquivosTXTcomMascaramento()
         {
 
             // arrange
@@ -316,27 +372,32 @@ namespace Dooggy.Tests.FACTORY.VIEW
 
             Dados.AddDataView(prmTag: "Login|testLoginAdmValido|login,senha,usuarioLogado");
 
-            Dados.AddDataFluxo(prmTag: "Marli", prmSQL: GetComandoSQL_Login(prmUsuario: 1016283));
+            Dados.AddDataFlow(prmTag: "Marli", prmSQL: GetComandoSQL_Login(prmUsuario: 1016283));
 
             // Tag:Aluno
 
             Dados.AddDataView(prmTag: "Aluno|test01_ValidarInformacoesDoAluno|matricula,getNomeAluno", prmMask: GetMaskAluno());
 
-            Dados.AddDataFluxo(prmTag: "Errado", prmSQL: GetComandoSQL_Aluno(prmSituacao: 4));
-            Dados.AddDataFluxo(prmTag: "Novato", prmSQL: GetComandoSQL_Aluno(prmSituacao: 10, prmCPF: false));
-            Dados.AddDataFluxo(prmTag: "Padrao", prmSQL: GetComandoSQL_Aluno(prmSituacao: 6));
+            Dados.AddDataFlow(prmTag: "Errado", prmSQL: GetComandoSQL_Aluno(prmSituacao: 4));
+            Dados.AddDataFlow(prmTag: "Novato", prmSQL: GetComandoSQL_Aluno(prmSituacao: 10, prmCPF: false));
+            Dados.AddDataFlow(prmTag: "Padrao", prmSQL: GetComandoSQL_Aluno(prmSituacao: 6));
 
             // & assert
             VerifyDadosDataView(prmTags: "Login + Aluno", prmTipo: eTipoFileFormat.txt);
 
         }
 
-        private void VerifyDadosDataView() => VerifyDadosDataView(prmTags: Dados.View.tag);
-        private void VerifyDadosDataView(string prmTags) => VerifyDadosDataView(prmTags, prmTipo: eTipoFileFormat.json);
-        private void VerifyDadosDataView(string prmTags, eTipoFileFormat prmTipo)
-        {
+    }
 
-            string atual = Dados.GetOutput(prmTags, prmTipo);
+    public class DataView_Test : DataModelFactory_Test
+    {
+        public void VerifyDadosDataView(eTipoFileFormat prmTipo) => VerifyDadosDataView(prmTags: Dados.View.tag, prmTipo);
+        public void VerifyDadosDataView() => VerifyDadosDataView(prmTags: Dados.View.tag);
+        public void VerifyDadosDataView(string prmTags) => VerifyDadosDataView(prmTags, prmTipo: eTipoFileFormat.json);
+        public void VerifyDadosDataView(string prmTags, eTipoFileFormat prmTipo)
+        {
+            
+            string atual = Dados.output(prmTags, prmTipo);
 
             // assert
             VerifyExpectedData(prmData: atual);
@@ -344,5 +405,4 @@ namespace Dooggy.Tests.FACTORY.VIEW
         }
 
     }
-
 }

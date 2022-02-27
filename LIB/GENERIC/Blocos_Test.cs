@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Dooggy;
 using Dooggy.Lib.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -561,7 +562,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetPrefixo_010_Padrao()
         {
 
-            input = ">Alex Bartie";
+            input = ">Alex: Bartie";
             output = "Alex";
 
             // act & assert
@@ -573,7 +574,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetPrefixo_020_SemPrefixo()
         {
 
-            input = "Alex";
+            input = "Alex: Bartie";
             output = "";
 
             // act & assert
@@ -585,20 +586,19 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetPrefixo_030_SemDelimitador()
         {
 
-            input = ">Alex";
-            output = "Alex";
+            input = ">Alex Bartie";
+            output = "Alex Bartie";
 
             // act & assert
             ActionGetPrefixo();
 
         }
-
         [TestMethod()]
         public void TST_GetPrefixo_040_Preservado()
         {
 
-            input = ">Alex Bartie";
-            output = ">Alex";
+            input = ">Alex: Bartie";
+            output = ">Alex:";
 
             // act & assert
             ActionGetPrefixo(prmPreserve: true);
@@ -609,7 +609,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetPrefixo_050_ParametrosBrancos()
         {
 
-            input = ">Alex    ";
+            input = ">Alex   :   ";
             output = "Alex";
 
             // act & assert
@@ -621,7 +621,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetPrefixo_050_ApenasBrancos()
         {
 
-            input = ">  ";
+            input = ">  :  ";
             output = "";
 
             // act & assert
@@ -654,7 +654,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         }
 
         private void ActionGetPrefixo() => ActionGetPrefixo(prmPreserve: false);
-        private void ActionGetPrefixo(bool prmPreserve) => ActionGetPrefixo(prmSinal: ">", prmDelimitador: " ", prmPreserve);
+        private void ActionGetPrefixo(bool prmPreserve) => ActionGetPrefixo(prmSinal: ">", prmDelimitador: ":", prmPreserve);
         private void ActionGetPrefixo(string prmSinal, string prmDelimitador, bool prmPreserve)
         {
 

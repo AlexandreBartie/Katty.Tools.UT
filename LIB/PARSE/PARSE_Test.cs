@@ -6,7 +6,7 @@ using System.Windows.Forms;
 namespace Dooggy.Tests.LIB.PARSE
 {
     [TestClass()]
-    public class xParseCSV_Test
+    public class ParseCSV_Test
     {
         string input;
         string output;

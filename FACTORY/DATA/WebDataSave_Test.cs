@@ -6,126 +6,13 @@ using Dooggy.Factory.Data;
 using Dooggy.Tests.Factory.lib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Dooggy.Tests.FACTORY.DATA
+namespace Dooggy.Tests.DATA.SAVE
 {
-
     [TestClass()]
-    public class CAT40_DataSaveCSV_Test : DataSave_Test
+    public class CAT10_DataSaveTXT_Test : DataSave_Test
     {
 
-        public CAT40_DataSaveCSV_Test()
-        {
-
-            SetTipo(prmTipo: eTipoFileFormat.csv);
-
-        }
-
-        [TestMethod()]
-        public void TST010_DataSave_RegistroUnico()
-        {
-
-            // arrange
-            output = "199202147261,LEONARDO DE SOUSA GIRAO BARBOSA,2585206718" + Environment.NewLine;
-
-            base.xTST010_DataSave_RegistroUnico();
-
-        }
-
-        [TestMethod()]
-        public void TST020_DataSave_RegistrosMultiplos()
-        {
-
-            // arrange
-            output = "";
-            output += "198701044478,SILVIA DAVID MENDES DOS SANTOS,32820810659" + Environment.NewLine;
-            output += "198402018831,PAULO LOUREIRO FILHO,80554504715" + Environment.NewLine;
-            output += "199202147261,LEONARDO DE SOUSA GIRAO BARBOSA,2585206718" + Environment.NewLine;
-            output += "200301709508,ANDRE LUIS SILVA AREIAS,9546765724" + Environment.NewLine;
-
-            base.xTST020_DataSave_RegistrosMultiplos();
-
-        }
-
-        [TestMethod()]
-        public void TST030_DataSave_ArquivosMultiplos()
-        {
-
-            // arrange
-            output = "";
-            output += "1016283,1234as,MARLI LOPES OGAWA DE FIGUEIREDO" + Environment.NewLine;
-            output += "198701044478,SILVIA DAVID MENDES DOS SANTOS,32820810659" + Environment.NewLine;
-            output += "198402018831,PAULO LOUREIRO FILHO,80554504715" + Environment.NewLine;
-            output += "199202147261,LEONARDO DE SOUSA GIRAO BARBOSA,2585206718" + Environment.NewLine;
-            output += "200301709508,ANDRE LUIS SILVA AREIAS,9546765724" + Environment.NewLine;
-
-            base.xTST030_DataSave_ArquivosMultiplos();
-
-        }
-
-    }
-
-    [TestClass()]
-    public class CAT41_DataSaveJSON_Test : DataSave_Test
-    {
-
-        public CAT41_DataSaveJSON_Test()
-        {
-
-            SetTipo(prmTipo: eTipoFileFormat.json);
-
-        }
-
-        [TestMethod()]
-        public void TST010_DataSave_RegistroUnico()
-        {
-
-            // arrange
-            output = "";
-            output += "{ 'MATRICULA': '199202147261', 'RESPONSAVEL': 'LEONARDO DE SOUSA GIRAO BARBOSA', 'CPF': '2585206718' }";
-            output += Environment.NewLine;
-
-            base.xTST010_DataSave_RegistroUnico();
-
-        }
-
-        [TestMethod()]
-        public void TST020_DataSave_RegistrosMultiplos()
-        {
-
-            // arrange
-            output = "";
-            output += "{ 'MATRICULA': '198701044478', 'RESPONSAVEL': 'SILVIA DAVID MENDES DOS SANTOS', 'CPF': '32820810659' }, "; 
-            output += "{ 'MATRICULA': '198402018831', 'RESPONSAVEL': 'PAULO LOUREIRO FILHO', 'CPF': '80554504715' }, ";
-            output += "{ 'MATRICULA': '199202147261', 'RESPONSAVEL': 'LEONARDO DE SOUSA GIRAO BARBOSA', 'CPF': '2585206718' }, ";
-            output += "{ 'MATRICULA': '200301709508', 'RESPONSAVEL': 'ANDRE LUIS SILVA AREIAS', 'CPF': '9546765724' }";
-            output += Environment.NewLine;
-
-            base.xTST020_DataSave_RegistrosMultiplos();
-
-        }
-
-        [TestMethod()]
-        public void TST030_DataSave_ArquivosMultiplos()
-        {
-
-            // arrange
-            output = "";
-            output += "{ 'LOGIN': '1016283', 'SENHA': '1234as', 'USUARIOLOGADO': 'MARLI LOPES OGAWA DE FIGUEIREDO' }, ";
-            output += "{ 'MATRICULA': '198701044478', 'RESPONSAVEL': 'SILVIA DAVID MENDES DOS SANTOS', 'CPF': '32820810659' }, ";
-            output += "{ 'MATRICULA': '198402018831', 'RESPONSAVEL': 'PAULO LOUREIRO FILHO', 'CPF': '80554504715' }, ";
-            output += "{ 'MATRICULA': '199202147261', 'RESPONSAVEL': 'LEONARDO DE SOUSA GIRAO BARBOSA', 'CPF': '2585206718' }, ";
-            output += "{ 'MATRICULA': '200301709508', 'RESPONSAVEL': 'ANDRE LUIS SILVA AREIAS', 'CPF': '9546765724' }" + Environment.NewLine;
-
-            base.xTST030_DataSave_ArquivosMultiplos();
-
-        }
-    }
-
-    [TestClass()]
-    public class CAT42_DataSaveTXT_Test : DataSave_Test
-    {
-
-        public CAT42_DataSaveTXT_Test()
+        public CAT10_DataSaveTXT_Test()
         {
 
             SetTipo(prmTipo: eTipoFileFormat.txt);
@@ -141,7 +28,7 @@ namespace Dooggy.Tests.FACTORY.DATA
             output += "test01_ValidarInformacoesDoAluno,matricula,getNomeAluno" + Environment.NewLine;
             output += ",199202147261,LEONARDO DE SOUSA GIRAO BARBOSA,2585206718" + Environment.NewLine;
 
-            base.xTST010_DataSave_RegistroUnico();
+            base.DataSave_RegistroUnico();
 
         }
 
@@ -157,12 +44,12 @@ namespace Dooggy.Tests.FACTORY.DATA
             output += ",199202147261,LEONARDO DE SOUSA GIRAO BARBOSA,2585206718" + Environment.NewLine;
             output += ",200301709508,ANDRE LUIS SILVA AREIAS,9546765724" + Environment.NewLine;
 
-            base.xTST020_DataSave_RegistrosMultiplos();
+            base.DataSave_RegistrosMultiplos();
 
         }
 
         [TestMethod()]
-        public  void TST030_DataSave_ArquivosMultiplos()
+        public void TST030_DataSave_ArquivosMultiplos()
         {
 
             // arrange
@@ -175,11 +62,123 @@ namespace Dooggy.Tests.FACTORY.DATA
             output += ",199202147261,LEONARDO DE SOUSA GIRAO BARBOSA,2585206718" + Environment.NewLine;
             output += ",200301709508,ANDRE LUIS SILVA AREIAS,9546765724" + Environment.NewLine;
 
-            base.xTST030_DataSave_ArquivosMultiplos();
+            base.DataSave_ArquivosMultiplos();
 
         }
 
 
+    }
+
+    [TestClass()]
+    public class CAT20_DataSaveCSV_Test : DataSave_Test
+    {
+
+        public CAT20_DataSaveCSV_Test()
+        {
+
+            SetTipo(prmTipo: eTipoFileFormat.csv);
+
+        }
+
+        [TestMethod()]
+        public void TST010_DataSave_RegistroUnico()
+        {
+
+            // arrange
+            output = "199202147261,LEONARDO DE SOUSA GIRAO BARBOSA,2585206718" + Environment.NewLine;
+
+            base.DataSave_RegistroUnico();
+
+        }
+
+        [TestMethod()]
+        public void TST020_DataSave_RegistrosMultiplos()
+        {
+
+            // arrange
+            output = "";
+            output += "198701044478,SILVIA DAVID MENDES DOS SANTOS,32820810659" + Environment.NewLine;
+            output += "198402018831,PAULO LOUREIRO FILHO,80554504715" + Environment.NewLine;
+            output += "199202147261,LEONARDO DE SOUSA GIRAO BARBOSA,2585206718" + Environment.NewLine;
+            output += "200301709508,ANDRE LUIS SILVA AREIAS,9546765724" + Environment.NewLine;
+
+            base.DataSave_RegistrosMultiplos();
+
+        }
+
+        [TestMethod()]
+        public void TST030_DataSave_ArquivosMultiplos()
+        {
+
+            // arrange
+            output = "";
+            output += "1016283,1234as,MARLI LOPES OGAWA DE FIGUEIREDO" + Environment.NewLine;
+            output += "198701044478,SILVIA DAVID MENDES DOS SANTOS,32820810659" + Environment.NewLine;
+            output += "198402018831,PAULO LOUREIRO FILHO,80554504715" + Environment.NewLine;
+            output += "199202147261,LEONARDO DE SOUSA GIRAO BARBOSA,2585206718" + Environment.NewLine;
+            output += "200301709508,ANDRE LUIS SILVA AREIAS,9546765724" + Environment.NewLine;
+
+            base.DataSave_ArquivosMultiplos();
+
+        }
+
+    }
+
+    [TestClass()]
+    public class CAT30_DataSaveJSON_Test : DataSave_Test
+    {
+
+        public CAT30_DataSaveJSON_Test()
+        {
+
+            SetTipo(prmTipo: eTipoFileFormat.json);
+
+        }
+
+        [TestMethod()]
+        public void TST010_DataSave_RegistroUnico()
+        {
+
+            // arrange
+            output = "";
+            output += "{ 'MATRICULA': '199202147261', 'RESPONSAVEL': 'LEONARDO DE SOUSA GIRAO BARBOSA', 'CPF': '2585206718' }";
+            output += Environment.NewLine;
+
+            base.DataSave_RegistroUnico();
+
+        }
+
+        [TestMethod()]
+        public void TST020_DataSave_RegistrosMultiplos()
+        {
+
+            // arrange
+            output = "";
+            output += "{ 'MATRICULA': '198701044478', 'RESPONSAVEL': 'SILVIA DAVID MENDES DOS SANTOS', 'CPF': '32820810659' }, "; 
+            output += "{ 'MATRICULA': '198402018831', 'RESPONSAVEL': 'PAULO LOUREIRO FILHO', 'CPF': '80554504715' }, ";
+            output += "{ 'MATRICULA': '199202147261', 'RESPONSAVEL': 'LEONARDO DE SOUSA GIRAO BARBOSA', 'CPF': '2585206718' }, ";
+            output += "{ 'MATRICULA': '200301709508', 'RESPONSAVEL': 'ANDRE LUIS SILVA AREIAS', 'CPF': '9546765724' }";
+            output += Environment.NewLine;
+
+            base.DataSave_RegistrosMultiplos();
+
+        }
+
+        [TestMethod()]
+        public void TST030_DataSave_ArquivosMultiplos()
+        {
+
+            // arrange
+            output = "";
+            output += "{ 'LOGIN': '1016283', 'SENHA': '1234as', 'USUARIOLOGADO': 'MARLI LOPES OGAWA DE FIGUEIREDO' }, ";
+            output += "{ 'MATRICULA': '198701044478', 'RESPONSAVEL': 'SILVIA DAVID MENDES DOS SANTOS', 'CPF': '32820810659' }, ";
+            output += "{ 'MATRICULA': '198402018831', 'RESPONSAVEL': 'PAULO LOUREIRO FILHO', 'CPF': '80554504715' }, ";
+            output += "{ 'MATRICULA': '199202147261', 'RESPONSAVEL': 'LEONARDO DE SOUSA GIRAO BARBOSA', 'CPF': '2585206718' }, ";
+            output += "{ 'MATRICULA': '200301709508', 'RESPONSAVEL': 'ANDRE LUIS SILVA AREIAS', 'CPF': '9546765724' }" + Environment.NewLine;
+
+            base.DataSave_ArquivosMultiplos();
+
+        }
     }
 
     public class DataSave_Test : DataModelFactory_Test
@@ -194,7 +193,7 @@ namespace Dooggy.Tests.FACTORY.DATA
 
         }
 
-        internal void xTST010_DataSave_RegistroUnico()
+        internal void DataSave_RegistroUnico()
         {
 
             // act
@@ -202,14 +201,14 @@ namespace Dooggy.Tests.FACTORY.DATA
 
             Dados.AddDataView(prmTag: GetTagAluno());
 
-            Dados.AddDataFluxo(prmTag: "=SIT_08", prmSQL: GetComandoSQL_Aluno(prmSituacao: 8));
+            Dados.AddDataFlow(prmTag: "=SIT_08", prmSQL: GetComandoSQL_Aluno(prmSituacao: 8));
 
             // & assert
             VerifyDadosyDataSave(prmTags: "Aluno", prmMetodo: MethodBase.GetCurrentMethod());
 
         }
 
-        internal void xTST020_DataSave_RegistrosMultiplos()
+        internal void DataSave_RegistrosMultiplos()
         {
 
             // act
@@ -217,17 +216,17 @@ namespace Dooggy.Tests.FACTORY.DATA
 
             Dados.AddDataView(prmTag: GetTagAluno());
 
-            Dados.AddDataFluxo(prmTag: "=SIT_04", prmSQL: GetComandoSQL_Aluno(prmSituacao: 4));
-            Dados.AddDataFluxo(prmTag: "=SIT_06", prmSQL: GetComandoSQL_Aluno(prmSituacao: 6));
-            Dados.AddDataFluxo(prmTag: "=SIT_08", prmSQL: GetComandoSQL_Aluno(prmSituacao: 8));
-            Dados.AddDataFluxo(prmTag: "=SIT_10", prmSQL: GetComandoSQL_Aluno(prmSituacao: 10));
+            Dados.AddDataFlow(prmTag: "=SIT_04", prmSQL: GetComandoSQL_Aluno(prmSituacao: 4));
+            Dados.AddDataFlow(prmTag: "=SIT_06", prmSQL: GetComandoSQL_Aluno(prmSituacao: 6));
+            Dados.AddDataFlow(prmTag: "=SIT_08", prmSQL: GetComandoSQL_Aluno(prmSituacao: 8));
+            Dados.AddDataFlow(prmTag: "=SIT_10", prmSQL: GetComandoSQL_Aluno(prmSituacao: 10));
 
             // & assert
             VerifyDadosyDataSave(prmTags: "Aluno", prmMetodo: MethodBase.GetCurrentMethod());
 
         }
 
-        internal void xTST030_DataSave_ArquivosMultiplos()
+        internal void DataSave_ArquivosMultiplos()
         {
 
             // act
@@ -237,16 +236,16 @@ namespace Dooggy.Tests.FACTORY.DATA
 
             Dados.AddDataView(prmTag: GetTagLogin());
 
-            Dados.AddDataFluxo(prmTag: "=Marli", prmSQL: GetComandoSQL_Login(prmUsuario: 1016283));
+            Dados.AddDataFlow(prmTag: "=Marli", prmSQL: GetComandoSQL_Login(prmUsuario: 1016283));
 
             // Tag:Aluno
 
             Dados.AddDataView(prmTag: GetTagAluno());
 
-            Dados.AddDataFluxo(prmTag: "=SIT_04", prmSQL: GetComandoSQL_Aluno(prmSituacao: 4));
-            Dados.AddDataFluxo(prmTag: "=SIT_06", prmSQL: GetComandoSQL_Aluno(prmSituacao: 6));
-            Dados.AddDataFluxo(prmTag: "=SIT_08", prmSQL: GetComandoSQL_Aluno(prmSituacao: 8));
-            Dados.AddDataFluxo(prmTag: "=SIT_10", prmSQL: GetComandoSQL_Aluno(prmSituacao: 10));
+            Dados.AddDataFlow(prmTag: "=SIT_04", prmSQL: GetComandoSQL_Aluno(prmSituacao: 4));
+            Dados.AddDataFlow(prmTag: "=SIT_06", prmSQL: GetComandoSQL_Aluno(prmSituacao: 6));
+            Dados.AddDataFlow(prmTag: "=SIT_08", prmSQL: GetComandoSQL_Aluno(prmSituacao: 8));
+            Dados.AddDataFlow(prmTag: "=SIT_10", prmSQL: GetComandoSQL_Aluno(prmSituacao: 10));
 
             // & assert
             VerifyDadosyDataSave(prmTags: "Login + Aluno" , prmMetodo: MethodBase.GetCurrentMethod());
@@ -280,16 +279,18 @@ namespace Dooggy.Tests.FACTORY.DATA
         private void VerifyDadosyDataSave(string prmTags, MethodBase prmMetodo)
         {
 
-            Dados.File.SetPathDestino(GetPath());
-
-            string atual = ""; string nome; string subpath;
+            string atual = ""; string nome; string path; string data; string extensao;
 
             nome = prmMetodo.Name;
 
-            subpath = Dados.File.GetExtensao(tipo);
+            path = Console.Path.GetPathFullOUT(tipo);
 
-            if (Dados.File.Save(tipo, prmTags, nome, subpath))
-                atual = Dados.File.Open(tipo, nome, subpath);
+            data = Dados.output(prmTags, tipo);
+
+            extensao = Console.Path.GetExtensao(tipo);
+
+            if (Dados.FileINI.Save(nome, path, data, extensao))
+                atual = Dados.FileINI.Open(nome, path, extensao);
 
             // assert
             VerifyExpectedData(prmData: atual);

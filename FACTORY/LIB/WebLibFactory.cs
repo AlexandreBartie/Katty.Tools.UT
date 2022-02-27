@@ -1,16 +1,17 @@
 ﻿using Dooggy.Factory;
 using Dooggy.Factory.Console;
 using Dooggy.Factory.Data;
+using Dooggy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Dooggy.Lib.Vars;
+using Dooggy.Lib.Generic;
+using Dooggy.FACTORY.UNIT;
 
 namespace Dooggy.Tests.Factory.lib
 {
-
-    public class DataFactory_Test : DataModelFactory_Test
-    { }
     public class DataModelFactory_Test : DataViewFactory_Test
     {
 
@@ -40,15 +41,15 @@ namespace Dooggy.Tests.Factory.lib
             if (prmCPF) regraCPF = "is not"; else regraCPF = "is";
 
             regra = String.Format("cod_situacao_aluno = {0} and cpf_responsavel_pgto {1} NULL", prmSituacao, regraCPF);
-            
-            
+
+
             sql = "";
             sql += "SELECT cod_matricula as matricula, nom_responsavel_pgto as responsavel, cpf_responsavel_pgto as cpf";
             sql += " FROM sia.aluno_curso";
             sql += " WHERE " + regra;
 
 
-            return(sql);
+            return (sql);
 
         }
 
@@ -59,7 +60,8 @@ namespace Dooggy.Tests.Factory.lib
         public string GetTabelasAluno() => @"{'#TABELAS#':'sia.aluno_curso'}";
         public string GetCamposAluno() => @"{'#CAMPOS#':'cod_matricula as matricula, nom_responsavel_pgto as nome, cpf_responsavel_pgto as cpf '}";
 
-        public string GetMaskAluno() => "{ 'matricula': '####.##.#####-#', 'cpf': '###.###.###-##' }";
+        public string GetMaskAluno() => "matricula = ####.##.#####-#, cpf = ###.###.###-##";
+        //public string GetMaskAluno() => "matricula = ####.##.#####-#, cpf = ###.###.###-##";
 
         public string GetRegrasAluno(string prmSituacao) => GetRegrasAluno(prmSituacao, prmCPF: true);
 
@@ -93,8 +95,49 @@ namespace Dooggy.Tests.Factory.lib
 
         public string GetPath() => (@"C:\Users\alexa\OneDrive\Área de Trabalho\MassaTeste\");
 
-    }
+        public void SetFormatSave(string prmFormatDefault) => Console.Config.CSV.SetFormatSave(prmFormatDefault);
 
+        public void TesteGeneric_DataEncoding(string prmArquivoOUT) => TesteGeneric_DataEncoding(prmArquivoOUT, prmOptions: "");
+        public void TesteGeneric_DataEncoding(string prmArquivoOUT, bool prmCSV) => TesteGeneric_DataEncoding(prmArquivoOUT, prmOptions: "", prmCSV);
+        public void TesteGeneric_DataEncoding(string prmArquivoOUT, string prmOptions) => TesteGeneric_DataEncoding(prmArquivoOUT, prmOptions, prmCSV: false);
+        public void TesteGeneric_DataEncoding(string prmArquivoOUT, string prmOptions, bool prmCSV)
+        {
+
+            if (prmCSV)
+                output = "FISIOFARMACOLOGIA,CIS0756,UNIVERSIDADE ESTÁCIO DE SÁ" + Environment.NewLine;
+            else
+            {
+                output = "";
+                output += "test01_PesquisarDisciplinaPorDisciplina,nomDisciplina,nCodigoDisciplina,nInstituicao" + Environment.NewLine;
+                output += ",FISIOFARMACOLOGIA,CIS0756,UNIVERSIDADE ESTÁCIO DE SÁ" + Environment.NewLine;
+            }
+
+            // act
+            ConnectDbOracle();
+
+            bloco = "";
+            bloco += ">view: PesquisaDisciplina" + Environment.NewLine;
+            bloco += "  -name: test01_PesquisarDisciplinaPorDisciplina" + Environment.NewLine;
+            bloco += "      -output: nomDisciplina,nCodigoDisciplina,nInstituicao" + Environment.NewLine;
+            bloco += Environment.NewLine;
+            bloco += ">item: Padrao" + Environment.NewLine;
+            bloco += " -sql:  SELECT ab.nom_disciplina, ab.cod_disciplina, ac.nom_instituicao" + Environment.NewLine;
+            bloco += "        FROM sia.DISCIPLINA ab, sia.INSTITUICAO_ENSINO ac, sia.ALOC_CURSO_DISCIPLINA ad" + Environment.NewLine;
+            bloco += "        WHERE (ab.cod_disciplina = ad.cod_disciplina and ac.cod_instituicao = ad.cod_instituicao)" + Environment.NewLine;
+            bloco += Environment.NewLine;
+
+            if (prmOptions != "")
+                bloco += ">save[" + prmOptions + "]:" + Environment.NewLine;
+
+            Console.Play(prmCode: bloco, prmArquivoOUT);
+
+            // & assert
+            VerifyExpectedData(prmData: Console.Result.data);
+
+        }
+
+
+    }
     public class DataViewFactory_Test : DataBasicFactory_Test
     {
 
@@ -134,7 +177,7 @@ namespace Dooggy.Tests.Factory.lib
 
             string sql = GetComandoSQL(prmSituacao);
 
-            if (xString.IsStringOK(sql))
+            if (myString.IsFull(sql))
                 return @"{ 'sql': """ + sql + @""" }";
 
             return ("");
@@ -146,27 +189,38 @@ namespace Dooggy.Tests.Factory.lib
     public class DataBasicFactory_Test : TestDataProject
     {
 
+        public const string path_cfg = @"C:\MassaTestes\POC\Console\";
+
         public string input;
         public string output;
 
         public string bloco;
 
-        public string path_ini = @"C:\MassaTestes\POC\Console\INI\";
-        public string path_out = @"C:\MassaTestes\POC\Console\OUT\";
+        public string path_ini = path_cfg + @"INI\";
+        public string path_out = path_cfg + @"OUT\";
+        public string path_log = path_cfg + @"LOG\";
 
         public void ConnectDbOracle() { ConnectDbOracle(prmSenha: "asdfg"); }
 
         public void ConnectDbOracle(string prmSenha)
         {
 
+            Console.Path.SetINI(prmPath: path_ini);
+            Console.Path.SetOUT(prmPath: path_out);
+            Console.Path.SetLOG(prmPath: path_log);
+
+            Console.SetAnchor(prmAncora: new DateTime(2021, 06, 05));
+
             Connect.Oracle.user = "desenvolvedor_sia";
             Connect.Oracle.password = prmSenha;
 
             Connect.Oracle.host = "10.250.1.35";
             Connect.Oracle.port = "1521";
-            Connect.Oracle.service = "branch_1083.prod01.redelocal.oraclevcn.com";
+            Connect.Oracle.service = "INTEGRATION.prod01.redelocal.oraclevcn.com";
 
             Connect.Oracle.Add(prmTag: "SIA");
+
+            Connect.Pool.DoConnect();
 
         }
         public void VerifyExpectedData(string prmData)
@@ -174,10 +228,9 @@ namespace Dooggy.Tests.Factory.lib
 
             // assert
             if (output != prmData)
-                Assert.Fail(string.Format("{4}Gerado: <{1}>{4}{0}{4}Esperado:<{3}>{4}{2}{4}", prmData, prmData.Length, output, output.Length, Environment.NewLine));
+                Assert.Fail(string.Format("{4}Gerado: <{1}>{4}{0}{4}Esperado:<{3}>{4}{2}{4}", prmData, TestUnityAnalise.GetAnaliseTexto(prmData), output, TestUnityAnalise.GetAnaliseTexto(output), Environment.NewLine));
 
         }
-
 
     }
 

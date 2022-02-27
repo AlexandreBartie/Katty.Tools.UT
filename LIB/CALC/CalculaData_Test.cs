@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Dooggy.Lib.Vars;
+using Dooggy.Tools.Calc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Dooggy.Tests.LIB.VARS
+namespace Dooggy.Tests.LIB.CALC
 {
 
     [TestClass()]
@@ -351,6 +353,47 @@ namespace Dooggy.Tests.LIB.VARS
 
     }
 
+
+    [TestClass()]
+    public class DynamicDateByStatic_Test : DynamicDate_Test
+    {
+
+        [TestMethod()]
+        public void TST_DynamicDateByStatic_010_FormatacaoPadrao()
+        {
+
+            input = "";
+            output = "05/06/2021";
+
+            // act & assert
+            ActionDynamicDateByStatic();
+
+        }
+        [TestMethod()]
+        public void TST_DynamicDateByStatic_010_MesAno()
+        {
+
+            input = "MMAAAA";
+            output = "062021";
+
+            // act & assert
+            ActionDynamicDateByStatic();
+
+        }
+        [TestMethod()]
+        public void TST_DynamicDateByStatic_010_SiglaMesAno()
+        {
+
+            input = "MMM-AAAA";
+            output = "jun-2021";
+
+            // act & assert
+            ActionDynamicDateByStatic();
+
+        }
+
+    }
+
     public class DynamicDate_Test
     {
 
@@ -364,11 +407,8 @@ namespace Dooggy.Tests.LIB.VARS
 
         public void ActionDynamicDateByCalc()
         {
-
-            DynamicDate Data = new DynamicDate(ancora);
-
             // assert
-            result = Data.Calc(prmSintaxe: input).ToString("dd/MM/yyyy");
+            result = myDate.Calc(ancora, prmSintaxe: input).ToString("dd/MM/yyyy");
 
             // assert
             ActionGeneric();
@@ -378,16 +418,22 @@ namespace Dooggy.Tests.LIB.VARS
         public void ActionDynamicDateByView()
         {
 
-            DynamicDate Data = new DynamicDate(ancora);
-
             // assert
-            result = Data.View(prmSintaxe: input);
+            result = myDate.View(ancora, prmSintaxe: input);
 
             // assert
             ActionGeneric();
 
         }
+        public void ActionDynamicDateByStatic()
+        {
+            // assert
+            result = myDate.Static(ancora, prmFormato: input);
 
+            // assert
+            ActionGeneric();
+
+        }
         public void ActionGeneric()
         {
 

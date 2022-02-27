@@ -1,5 +1,6 @@
 ﻿using Dooggy;
 using Dooggy.Lib.Generic;
+using Dooggy.Lib.Vars;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         xLista Lista = new xLista();
 
         [TestMethod()]
-        public void TST010_FluxoCSV_Padrao()
+        public void TST010_FlowCSV_Padrao()
         {
 
             // arrange
@@ -30,7 +31,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         }
 
         [TestMethod()]
-        public void TST020_FluxoCSV_ComEspacos()
+        public void TST020_FlowCSV_ComEspacos()
         {
 
             // arrange
@@ -43,7 +44,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         }
 
         [TestMethod()]
-        public void TST030_FluxoCSV_Unico()
+        public void TST030_FlowCSV_Unico()
         {
 
             // arrange
@@ -56,7 +57,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         }
 
         [TestMethod()]
-        public void TST040_FluxoCSV_Vazio()
+        public void TST040_FlowCSV_Vazio()
         {
 
             // arrange
@@ -69,12 +70,12 @@ namespace Dooggy.Tests.LIB.GENERIC
         }
 
         [TestMethod()]
-        public void TST050_FluxoCSV_Espaco()
+        public void TST050_FlowCSV_Espaco()
         {
 
             // arrange
             input = "   ";
-            output = "";
+            output = "0";
 
             // act & assert
             ActionLista();
@@ -82,7 +83,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         }
 
         [TestMethod()]
-        public void TST060_FluxoCSV_Nulo()
+        public void TST060_FlowCSV_Nulo()
         {
 
             // arrange
@@ -95,7 +96,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         }
 
         [TestMethod()]
-        public void TST070_FluxoCSV_SeparadorModificado()
+        public void TST070_FlowCSV_SeparadorModificado()
         {
 
             // arrange
@@ -136,7 +137,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST010_Mask_MascaraPadrao()
         {
             // arrange
-            lista = "{ 'COD_MATRICULA': '####.##.#####-#' }"; chave = "COD_MATRICULA";
+            lista = "COD_MATRICULA = ####.##.#####-#"; chave = "COD_MATRICULA";
 
             input = "198402018831";
             output = "1984.02.01883-1";
@@ -150,7 +151,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST020_Mask_MascaraMaiorValor()
         {
             // arrange
-            lista = "{ 'COD_MATRICULA': '##-#####.##.#####-#' }"; chave = "COD_MATRICULA";
+            lista = "COD_MATRICULA = ##-#####.##.#####-#"; chave = "COD_MATRICULA";
 
             input = "198402018831";
             output = "1984.02.01883-1";
@@ -164,7 +165,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST030_Mask_MascaraMenorValor()
         {
             // arrange
-            lista = "{ 'COD_MATRICULA': '##.##.#####-#' }"; chave = "COD_MATRICULA";
+            lista = "COD_MATRICULA = ##.##.#####-#"; chave = "COD_MATRICULA";
 
             input = "198402018831";
             output = "84.02.01883-1";
@@ -178,7 +179,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST040_Mask_MascarasMultiplas()
         {
             // arrange
-            lista = "{ 'COD_MATRICULA': '####.##.#####-#', 'CPF': '###.###.###-##', 'CNPJ': '###.###.###-##' }"; chave = "CPF";
+            lista = "COD_MATRICULA = ####.##.#####-#, CPF = ###.###.###-##, CNPJ = ###.###.###-##"; chave = "CPF";
 
             input = "14029092845";
             output = "140.290.928-45";
@@ -192,7 +193,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST050_Mask_MascaraVazia()
         {
             // arrange
-            lista = "{  }"; chave = "CPF";
+            lista = ""; chave = "CPF";
 
             input = "14029092845";
             output = "14029092845";
@@ -206,7 +207,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST060_Mask_KeyInexistente()
         {
             // arrange
-            lista = "{ 'COD_MATRICULA': '####.##.#####-#', 'CPF': '###.###.###-##', 'CNPJ': '###.###.###-##' }"; chave = "RG";
+            lista = "COD_MATRICULA = ####.##.#####-#, CPF = ###.###.###-##, CNPJ = ###.###.###-##"; chave = "RG";
 
             input = "14029092845";
             output = "14029092845";
@@ -221,7 +222,7 @@ namespace Dooggy.Tests.LIB.GENERIC
             Mask = new xMask(lista);
 
             // assert
-            string result = Mask.GetValor(input, chave);
+            string result = Mask.TextToString(chave, input);
 
             // assert
             if (output != result)

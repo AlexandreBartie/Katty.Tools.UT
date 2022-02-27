@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 using Dooggy.Lib.Generic;
+using Dooggy.Lib.Parse;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Dooggy.Tests.LIB.GENERIC
 {
     [TestClass()]
-    public class xTupla_Test
+    public class myTupla_Test : UTC
     {
 
-        xTupla tupla;
-
-        string input;
-        string output;
-        string result;
+        myTupla tupla;
 
         [TestMethod()]
         public void TST_GetTupla_010_Padrao()
@@ -45,7 +42,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         {
 
             input = "alex";
-            output = "alex: ''";
+            output = "alex";
 
             // act & assert
             ActionGetTupla();
@@ -57,7 +54,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         {
 
             input = "=1234";
-            output = ": '1234'";
+            output = "";
 
             // act & assert
             ActionGetTupla();
@@ -172,7 +169,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         {
 
             input = "alex [   Aluno Novato   ]";
-            output = "alex: '' <Aluno Novato>";
+            output = "alex <Aluno Novato>";
 
             // act & assert
             ActionGetTupla();
@@ -183,7 +180,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         {
 
             input = " = 1234 [   Aluno Novato   ]";
-            output = ": '1234' <Aluno Novato>";
+            output = "<Aluno Novato>";
 
             // act & assert
             ActionGetTupla();
@@ -205,34 +202,28 @@ namespace Dooggy.Tests.LIB.GENERIC
         {
 
             // assert
-            tupla = new xTupla(input, prmSeparador);
+            tupla = new myTupla(input, prmSeparador);
 
-            result = tupla.memo;
+            result = tupla.log;
 
             // assert
-            ActionGeneric();
+            AssertTest();
 
         }
 
-        private void ActionGeneric()
+        public override void AssertTest()
         {
-
             // assert
-            if (output != result)
-                Assert.Fail(string.Format("Expected: <{0}>, Actual: <{1}>", output, result));
-
+            if (IsFail())
+                Assert.Fail(error);
         }
     }
 
     [TestClass()]
-    public class xTuplas_Test
+    public class myTuplas_Test : UTC
     {
 
-        xTuplas lista;
-
-        string input;
-        string output;
-        string result;
+        myTuplas lista;
 
         [TestMethod()]
         public void TST_GetTuplas_010_Padrao()
@@ -242,7 +233,7 @@ namespace Dooggy.Tests.LIB.GENERIC
             output = "alex: '1234', gomes: '2321', jorge: '9841'";
 
             // act & assert
-            ActionGetTupla();
+            ActionGetTuplas();
 
         }
 
@@ -254,7 +245,7 @@ namespace Dooggy.Tests.LIB.GENERIC
             output = "alex: '1234', gomes: '2321', jorge: '9841'";
 
             // act & assert
-            ActionGetTupla();
+            ActionGetTuplas();
 
         }
         [TestMethod()]
@@ -265,7 +256,7 @@ namespace Dooggy.Tests.LIB.GENERIC
             output = "alex: '1234' <zzz>, gomes: '2321' <bbb>, jorge: '9841' <jjjjj>";
 
             // act & assert
-            ActionGetTupla();
+            ActionGetTuplas();
 
         }
         [TestMethod()]
@@ -273,34 +264,32 @@ namespace Dooggy.Tests.LIB.GENERIC
         {
 
             input = "Login[testLoginAdmValido,login,senha,usuarioLogado] + Aluno[test01_ValidarInformacoesDoAluno,matricula,getNomeAluno]";
-            output = "Login: '' <testLoginAdmValido,login,senha,usuarioLogado>, Aluno: '' <test01_ValidarInformacoesDoAluno,matricula,getNomeAluno>";
+            output = "Login <testLoginAdmValido,login,senha,usuarioLogado>, Aluno <test01_ValidarInformacoesDoAluno,matricula,getNomeAluno>";
 
             // act & assert
-            ActionGetTupla(prmSeparador: "+");
+            ActionGetTuplas(prmSeparador: "+");
 
         }
 
-        private void ActionGetTupla() => ActionGetTupla(prmSeparador: ",");
-        private void ActionGetTupla(string prmSeparador)
+        private void ActionGetTuplas() => ActionGetTuplas(prmSeparador: ",");
+        private void ActionGetTuplas(string prmSeparador)
         {
 
             // assert
-            lista = new xTuplas(input, prmSeparador);
+            lista = new myTuplas(input, prmSeparador);
 
-            result = lista.memo;
+            result = lista.log;
 
             // assert
-            ActionGeneric();
+            AssertTest();
 
         }
 
-        private void ActionGeneric()
+        public override void AssertTest()
         {
-
             // assert
-            if (output != result)
-                Assert.Fail(string.Format("Expected: <{0}>, Actual: <{1}>", output, result));
-
+            if (IsFail())
+                Assert.Fail(error);
         }
     }
 }
