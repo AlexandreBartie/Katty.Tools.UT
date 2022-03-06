@@ -662,7 +662,7 @@ namespace Dooggy.Tests.FACTORY.CONSOLE
 
             // act
 
-            string arquivo = path_cfg + @"projeto-teste.cfg";
+            string arquivo = path_cfg + @"teste-unitario.cfg";
 
             Console.Setup(prmArquivoCFG: arquivo);
 
@@ -692,7 +692,7 @@ namespace Dooggy.Tests.FACTORY.CONSOLE
 
             // act
 
-            string arquivo = path_cfg + @"projeto-teste.cfg";
+            string arquivo = path_cfg + @"teste-unitario.cfg";
 
             Console.EXE(prmArquivoCFG: arquivo);
 

@@ -373,7 +373,7 @@ namespace Dooggy.Tests.FACTORY.EXTENSION
             bloco = "";
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "     -name: testLoginAdmValido" + Environment.NewLine;
-            bloco += "   -select: seg.usuario" + Environment.NewLine;
+            bloco += "   -tables: seg.usuario" + Environment.NewLine;
             bloco += "    -input: login" + Environment.NewLine;
             bloco += "   -output: usuario, email, msg" + Environment.NewLine;
             bloco += "    -alias: usuario = nom_usuario, email = txt_email" + Environment.NewLine;

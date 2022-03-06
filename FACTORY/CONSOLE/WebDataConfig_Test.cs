@@ -42,7 +42,7 @@ namespace Dooggy.Tests.FACTORY.CONFIG
             output = ArgOutput.GetOutput();
 
             // act
-            Console.Config.Run(prmBloco: input);
+            Console.Config.Parse(prmBloco: input);
 
             // & assert
             VerifyExpectedData();
@@ -62,7 +62,7 @@ namespace Dooggy.Tests.FACTORY.CONFIG
             // act
             //ConnectDbOracle();
 
-            Console.Config.Run(prmBloco: input);
+            Console.Config.Parse(prmBloco: input);
 
             // & assert
             VerifyExpectedData();
@@ -78,7 +78,7 @@ namespace Dooggy.Tests.FACTORY.CONFIG
 
             // act
 
-            Console.Config.Run(prmBloco: input);
+            Console.Config.Parse(prmBloco: input);
 
             // & assert
             VerifyExpectedData();
@@ -97,7 +97,7 @@ namespace Dooggy.Tests.FACTORY.CONFIG
             output = ArgOutput.GetOutputCSV(sintaxeToday, prmFormatDate: formatDate, prmFormatToday: "20201214");
 
             // act
-            Console.Config.Run(prmBloco: input);
+            Console.Config.Parse(prmBloco: input);
 
             // & assert
             VerifyExpectedData();
@@ -113,7 +113,7 @@ namespace Dooggy.Tests.FACTORY.CONFIG
             output = ArgOutput.GetOutput();
 
             // act
-            Console.Config.Run(prmBloco: input);
+            Console.Config.Parse(prmBloco: input);
 
             // & assert
             VerifyExpectedData();
@@ -235,6 +235,7 @@ namespace Dooggy.Tests.FACTORY.CONFIG
             string texto = "";
 
             texto += @">path: " + Environment.NewLine;
+            texto += @"-cfg: C:\MassaTestes\POC\CLI\CFG\" + Environment.NewLine;
             texto += @"-ini: C:\MassaTestes\POC\CLI\INI\" + Environment.NewLine;
             texto += @"-out: C:\MassaTestes\POC\CLI\OUT\" + Environment.NewLine;
             texto += @"-log: C:\MassaTestes\POC\CLI\LOG\" + Environment.NewLine;
@@ -373,6 +374,7 @@ namespace Dooggy.Tests.FACTORY.CONFIG
 
             texto += @" | ";
             texto += @">path: ";
+            texto += @"-cfg: 'C:\MassaTestes\POC\CLI\CFG\', ";
             texto += @"-ini: 'C:\MassaTestes\POC\CLI\INI\', ";
             texto += @"-out: 'C:\MassaTestes\POC\CLI\OUT\', ";
             texto += @"-log: 'C:\MassaTestes\POC\CLI\LOG\'";

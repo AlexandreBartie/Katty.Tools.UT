@@ -186,19 +186,41 @@ namespace Dooggy.Tests.Factory.lib
 
     }
 
-    public class DataBasicFactory_Test : TestDataProject
+    public class DataBasicFactory_Test : UTC_Dooggy
     {
-
-        public const string path_cfg = @"C:\MassaTestes\POC\Console\";
 
         public string input;
         public string output;
 
         public string bloco;
 
-        public string path_ini = path_cfg + @"INI\";
-        public string path_out = path_cfg + @"OUT\";
-        public string path_log = path_cfg + @"LOG\";
+        public new void VerifyExpectedData(string prmData)
+        {
+
+            // assert
+            if (output != prmData)
+                Assert.Fail(TestUnityLog.GetAnalise(prmData, output));
+
+        }
+
+    }
+
+    public class UTC_Dooggy : TestDataProject
+    {
+
+        public const string path_root = @"C:\MassaTestes\";
+
+        public string path_cfg = path_root + @"POC\CONSOLE\CFG\";
+        public string path_ini = path_root + @"POC\CONSOLE\INI\";
+        public string path_out = path_root + @"POC\CONSOLE\OUT\";
+        public string path_log = path_root + @"POC\CONSOLE\LOG\";
+
+        public LinesUTC input => Unit.inputList;
+        public LinesUTC output => Unit.outputList;
+
+        public void AssertTest(string prmResult) => Unit.AssertTest(prmResult);
+
+        private UTC Unit = new UTC();
 
         public void ConnectDbOracle() { ConnectDbOracle(prmSenha: "asdfg"); }
 
@@ -221,14 +243,6 @@ namespace Dooggy.Tests.Factory.lib
             Connect.Oracle.Add(prmTag: "SIA");
 
             Connect.Pool.DoConnect();
-
-        }
-        public void VerifyExpectedData(string prmData)
-        {
-
-            // assert
-            if (output != prmData)
-                Assert.Fail(string.Format("{4}Gerado: <{1}>{4}{0}{4}Esperado:<{3}>{4}{2}{4}", prmData, TestUnityAnalise.GetAnaliseTexto(prmData), output, TestUnityAnalise.GetAnaliseTexto(output), Environment.NewLine));
 
         }
 

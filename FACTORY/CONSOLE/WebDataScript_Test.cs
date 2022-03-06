@@ -724,7 +724,7 @@ namespace Dooggy.Tests.FACTORY.COMMAND
 
             bloco = "";
             bloco += ">view: Aluno" + Environment.NewLine;
-            bloco += "   -select: sia.aluno_curso" + Environment.NewLine;
+            bloco += "   -tables: sia.aluno_curso" + Environment.NewLine;
             bloco += "    -input: cod_matricula" + Environment.NewLine;
             bloco += "   -output: nom_responsavel_pgto, cpf_responsavel_pgto" + Environment.NewLine;
             bloco += Environment.NewLine;
@@ -755,7 +755,7 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco = "";
             bloco += Environment.NewLine;
             bloco += ">view: Aluno" + Environment.NewLine;
-            bloco += "  -select: sia.aluno_curso" + Environment.NewLine;
+            bloco += "  -tables: sia.aluno_curso" + Environment.NewLine;
             bloco += "   -output: cod_matricula, nom_responsavel_pgto, cpf_responsavel_pgto" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">item: Padrao" + Environment.NewLine;
@@ -784,7 +784,7 @@ namespace Dooggy.Tests.FACTORY.COMMAND
 
             bloco = "";
             bloco += ">view: Aluno" + Environment.NewLine;
-            bloco += "  -select: sia.aluno_curso" + Environment.NewLine;
+            bloco += "  -tables: sia.aluno_curso" + Environment.NewLine;
             bloco += "   -output: cod_matricula , nom_responsavel_pgto, cpf_responsavel_pgto" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">item: Padrao" + Environment.NewLine;
@@ -820,7 +820,7 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco = "";
             bloco += ">view: Aluno" + Environment.NewLine;
             bloco += "  -name: test01_ValidarInformacoesDoAluno" + Environment.NewLine;
-            bloco += "     -select: sia.aluno_curso" + Environment.NewLine;
+            bloco += "     -tables: sia.aluno_curso" + Environment.NewLine;
             bloco += "     -output: matricula[cod_matricula:####.##.#####-#], responsavel[nom_responsavel_pgto], cpf[cpf_responsavel_pgto:###.###.###-##]" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">item: Padrao" + Environment.NewLine;
@@ -856,7 +856,7 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco = "";
             bloco += ">view: AtosRegulatorios" + Environment.NewLine;
             bloco += "  -name: ReconhecimentoPorInstituicao" + Environment.NewLine;
-            bloco += "     -select: sia.aluno_curso ab, sia.aluno ac, sia.curso ad, sia.campus ae, sia.LIVRO_REGISTRO_DIPLOMA af, sia.instituicao_ensino ag" + Environment.NewLine;
+            bloco += "     -tables: sia.aluno_curso ab, sia.aluno ac, sia.curso ad, sia.campus ae, sia.LIVRO_REGISTRO_DIPLOMA af, sia.instituicao_ensino ag" + Environment.NewLine;
             bloco += "      -links: ad.COD_CURSO = ab.COD_CURSO_ATUAL and ae.COD_CAMPUS = ab.COD_CAMPUS_ATUAL and ag.cod_instituicao = ae.cod_instituicao and af.CPF_ALUNO = ac.CPF_ALUNO" + Environment.NewLine;
             bloco += "     -output: nInstituicao[ag.NOM_INSTITUICAO],nCampusResultado[ae.NOM_CAMPUS]" + Environment.NewLine;
             bloco += "     -output: nomCurso[ad.NOM_CURSO],nAto[af.TXT_PORT_DOU_AUTORIZACAO:X(11)]" + Environment.NewLine;
@@ -891,7 +891,7 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco = "";
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "  -name: testLoginAdmValido" + Environment.NewLine;
-            bloco += "    -select: seg.usuario" + Environment.NewLine;
+            bloco += "    -tables: seg.usuario" + Environment.NewLine;
             bloco += "     -input: login[cod_usuario], senha" + Environment.NewLine;
             bloco += "    -output: usuarioLogado[nom_usuario]" + Environment.NewLine;
             bloco += Environment.NewLine;
@@ -906,7 +906,7 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco += Environment.NewLine;
             bloco += ">view: Aluno" + Environment.NewLine;
             bloco += "  -name: test01_ValidarInformacoesDoAluno" + Environment.NewLine;
-            bloco += "     -select: sia.aluno_curso" + Environment.NewLine;
+            bloco += "     -tables: sia.aluno_curso" + Environment.NewLine;
             bloco += "      -input: matricula[cod_matricula:####.##.#####-#]" + Environment.NewLine;
             bloco += "     -output: getNomeAluno[nom_responsavel_pgto]" + Environment.NewLine;
             bloco += "     -output: cpf[cpf_responsavel_pgto:000.###.###-##]" + Environment.NewLine;
@@ -948,7 +948,7 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco = "";
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "  -name: testLoginAdmValido" + Environment.NewLine;
-            bloco += "    -select: seg.usuario" + Environment.NewLine;
+            bloco += "    -tables: seg.usuario" + Environment.NewLine;
             bloco += "     -input: login[cod_usuario], senha" + Environment.NewLine;
             bloco += "    -output: usuarioLogado[nom_usuario]" + Environment.NewLine;
             bloco += Environment.NewLine;
@@ -963,7 +963,7 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco += Environment.NewLine;
             bloco += ">view: Aluno" + Environment.NewLine;
             bloco += "  -name: test01_ValidarInformacoesDoAluno" + Environment.NewLine;
-            bloco += "     -select: sia.aluno_curso" + Environment.NewLine;
+            bloco += "     -tables: sia.aluno_curso" + Environment.NewLine;
             bloco += "      -input: matricula[cod_matricula:####.##.#####-#]" + Environment.NewLine;
             bloco += "     -output: getNomeAluno[nom_responsavel_pgto]" + Environment.NewLine;
             bloco += "     -output: cpf[cpf_responsavel_pgto:000.###.###-##]" + Environment.NewLine;
@@ -1015,8 +1015,8 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco = "";
             bloco += ">view: CarnesAlunos" + Environment.NewLine;
             bloco += "  -name: ValidarCarneAluno" + Environment.NewLine;
-            bloco += "  -select: sia.carne ca, sur.cobranca co, sia.aluno_curso ac, sia.aluno al, sia.tipo_cancelamento_carne tc" + Environment.NewLine;
-            bloco += "  -select: sia.situacao_periodo sp, sia.aluno_periodo ap, sia.periodo_academico pa" + Environment.NewLine;
+            bloco += "  -tables: sia.carne ca, sur.cobranca co, sia.aluno_curso ac, sia.aluno al, sia.tipo_cancelamento_carne tc" + Environment.NewLine;
+            bloco += "  -tables: sia.situacao_periodo sp, sia.aluno_periodo ap, sia.periodo_academico pa" + Environment.NewLine;
             bloco += "   -input: MesCompetencia, TipoCancelamento[tc.txt_tipo_cancelamento_carne], Motivo" + Environment.NewLine;
             bloco += "  -output:  matricula[ac.cod_matricula], aluno[al.NOM_ALUNO]" + Environment.NewLine;
             bloco += "   -links:  ca.NUM_SEQ_COBRANCA = co.NUM_SEQ_COBRANCA" + Environment.NewLine;
@@ -1060,8 +1060,8 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco = "";
             bloco += ">view: CarnesAlunos" + Environment.NewLine;
             bloco += "  -name: ValidarCarneAluno" + Environment.NewLine;
-            bloco += "  -select: sia.carne ca, sur.cobranca co, sia.aluno_curso ac, sia.aluno al, sia.tipo_cancelamento_carne tc" + Environment.NewLine;
-            bloco += "  -select: sia.situacao_periodo sp, sia.aluno_periodo ap, sia.periodo_academico pa" + Environment.NewLine;
+            bloco += "  -tables: sia.carne ca, sur.cobranca co, sia.aluno_curso ac, sia.aluno al, sia.tipo_cancelamento_carne tc" + Environment.NewLine;
+            bloco += "  -tables: sia.situacao_periodo sp, sia.aluno_periodo ap, sia.periodo_academico pa" + Environment.NewLine;
             bloco += "   -input: MesCompetencia, TipoCancelamento[tc.txt_tipo_cancelamento_carne], Motivo" + Environment.NewLine;
             bloco += "  -output:  matricula[ac.cod_matricula], aluno[al.NOM_ALUNO]" + Environment.NewLine;
             bloco += "   -links:  ca.NUM_SEQ_COBRANCA = co.NUM_SEQ_COBRANCA" + Environment.NewLine;

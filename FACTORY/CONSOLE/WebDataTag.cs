@@ -7,7 +7,7 @@ using System.Text;
 namespace Dooggy.Tests.FACTORY.TAG
 {
     [TestClass()]
-    public class CAT_010_DataTagByScript_Test : DataModelFactory_Test
+    public class CAT_010_DataTagByScript_Test : UTC_Dooggy
     {
 
         public CAT_010_DataTagByScript_Test()
@@ -22,43 +22,41 @@ namespace Dooggy.Tests.FACTORY.TAG
         {
 
             // arrange
-            output = "";
-            output += "[    impacto] ALTO" + Environment.NewLine;
-            output += "[  categoria] NEGOCIO" + Environment.NewLine;
-            output += "[       tipo] REGRESSIVO" + Environment.NewLine;
-            output += "[   analista] ALEXANDRE" + Environment.NewLine;
-            output += "[   situacao] PRONTO" + Environment.NewLine;
+            output.Add("[    impacto] ALTO");
+            output.Add("[  categoria] NEGOCIO");
+            output.Add("[       tipo] REGRESSIVO");
+            output.Add("[   analista] ALEXANDRE");
+            output.Add("[   situacao] PRONTO");
 
             // act
             ConnectDbOracle();
 
-            bloco = "";
-            bloco += ">>" + Environment.NewLine;
-            bloco += ">> TAGS" + Environment.NewLine;
-            bloco += ">>" + Environment.NewLine;
-            bloco += Environment.NewLine;
-            output += ">tags: " + Environment.NewLine;
-            output += "   -impacto: ALTO" + Environment.NewLine;
-            output += " -categoria: NEGOCIO" + Environment.NewLine;
-            output += "      -tipo: REGRESSIVO" + Environment.NewLine;
-            output += "  -analista: ALEXANDRE" + Environment.NewLine;
-            output += "  -situacao: PRONTO" + Environment.NewLine;
-            bloco += Environment.NewLine;
-            bloco += ">view: Login" + Environment.NewLine;
-            bloco += "  -name: testLoginAdmValido" + Environment.NewLine;
-            bloco += "      -output: login,senha,usuarioLogado" + Environment.NewLine;
-            bloco += Environment.NewLine;
-            bloco += ">item: Marli" + Environment.NewLine;
-            bloco += " -sql:  SELECT cod_usuario, '$date(D+0:DDMMAAAA)' as senha, nom_usuario" + Environment.NewLine;
-            bloco += "        FROM seg.usuario" + Environment.NewLine;
-            bloco += "        WHERE cod_usuario = #(UserID)" + Environment.NewLine;
-            bloco += Environment.NewLine;
-            bloco += ">save[txt]: Login + Aluno" + Environment.NewLine;
+            input.Add(">>");
+            input.Add(">> TAGS");
+            input.Add(">>");
+            input.Add();
+            input.Add(">tag: ");
+            input.Add("   -impacto: ALTO");
+            input.Add(" -categoria: NEGOCIO");
+            input.Add("      -tipo: REGRESSIVO");
+            input.Add("  -analista: ALEXANDRE");
+            input.Add("  -situacao: PRONTO");
+            input.Add();
+            input.Add(">view: Login");
+            input.Add("  -name: testLoginAdmValido");
+            input.Add("      -output: login,senha,usuarioLogado");
+            input.Add("");
+            input.Add(">item: Marli");
+            input.Add(" -sql:  SELECT cod_usuario, '$date(D+0:DDMMAAAA)' as senha, nom_usuario");
+            input.Add("        FROM seg.usuario");
+            input.Add("        WHERE cod_usuario = #(UserID)");
+            input.Add();
+            input.Add(">save[txt]: Login + Aluno");
 
-            Console.Play(prmCode: bloco);
+            Console.Play(prmCode: input.txt);
 
             // & assert
-            VerifyExpectedData(prmData: Console.Script.key);
+            AssertTest(prmResult: Console.Script.Tags.txt);
 
         }
 

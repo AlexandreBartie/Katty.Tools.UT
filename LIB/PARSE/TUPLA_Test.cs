@@ -171,22 +171,7 @@ namespace Dooggy.Tests.LIB.PARSE.TUPLA
 
         private void AssertTUPLA(bool prmMultiplos)
         {
-
-            //Tupla.Save();
-
-            string result;
-
-            //if (prmMultiplos)
-                result = Tuplas.key;
-            //else
-            //result = ""; //;Tupla.tuplas;
-
-        }
-        public override void AssertTest()
-        {
-            // assert
-            if (IsFail())
-                Assert.Fail(error);
+            AssertTest(prmResult: Tuplas.key);
         }
     }
 

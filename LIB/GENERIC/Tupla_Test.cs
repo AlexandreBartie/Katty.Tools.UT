@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Dooggy.FACTORY.UNIT;
 using Dooggy.Lib.Generic;
 using Dooggy.Lib.Parse;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -204,19 +205,11 @@ namespace Dooggy.Tests.LIB.GENERIC
             // assert
             tupla = new myTupla(input, prmSeparador);
 
-            result = tupla.log;
-
             // assert
-            AssertTest();
+            AssertTest(prmResult: tupla.log);
 
         }
 
-        public override void AssertTest()
-        {
-            // assert
-            if (IsFail())
-                Assert.Fail(error);
-        }
     }
 
     [TestClass()]
@@ -278,18 +271,10 @@ namespace Dooggy.Tests.LIB.GENERIC
             // assert
             lista = new myTuplas(input, prmSeparador);
 
-            result = lista.log;
-
             // assert
-            AssertTest();
+            AssertTest(prmResult: lista.log);
 
         }
 
-        public override void AssertTest()
-        {
-            // assert
-            if (IsFail())
-                Assert.Fail(error);
-        }
     }
 }
