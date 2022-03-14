@@ -1,13 +1,12 @@
-﻿using Dooggy.Factory;
-using Dooggy.Lib.Files;
-using Dooggy.Lib.Vars;
-using Dooggy.Tests.Factory.lib;
+﻿using BlueRocket.CORE.Lib.Files;
+using BlueRocket.CORE.Lib.Vars;
+using BlueRocket.CORE.Tests.Factory.lib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dooggy.Tests.FACTORY.CONFIG
+namespace BlueRocket.CORE.Tests.FACTORY.CONFIG
 {
 
     [TestClass()]
@@ -20,9 +19,9 @@ namespace Dooggy.Tests.FACTORY.CONFIG
 
             // arrange
 
-            input = @"C:\MassaTestes\POC\CLI\TesteQA.cfg";
+            input = @"C:\MassaTestes\TestQA.cfg";
 
-            output = ArgOutput.GetOutputTimeout(prmConnectDB: "15", prmCommandSQL: "10");
+            output = ArgOutput.GetOutputTimeOut(prmTimeOutDB: "5", prmTimeOutSQL: "15");
 
             // act
             Console.Setup(prmArquivoCFG: input);
@@ -68,6 +67,7 @@ namespace Dooggy.Tests.FACTORY.CONFIG
             VerifyExpectedData();
 
         }
+
         [TestMethod()]
         public void TST040_DataConfig_ConteudoDBInexistente()
         {
@@ -84,6 +84,7 @@ namespace Dooggy.Tests.FACTORY.CONFIG
             VerifyExpectedData();
 
         }
+
         [TestMethod()]
         public void TST050_DataConfig_ConteudoDataFixa()
         {
@@ -167,8 +168,11 @@ namespace Dooggy.Tests.FACTORY.CONFIG
         public string formatRegion;
         public string formatDate;
 
-        public string connectDB;
-        public string commandSQL; 
+        public string SetupCommand_Line1;
+        public string SetupCommand_Line2;
+
+        public string timeout_DB;
+        public string timeout_SQL; 
 
         public DataConfig_InputTest(DataConfig_Test prmDataConfig)
         {
@@ -185,8 +189,8 @@ namespace Dooggy.Tests.FACTORY.CONFIG
             formatRegion = "pt-BR";
             formatDate = "DD/MM/AAAA";
 
-            connectDB = "30";
-            commandSQL = "20";
+            timeout_DB = "30";
+            timeout_SQL = "20";
 
         }
         private string GetDefault()
@@ -194,6 +198,7 @@ namespace Dooggy.Tests.FACTORY.CONFIG
             string input = "";
 
             input += GetInputDBase();
+            input += GetInputConnect();
             input += GetInputCSV();
             input += GetInputPath();
 
@@ -227,6 +232,19 @@ namespace Dooggy.Tests.FACTORY.CONFIG
 
             if (secondDB)
                 texto += String.Format(conexao, "TCA", serviceDB) + Environment.NewLine;
+
+            return texto;
+        }
+        private string GetInputConnect()
+        {
+   
+            string texto = "";
+
+            texto += @">connect: " + Environment.NewLine;
+            texto += @"  -setup: Alter Session set NLS_DATE_FORMAT = 'dd/mm/yy'" + Environment.NewLine;
+            texto += @"  -setup: Alter Session set NLS_NUMERIC_CHARACTERS = ',.' " + Environment.NewLine;
+            texto += @"  -timeoutDB : 05" + Environment.NewLine;
+            texto += @"  -timeoutSQL: 15" + Environment.NewLine;
 
             return texto;
         }
@@ -276,8 +294,8 @@ namespace Dooggy.Tests.FACTORY.CONFIG
         public string formatToday;
         public string formatDate;
 
-        public string connectDB;
-        public string commandSQL;
+        public string timeout_DB;
+        public string timeout_SQL;
 
         public DataConfig_OutputTest(DataConfig_Test prmDataConfig)
         {
@@ -296,8 +314,8 @@ namespace Dooggy.Tests.FACTORY.CONFIG
             formatToday = "";
             formatDate = "DD/MM/AAAA";
 
-            connectDB = "30";
-            commandSQL = "20";
+            timeout_DB = "5";
+            timeout_SQL = "15";
 
         }
         private string GetDefault() => GetDefault(prmConnectedDB: true);
@@ -309,7 +327,7 @@ namespace Dooggy.Tests.FACTORY.CONFIG
 
             if (prmConnectedDB)
             {
-                output += GetOutputTimeout();
+                output += GetOutputConnect();
                 output += GetOutputCSV();
                 output += GetOutputPath();
             }
@@ -334,9 +352,9 @@ namespace Dooggy.Tests.FACTORY.CONFIG
         {
             Reset(); sintaxeToday = prmSintaxeToday;  formatToday = prmFormatToday; formatDate = prmFormatDate; return GetDefault();
         }
-        public string GetOutputTimeout(string prmConnectDB, string prmCommandSQL)
+        public string GetOutputTimeOut(string prmTimeOutDB, string prmTimeOutSQL)
         {
-            Reset(); connectDB = prmConnectDB; commandSQL = prmCommandSQL; return GetDefault();
+            Reset(); timeout_DB = prmTimeOutDB; timeout_SQL = prmTimeOutSQL; return GetDefault();
         }
 
         private string GetOutputDBase()
@@ -352,12 +370,17 @@ namespace Dooggy.Tests.FACTORY.CONFIG
             return texto;
         }
 
-        private string GetOutputTimeout()
+        private string GetOutputConnect()
         {
 
-            string mask = @" | >timeout: -connectDB: {0}, -commandSQL: {1}";
+            string mask = @" | >connect: -setup: {0}, -timeoutDB: {1}, -timeoutSQL: {2}";
 
-            return string.Format(mask, connectDB, commandSQL);
+            string setup = "";
+            setup += "Alter Session set NLS_DATE_FORMAT = 'dd/mm/yy'";
+            setup += " | ";
+            setup += "Alter Session set NLS_NUMERIC_CHARACTERS = ',.'";
+
+            return string.Format(mask, setup, timeout_DB, timeout_SQL);
 
         }
         private string GetOutputCSV()

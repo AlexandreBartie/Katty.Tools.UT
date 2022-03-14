@@ -1,10 +1,10 @@
-﻿using Dooggy.Tests.Factory.lib;
+﻿using BlueRocket.CORE.Tests.Factory.lib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dooggy.Tests.DATA.TYPES
+namespace BlueRocket.CORE.Tests.DATA.TYPES
 {
     [TestClass()]
     public class CAT_010_DataTypesByNumeric_Test : DataModelFactory_Test

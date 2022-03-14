@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Dooggy;
-using Dooggy.Lib.Generic;
-using Dooggy.Lib.Vars;
+using BlueRocket.CORE;
+using BlueRocket.CORE.Lib.Generic;
+using BlueRocket.CORE.Lib.Vars;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Dooggy.Tests.LIB.STRING
+namespace BlueRocket.CORE.Tests.LIB.STRING
 {
 
     [TestClass()]
@@ -637,6 +637,7 @@ namespace Dooggy.Tests.LIB.STRING
 
         }
     }
+
     [TestClass()]
     public class myStringsByGetSubstituir_Test : myStrings_Test
     {
@@ -722,6 +723,60 @@ namespace Dooggy.Tests.LIB.STRING
             ActionGetSubstituir(prmVelho: "Silva", prmNovo: null);
 
         }
+    }
+
+    [TestClass()]
+    public class myStringsByGetRepetir_Test : myStrings_Test
+    {
+
+        [TestMethod()]
+        public void TST010_GetRepetir_ValorPadrao()
+        {
+
+            input = "X";
+            output = "XXXXX";
+
+            // act & assert
+            ActionGetRepetir(prmVezes: 5);
+
+        }
+
+        [TestMethod()]
+        public void TST020_GetRepetir_ValorChar()
+        {
+
+            input = "X";
+            output = "X";
+
+            // act & assert
+            ActionGetRepetir(prmVezes: 1);
+
+        }
+
+        [TestMethod()]
+        public void TST030_GetRepetir_ValorZero()
+        {
+
+            input = "X";
+            output = "";
+
+            // act & assert
+            ActionGetRepetir(prmVezes: 0);
+
+        }
+
+        [TestMethod()]
+        public void TST040_GetRepetir_ValorNegativo()
+        {
+
+            input = "X";
+            output = "";
+
+            // act & assert
+            ActionGetRepetir(prmVezes: -1);
+
+        }
+
     }
 
     [TestClass()]
@@ -965,6 +1020,17 @@ namespace Dooggy.Tests.LIB.STRING
         ActionGeneric();
 
         }
+        public void ActionGetRepetir(int prmVezes)
+        {
+
+            // assert
+            result = myString.GetRepetir(input, prmVezes);
+
+            // assert
+            ActionGeneric();
+
+        }
+            
         public void ActionGetSubstituir(string prmVelho, string prmNovo)
         {
 

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Dooggy.Tests.Factory.lib;
+using BlueRocket.CORE.Tests.Factory.lib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Dooggy.Tests.FACTORY.CONSOLE
+namespace BlueRocket.CORE.Tests.FACTORY.CONSOLE
 {
     [TestClass()]
     public class CAT_010_DataConsoleBySaveDefault_Test : DataModelFactory_Test
@@ -155,7 +155,7 @@ namespace Dooggy.Tests.FACTORY.CONSOLE
             bloco += ">> Variáveis" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: UserID = '1016283'" + Environment.NewLine;
+            bloco += ">loc: UserID = '1016283'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "  -name: testLoginAdmValido" + Environment.NewLine;
@@ -183,7 +183,7 @@ namespace Dooggy.Tests.FACTORY.CONSOLE
             output = "";
             output += "[ DAT] act# -db[SIA] -status: CONECTADO" + Environment.NewLine;
             output += "[ SET] act# -view[Login] -itens: 1" + Environment.NewLine;
-            output += "[ERRO] SQL falhou ... -error: [ORA-01722: número inválido] -db[SIA] -sql: SELECT cod_usuario, '1234as' as senha, nom_usuario FROM seg.usuario WHERE cod_usuario = 2" + Environment.NewLine;
+            output += "[ERRO] >>>> [ORA-01722: número inválido] SQL falhou ... -error: [ORA-01722: número inválido] -db[SIA] -sql: SELECT cod_usuario, '1234as' as senha, nom_usuario FROM seg.usuario WHERE cod_usuario = 2" + Environment.NewLine;
             output += "[MUTE] act# -save: Silenciado com sucesso. -encoding: utf8" + Environment.NewLine;
 
             // act
@@ -194,7 +194,7 @@ namespace Dooggy.Tests.FACTORY.CONSOLE
             bloco += ">> Variáveis" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: UserID = '1016283'" + Environment.NewLine;
+            bloco += ">loc: UserID = '1016283'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "  -name: testLoginAdmValido" + Environment.NewLine;
@@ -652,9 +652,10 @@ namespace Dooggy.Tests.FACTORY.CONSOLE
             output += "ArqAtendimentoAoAluno-NoTAGs" + Environment.NewLine;
             output += "ArqAtendimentoAoAluno-RawData" + Environment.NewLine;
             output += "ArqAtendimentoAoAluno" + Environment.NewLine;
-            output += "ArqConsultaDebitoNossoNumero" + Environment.NewLine;
+            output += "xArqBaixaManualBanco" + Environment.NewLine;
             output += "xArqConsultaBolsaPadrao" + Environment.NewLine;
             output += "xArqConsultaCurso" + Environment.NewLine;
+            output += "xArqConsultaDebitoNossoNumero" + Environment.NewLine;
             output += "xArqConsultaDisciplina" + Environment.NewLine;
             output += "xArqConsultaLancarDebito" + Environment.NewLine;
             output += "xArqRepescagem" + Environment.NewLine;
@@ -662,7 +663,7 @@ namespace Dooggy.Tests.FACTORY.CONSOLE
 
             // act
 
-            string arquivo = path_cfg + @"teste-unitario.cfg";
+            string arquivo = path_root + @"TestQA.cfg";
 
             Console.Setup(prmArquivoCFG: arquivo);
 
@@ -672,7 +673,7 @@ namespace Dooggy.Tests.FACTORY.CONSOLE
         }
 
         [TestMethod()]
-        public void TST010_DataConsoleBySetup_ProcessarArquivoCFG()
+        public void TST020_DataConsoleBySetup_ProcessarArquivoCFG()
         {
 
             // arrange
@@ -682,9 +683,9 @@ namespace Dooggy.Tests.FACTORY.CONSOLE
             output += "ArqAtendimentoAoAluno-NoTAGs" + Environment.NewLine;
             output += "ArqAtendimentoAoAluno-RawData" + Environment.NewLine;
             output += "ArqAtendimentoAoAluno" + Environment.NewLine;
-            output += "ArqConsultaDebitoNossoNumero" + Environment.NewLine;
             output += "xArqConsultaBolsaPadrao" + Environment.NewLine;
             output += "xArqConsultaCurso" + Environment.NewLine;
+            output += "xArqConsultaDebitoNossoNumero" + Environment.NewLine;
             output += "xArqConsultaDisciplina" + Environment.NewLine;
             output += "xArqConsultaLancarDebito" + Environment.NewLine;
             output += "xArqRepescagem" + Environment.NewLine;
@@ -692,7 +693,7 @@ namespace Dooggy.Tests.FACTORY.CONSOLE
 
             // act
 
-            string arquivo = path_cfg + @"teste-unitario.cfg";
+            string arquivo = path_root + @"TestQA.cfg";
 
             Console.EXE(prmArquivoCFG: arquivo);
 

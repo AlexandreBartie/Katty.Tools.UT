@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Dooggy.Lib.Parse;
+using BlueRocket.CORE.Lib.Parse;
 
-namespace Dooggy.Tests.LIB.PARSE
+namespace BlueRocket.CORE.Tests.LIB.PARSE
 {
     [TestClass()]
     public class JSON_Test

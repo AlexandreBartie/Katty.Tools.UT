@@ -1,13 +1,13 @@
-﻿using Dooggy;
-using Dooggy.Lib.Generic;
-using Dooggy.Lib.Vars;
+﻿using BlueRocket.CORE;
+using BlueRocket.CORE.Lib.Generic;
+using BlueRocket.CORE.Lib.Vars;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace Dooggy.Tests.LIB.GENERIC
+namespace BlueRocket.CORE.Tests.LIB.GENERIC
 {
     [TestClass()]
     public class xLista_Test

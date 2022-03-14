@@ -1,16 +1,16 @@
-﻿using Dooggy.Factory;
-using Dooggy.Factory.Console;
-using Dooggy.Factory.Data;
-using Dooggy;
+﻿using BlueRocket.CORE.Factory;
+using BlueRocket.CORE.Factory.Console;
+using BlueRocket.CORE.Factory.Data;
+using BlueRocket.CORE;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Dooggy.Lib.Vars;
-using Dooggy.Lib.Generic;
-using Dooggy.FACTORY.UNIT;
+using BlueRocket.CORE.Lib.Vars;
+using BlueRocket.CORE.Lib.Generic;
+using BlueRocket.CORE.FACTORY.UNIT;
 
-namespace Dooggy.Tests.Factory.lib
+namespace BlueRocket.CORE.Tests.Factory.lib
 {
     public class DataModelFactory_Test : DataViewFactory_Test
     {
@@ -186,27 +186,11 @@ namespace Dooggy.Tests.Factory.lib
 
     }
 
-    public class DataBasicFactory_Test : UTC_Dooggy
+    public class DataBasicFactory_Test : TestDataProject
     {
 
         public string input;
         public string output;
-
-        public string bloco;
-
-        public new void VerifyExpectedData(string prmData)
-        {
-
-            // assert
-            if (output != prmData)
-                Assert.Fail(TestUnityLog.GetAnalise(prmData, output));
-
-        }
-
-    }
-
-    public class UTC_Dooggy : TestDataProject
-    {
 
         public const string path_root = @"C:\MassaTestes\";
 
@@ -215,12 +199,7 @@ namespace Dooggy.Tests.Factory.lib
         public string path_out = path_root + @"POC\CONSOLE\OUT\";
         public string path_log = path_root + @"POC\CONSOLE\LOG\";
 
-        public LinesUTC input => Unit.inputList;
-        public LinesUTC output => Unit.outputList;
-
-        public void AssertTest(string prmResult) => Unit.AssertTest(prmResult);
-
-        private UTC Unit = new UTC();
+        public string bloco;
 
         public void ConnectDbOracle() { ConnectDbOracle(prmSenha: "asdfg"); }
 
@@ -244,6 +223,41 @@ namespace Dooggy.Tests.Factory.lib
 
             Connect.Pool.DoConnect();
 
+        }
+
+        public void VerifyExpectedData(string prmData)
+        {
+
+            // assert
+            if (output != prmData)
+                Assert.Fail(TestUnityLog.GetAnalise(prmData, output));
+
+        }
+
+    }
+
+    public class UTC_BlueRocketCORE : UTC
+    {
+
+        private TestDataProject Factory = new TestDataProject();
+
+        public TestConsole Console => Factory.Console;
+        public TestScript Script => Console.Script;
+
+        public DateTime date = new System.DateTime(2022, 05, 08, 01, 13, 47, 908);
+
+        public void SetSubPathOUT(string prmSubPath) => Console.Config.Path.SetSubOUT(prmSubPath);
+
+        private void SetAnchor() => Console.SetAnchor(date);
+
+        public void Play(string prmCode)
+        {
+
+            Console.LoadCFG(prmArquivoCFG: @"C:\MassaTestes\TestQA.cfg");
+
+            SetAnchor();
+
+            Console.Play(prmCode);
         }
 
     }

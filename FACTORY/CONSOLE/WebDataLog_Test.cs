@@ -1,10 +1,10 @@
-﻿using Dooggy.Tests.Factory.lib;
+﻿using BlueRocket.CORE.Tests.Factory.lib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dooggy.Tests.FACTORY.LOG
+namespace BlueRocket.CORE.Tests.FACTORY.LOG
 {
     [TestClass()]
     public class CAT_010_DataLogByMain_Test : DataModelFactory_Test
@@ -210,7 +210,7 @@ namespace Dooggy.Tests.FACTORY.LOG
 
             bloco = "";
             bloco += Environment.NewLine;
-            bloco += ">var: UserID = '1016283'" + Environment.NewLine;
+            bloco += ">loc: UserID = '1016283'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "  -name: testLoginAdmValido" + Environment.NewLine;
@@ -247,7 +247,7 @@ namespace Dooggy.Tests.FACTORY.LOG
             bloco += ">> Variáveis" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: UserID = '1016283'" + Environment.NewLine;
+            bloco += ">loc: UserID = '1016283'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "  -name: testLoginAdmValido" + Environment.NewLine;

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Dooggy.FACTORY.UNIT;
-using Dooggy.Lib.Generic;
-using Dooggy.Lib.Parse;
+using BlueRocket.CORE.FACTORY.UNIT;
+using BlueRocket.CORE.Lib.Generic;
+using BlueRocket.CORE.Lib.Parse;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Dooggy.Tests.LIB.GENERIC
+namespace BlueRocket.CORE.Tests.LIB.GENERIC
 {
     [TestClass()]
     public class myTupla_Test : UTC
@@ -18,8 +18,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTupla_010_Padrao()
         {
 
-            input = "alex=1234";
-            output = "alex: '1234'";
+            input("alex=1234");
+            output("alex: '1234'");
 
             // act & assert
             ActionGetTupla();
@@ -30,8 +30,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTupla_020_ComEspacos()
         {
 
-            input = "alex = 1234";
-            output = "alex: '1234'";
+            input("alex = 1234");
+            output("alex: '1234'");
 
             // act & assert
             ActionGetTupla();
@@ -42,8 +42,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTupla_030_SemValor()
         {
 
-            input = "alex";
-            output = "alex";
+            input("alex");
+            output("alex");
 
             // act & assert
             ActionGetTupla();
@@ -54,8 +54,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTupla_040_SemParametro()
         {
 
-            input = "=1234";
-            output = "";
+            input("=1234");
+            output("");
 
             // act & assert
             ActionGetTupla();
@@ -66,8 +66,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTupla_050_Vazio()
         {
 
-            input = "";
-            output = "";
+            input("");
+            output("");
 
             // act & assert
             ActionGetTupla();
@@ -78,8 +78,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTupla_060_Espaco()
         {
 
-            input = "  ";
-            output = "";
+            input("  ");
+            output("");
 
             // act & assert
             ActionGetTupla();
@@ -90,8 +90,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTupla_070_Nulo()
         {
 
-            input = null;
-            output = "";
+            input(null);
+            output("");
 
             // act & assert
             ActionGetTupla();
@@ -102,8 +102,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTupla_080_SeparadorDefinido()
         {
 
-            input = "alex $ 1234";
-            output = "alex: '1234'";
+            input("alex $ 1234");
+            output("alex: '1234'");
 
             // act & assert
             ActionGetTupla(prmSeparador: "$");
@@ -113,8 +113,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTupla_090_SeparadorDuplo()
         {
 
-            input = "alex $$ 1234";
-            output = "alex: '1234'";
+            input("alex $$ 1234");
+            output("alex: '1234'");
 
             // act & assert
             ActionGetTupla(prmSeparador: "$$");
@@ -124,8 +124,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTupla_100_ComDelimitador()
         {
 
-            input = "alex = 1234 [Aluno Novato]";
-            output = "alex: '1234' <Aluno Novato>";
+            input("alex = 1234 [Aluno Novato]");
+            output("alex: '1234' <Aluno Novato>");
 
             // act & assert
             ActionGetTupla();
@@ -135,8 +135,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTupla_110_ComDelimitadorNoMeio()
         {
 
-            input = "alex =[   Aluno Novato   ] 1234 ";
-            output = "alex: '1234' <Aluno Novato>";
+            input("alex =[   Aluno Novato   ] 1234 ");
+            output("alex: '1234' <Aluno Novato>");
 
             // act & assert
             ActionGetTupla();
@@ -146,8 +146,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTupla_120_ComDelimitadorNoInicio()
         {
 
-            input = "[   Aluno Novato   ] alex =1234 ";
-            output = "alex: '1234' <Aluno Novato>";
+            input("[   Aluno Novato   ] alex =1234 ");
+            output("alex: '1234' <Aluno Novato>");
 
             // act & assert
             ActionGetTupla();
@@ -157,8 +157,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTupla_130_ComDelimitadorComEspacos()
         {
 
-            input = "alex = 1234 [   Aluno Novato   ]";
-            output = "alex: '1234' <Aluno Novato>";
+            input("alex = 1234 [   Aluno Novato   ]");
+            output("alex: '1234' <Aluno Novato>");
 
             // act & assert
             ActionGetTupla();
@@ -169,8 +169,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTupla_140_SemValorComDelimitador()
         {
 
-            input = "alex [   Aluno Novato   ]";
-            output = "alex <Aluno Novato>";
+            input("alex [   Aluno Novato   ]");
+            output("alex <Aluno Novato>");
 
             // act & assert
             ActionGetTupla();
@@ -180,8 +180,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTupla_150_SemTagComDelimitador()
         {
 
-            input = " = 1234 [   Aluno Novato   ]";
-            output = "<Aluno Novato>";
+            input(" = 1234 [   Aluno Novato   ]");
+            output("<Aluno Novato>");
 
             // act & assert
             ActionGetTupla();
@@ -191,8 +191,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTupla_160_SemTagSemValorComDelimitador()
         {
 
-            input = "  [   Aluno Novato   ]";
-            output = "<Aluno Novato>";
+            input("  [   Aluno Novato   ]");
+            output("<Aluno Novato>");
 
             // act & assert
             ActionGetTupla();
@@ -203,7 +203,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         {
 
             // assert
-            tupla = new myTupla(input, prmSeparador);
+            tupla = new myTupla(inputTXT, prmSeparador);
 
             // assert
             AssertTest(prmResult: tupla.log);
@@ -222,8 +222,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTuplas_010_Padrao()
         {
 
-            input = "alex=1234,gomes=2321,jorge=9841";
-            output = "alex: '1234', gomes: '2321', jorge: '9841'";
+            input("alex=1234,gomes=2321,jorge=9841");
+            output("alex: '1234', gomes: '2321', jorge: '9841'");
 
             // act & assert
             ActionGetTuplas();
@@ -234,8 +234,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTuplas_020_ComEspacos()
         {
 
-            input = "  alex  =  1234  ,  gomes  =  2321  ,  jorge  =  9841  ";
-            output = "alex: '1234', gomes: '2321', jorge: '9841'";
+            input("  alex  =  1234  ,  gomes  =  2321  ,  jorge  =  9841  ");
+            output("alex: '1234', gomes: '2321', jorge: '9841'");
 
             // act & assert
             ActionGetTuplas();
@@ -245,8 +245,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTuplas_030_ComDelimitadores()
         {
 
-            input = "  alex  =  1234 [zzz]  ,  gomes  =  2321 [bbb] ,  jorge  =  9841 [jjjjj] ";
-            output = "alex: '1234' <zzz>, gomes: '2321' <bbb>, jorge: '9841' <jjjjj>";
+            input("  alex  =  1234 [zzz]  ,  gomes  =  2321 [bbb] ,  jorge  =  9841 [jjjjj] ");
+            output("alex: '1234' <zzz>, gomes: '2321' <bbb>, jorge: '9841' <jjjjj>");
 
             // act & assert
             ActionGetTuplas();
@@ -256,8 +256,8 @@ namespace Dooggy.Tests.LIB.GENERIC
         public void TST_GetTuplas_040_SemValoresSeparadorModificado()
         {
 
-            input = "Login[testLoginAdmValido,login,senha,usuarioLogado] + Aluno[test01_ValidarInformacoesDoAluno,matricula,getNomeAluno]";
-            output = "Login <testLoginAdmValido,login,senha,usuarioLogado>, Aluno <test01_ValidarInformacoesDoAluno,matricula,getNomeAluno>";
+            input("Login[testLoginAdmValido,login,senha,usuarioLogado] + Aluno[test01_ValidarInformacoesDoAluno,matricula,getNomeAluno]");
+            output("Login <testLoginAdmValido,login,senha,usuarioLogado>, Aluno <test01_ValidarInformacoesDoAluno,matricula,getNomeAluno>");
 
             // act & assert
             ActionGetTuplas(prmSeparador: "+");
@@ -269,7 +269,7 @@ namespace Dooggy.Tests.LIB.GENERIC
         {
 
             // assert
-            lista = new myTuplas(input, prmSeparador);
+            lista = new myTuplas(inputTXT, prmSeparador);
 
             // assert
             AssertTest(prmResult: lista.log);

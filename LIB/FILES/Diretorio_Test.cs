@@ -1,11 +1,11 @@
-﻿using Dooggy;
-using Dooggy.Lib.Files;
+﻿using BlueRocket.CORE;
+using BlueRocket.CORE.Lib.Files;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dooggy.Tests.LIB.FILES
+namespace BlueRocket.CORE.Tests.LIB.FILES
 {
     [TestClass()]
     public class Diretorio_Test : Files_Test

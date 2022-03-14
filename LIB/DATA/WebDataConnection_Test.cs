@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Text;
 using System.Diagnostics;
-using Dooggy;
-using Dooggy.Lib.Data;
-using Dooggy.Factory.Data;
-using Dooggy.Factory;
+using BlueRocket.CORE;
+using BlueRocket.CORE.Lib.Data;
+using BlueRocket.CORE.Factory.Data;
+using BlueRocket.CORE.Factory;
 
-namespace Dooggy.Tests.DATA.CONNECTION
+namespace BlueRocket.CORE.Tests.DATA.CONNECTION
 {
     [TestClass()]
     public class DataBaseConnection_Test : DataConnection_Test

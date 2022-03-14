@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using Dooggy.Factory.Data;
-using Dooggy.Tests.Factory.lib;
+using BlueRocket.CORE.Factory.Data;
+using BlueRocket.CORE.Tests.Factory.lib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Dooggy.Tests.DATA.SAVE
+namespace BlueRocket.CORE.Tests.DATA.SAVE
 {
     [TestClass()]
     public class CAT10_DataSaveTXT_Test : DataSave_Test

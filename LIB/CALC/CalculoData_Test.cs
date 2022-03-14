@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Dooggy.Lib.Vars;
-using Dooggy.Tools.Calc;
+using BlueRocket.CORE.Lib.Vars;
+using BlueRocket.CORE.Tools.Calc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Dooggy.Tests.LIB.CALC
+namespace BlueRocket.CORE.Tests.LIB.CALC
 {
 
     [TestClass()]
@@ -394,7 +394,7 @@ namespace Dooggy.Tests.LIB.CALC
 
     }
 
-    public class DynamicDate_Test
+    public class DynamicDate_Test 
     {
 
 

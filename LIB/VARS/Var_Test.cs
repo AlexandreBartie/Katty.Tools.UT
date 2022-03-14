@@ -1,12 +1,12 @@
-﻿using Dooggy;
-using Dooggy.Lib.Vars;
+﻿using BlueRocket.CORE;
+using BlueRocket.CORE.Lib.Vars;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace Dooggy.Tests.LIB.VARS.FORMAT
+namespace BlueRocket.CORE.Tests.LIB.VARS.FORMAT
 {
     [TestClass()]
     public class CAT_010_VarsByFormatTextString_Test : xVars_Test
@@ -249,7 +249,7 @@ namespace Dooggy.Tests.LIB.VARS.FORMAT
         {
 
             input = "";
-            output = "08/05/2022 00:00:00";
+            output = "08/05/2022 01:13:47";
 
             // act & assert
             ActionFormatDate();
@@ -261,16 +261,142 @@ namespace Dooggy.Tests.LIB.VARS.FORMAT
         {
 
             input = null;
-            output = "08/05/2022 00:00:00";
+            output = "08/05/2022 01:13:47";
 
             // act & assert
             ActionFormatDate();
 
         }
     }
-
     [TestClass()]
-    public class CAT_050_VarsByFormatDouble_Test : xVars_Test
+    public class CAT_050_VarsByFormatTime_Test : xVars_Test
+    {
+
+        [TestMethod()]
+        public void TST010_VarTime_FormatoPadrao()
+        {
+
+            input = "hh:mm:ss";
+            output = "01:13:47"; //20, 13, 47, 188
+
+            // act & assert
+            ActionFormatTime();
+
+        }
+        [TestMethod()]
+        public void TST020_VarTime_FormatoString()
+        {
+
+            input = "hhmmss";
+            output = "011347";
+
+            // act & assert
+            ActionFormatTime();
+
+        }
+
+        [TestMethod()]
+        public void TST030_VarTime_FormatoStringInvertido()
+        {
+
+            input = "ssmmhh";
+            output = "471301";
+
+            // act & assert
+            ActionFormatTime();
+
+        }
+
+        [TestMethod()]
+        public void TST040_VarTime_FormatoVazio()
+        {
+
+            input = "";
+            output = "08/05/2022 01:13:47";
+
+            // act & assert
+            ActionFormatTime();
+
+        }
+
+        [TestMethod()]
+        public void TST050_VarTime_FormatoNull()
+        {
+
+            input = null;
+            output = "08/05/2022 01:13:47";
+
+            // act & assert
+            ActionFormatTime();
+
+        }
+        [TestMethod()]
+        public void TST060_VarTime_FormatoMileSegundos()
+        {
+
+            input = "fff";
+            output = "908";
+
+            // act & assert
+            ActionFormatTime();
+
+        }
+    }
+    [TestClass()]
+    public class CAT_060_VarsByFormatRandom_Test : xVars_Test
+    {
+
+        [TestMethod()]
+        public void TST010_VarRandom_FormatoSemPrefixo()
+        {
+
+            input = "5";
+            output = "90847";
+
+            // act & assert
+            ActionFormatRandom();
+
+        }
+        
+        [TestMethod()]
+        public void TST020_VarRandom_FormatoComPrefixo()
+        {
+
+            input = "CEP:[5]";
+            output = "CEP:90847";
+
+            // act & assert
+            ActionFormatRandom();
+
+        }
+
+        [TestMethod()]
+        public void TST030_VarRandom_FormatoExtendido()
+        {
+
+            input = "Fone: (35) [11]";
+            output = "Fone: (35) 90847130108";
+
+            // act & assert
+            ActionFormatRandom();
+
+        }
+
+        [TestMethod()]
+        public void TST040_VarRandom_FormatoVazio()
+        {
+
+            input = "";
+            output = "90847130108052022";
+
+            // act & assert
+            ActionFormatRandom();
+
+        }
+
+    }
+    [TestClass()]
+    public class CAT_070_VarsByFormatDouble_Test : xVars_Test
     {
 
         [TestMethod()]
@@ -429,7 +555,7 @@ namespace Dooggy.Tests.LIB.VARS.FORMAT
     public class xVars_Test
     {
 
-        public DateTime date = new System.DateTime(2022, 05, 08);
+        public DateTime date = new System.DateTime(2022, 05, 08, 01, 13, 47, 908);
 
         public string input;
         public string output;
@@ -465,6 +591,27 @@ namespace Dooggy.Tests.LIB.VARS.FORMAT
             ActionGeneric();
 
         }
+        public void ActionFormatTime()
+        {
+
+            // assert
+            result = myFormat.TimeToString(date, input);
+
+            // assert
+            ActionGeneric();
+
+        }
+        public void ActionFormatRandom()
+        {
+
+            // assert
+            result = myFormat.RandomToString(date, input);
+
+            // assert
+            ActionGeneric();
+
+        }
+        
         public void ActionFormatDouble(Double prmNumber) => ActionFormatDouble(prmNumber, prmRegionalizacao: CultureInfo.InvariantCulture);
         public void ActionFormatDouble(Double prmNumber, CultureInfo prmRegionalizacao) => ActionFormatDouble(prmNumber, prmRegionalizacao, prmCSV: false);
         public void ActionFormatDouble(Double prmNumber, CultureInfo prmRegionalizacao, bool prmCSV)

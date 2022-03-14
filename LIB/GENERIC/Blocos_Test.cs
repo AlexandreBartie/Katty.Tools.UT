@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Dooggy;
-using Dooggy.Lib.Generic;
+using BlueRocket.CORE;
+using BlueRocket.CORE.Lib.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Dooggy.Tests.LIB.GENERIC
+namespace BlueRocket.CORE.Tests.LIB.GENERIC
 {
     [TestClass()]
     public class xBloco_Test

@@ -1,10 +1,10 @@
-﻿using Dooggy.Tests.Factory.lib;
+﻿using BlueRocket.CORE.Tests.Factory.lib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dooggy.Tests.FACTORY.EXTENSION
+namespace BlueRocket.CORE.Tests.FACTORY.EXTENSION
 {
     [TestClass()]
     public class CAT_010_DataExtensionByCalc_Test : DataModelFactory_Test
@@ -34,7 +34,7 @@ namespace Dooggy.Tests.FACTORY.EXTENSION
             bloco += ">> Variáveis" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: UserID = '1016283'" + Environment.NewLine;
+            bloco += ">loc: UserID = '1016283'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "  -name: testLoginAdmValido" + Environment.NewLine;
@@ -71,7 +71,7 @@ namespace Dooggy.Tests.FACTORY.EXTENSION
             bloco += ">> Variáveis" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: UserID = '1016283'" + Environment.NewLine;
+            bloco += ">loc: UserID = '1016283'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "  -name: testLoginAdmValido" + Environment.NewLine;
@@ -108,7 +108,7 @@ namespace Dooggy.Tests.FACTORY.EXTENSION
             bloco += ">> Variáveis" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: UserID = '1016283'" + Environment.NewLine;
+            bloco += ">loc: UserID = '1016283'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "  -name: testLoginAdmValido" + Environment.NewLine;

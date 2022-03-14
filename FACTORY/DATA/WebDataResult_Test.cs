@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Dooggy.Tests.Factory.lib;
+using BlueRocket.CORE.Tests.Factory.lib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Dooggy.Tests.DATA.RESULT
+namespace BlueRocket.CORE.Tests.DATA.RESULT
 {
 
     [TestClass()]

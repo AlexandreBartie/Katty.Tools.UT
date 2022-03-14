@@ -1,10 +1,10 @@
-﻿using Dooggy.Tests.Factory.lib;
+﻿using BlueRocket.CORE.Tests.Factory.lib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dooggy.Tests.FACTORY.COMMAND
+namespace BlueRocket.CORE.Tests.FACTORY.COMMAND
 {
     [TestClass()]
     public class CAT_010_DataCommandByRaw_Test : DataModelFactory_Test
@@ -128,7 +128,7 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             ConnectDbOracle();
 
             bloco = "";
-            bloco += ">var: UserCPF = 80554504715" + Environment.NewLine;
+            bloco += ">loc: UserCPF = 80554504715" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += GetBlocoRaw_Variable(prmVariavel: "UserCPF");
             bloco += Environment.NewLine;
@@ -156,9 +156,9 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             ConnectDbOracle();
 
             bloco = "";
-            bloco += ">var: AlunoAtivo = '6'" + Environment.NewLine;
-            bloco += ">var: AlunoSuspenso = '10'" + Environment.NewLine;
-            bloco += ">var: AlunoInativo = '4'" + Environment.NewLine;
+            bloco += ">loc: AlunoAtivo = '6'" + Environment.NewLine;
+            bloco += ">loc: AlunoSuspenso = '10'" + Environment.NewLine;
+            bloco += ">loc: AlunoInativo = '4'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += GetBlocoRaw_Padrao();
             bloco += Environment.NewLine;
@@ -190,9 +190,9 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             ConnectDbOracle();
 
             bloco = "";
-            bloco += ">var: AlunoAtivo = '6'" + Environment.NewLine;
-            bloco += ">var: AlunoSuspenso = '10'" + Environment.NewLine;
-            bloco += ">var: AlunoInativo = '4'" + Environment.NewLine;
+            bloco += ">loc: AlunoAtivo = '6'" + Environment.NewLine;
+            bloco += ">loc: AlunoSuspenso = '10'" + Environment.NewLine;
+            bloco += ">loc: AlunoInativo = '4'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += GetBlocoRaw_Padrao();
             bloco += Environment.NewLine;
@@ -229,9 +229,9 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             ConnectDbOracle();
 
             bloco = "";
-            bloco += ">var: AlunoAtivo = '6'" + Environment.NewLine;
-            bloco += ">var: AlunoSuspenso = '10'" + Environment.NewLine;
-            bloco += ">var: AlunoInativo = '4'" + Environment.NewLine;
+            bloco += ">loc: AlunoAtivo = '6'" + Environment.NewLine;
+            bloco += ">loc: AlunoSuspenso = '10'" + Environment.NewLine;
+            bloco += ">loc: AlunoInativo = '4'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += GetBlocoRaw_Padrao();
             bloco += Environment.NewLine;
@@ -273,9 +273,9 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             ConnectDbOracle();
 
             bloco = "";
-            bloco += ">var: AlunoAtivo = '6'" + Environment.NewLine;
-            bloco += ">var: AlunoSuspenso = '10'" + Environment.NewLine;
-            bloco += ">var: AlunoInativo = '4'" + Environment.NewLine;
+            bloco += ">loc: AlunoAtivo = '6'" + Environment.NewLine;
+            bloco += ">loc: AlunoSuspenso = '10'" + Environment.NewLine;
+            bloco += ">loc: AlunoInativo = '4'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += GetBlocoRaw_Padrao();
             bloco += Environment.NewLine;
@@ -322,10 +322,10 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             ConnectDbOracle();
 
             bloco = "";
-            bloco += ">var: AlunoAtivo = '6'" + Environment.NewLine;
-            bloco += ">var: AlunoSuspenso = '10'" + Environment.NewLine;
-            bloco += ">var: AlunoInativo = '4'" + Environment.NewLine;
-            bloco += ">var: AlunoBolsista = '8'" + Environment.NewLine;
+            bloco += ">loc: AlunoAtivo = '6'" + Environment.NewLine;
+            bloco += ">loc: AlunoSuspenso = '10'" + Environment.NewLine;
+            bloco += ">loc: AlunoInativo = '4'" + Environment.NewLine;
+            bloco += ">loc: AlunoBolsista = '8'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += GetBlocoRaw_Padrao();
             bloco += Environment.NewLine;
@@ -379,10 +379,10 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             ConnectDbOracle();
 
             bloco = "";
-            bloco += ">var: AlunoAtivo = '6'" + Environment.NewLine;
-            bloco += ">var: AlunoSuspenso = '10'" + Environment.NewLine;
-            bloco += ">var: AlunoInativo = '4'" + Environment.NewLine;
-            bloco += ">var: AlunoBolsista = '8'" + Environment.NewLine;
+            bloco += ">loc: AlunoAtivo = '6'" + Environment.NewLine;
+            bloco += ">loc: AlunoSuspenso = '10'" + Environment.NewLine;
+            bloco += ">loc: AlunoInativo = '4'" + Environment.NewLine;
+            bloco += ">loc: AlunoBolsista = '8'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += GetBlocoRaw_Padrao();
             bloco += Environment.NewLine;
@@ -1007,7 +1007,7 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             // arrange
             output = "";
             output += "ValidarCarneAluno,MesCompetencia,TipoCancelamento,Motivo,matricula,aluno" + Environment.NewLine;
-            output += ",062021,DILUIÇÃO DE MENSALIDADES - DIS,Teste,201508930091,HILARIO GIOVANE TRUCI" + Environment.NewLine;
+            output += ",062021,DILUIÇÃO DE MENSALIDADES - DIS,Teste,201401361064,MARCIO CARVALHO ARMADA JUNIOR" + Environment.NewLine;
 
             // act
             ConnectDbOracle();
@@ -1051,8 +1051,8 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             // arrange
             output = "";
             output += "ValidarCarneAluno,MesCompetencia,TipoCancelamento,Motivo,matricula,aluno" + Environment.NewLine;
-            output += ",062021,DILUIÇÃO DE MENSALIDADES - DIS,Teste,201512709697,LEANDRO SANT ANNA MARQUES" + Environment.NewLine;
-            output += ",062021,DILUIÇÃO DE MENSALIDADES - DIS,Teste,201501594575,TIAGO DE OLIVEIRA DA SILVA" + Environment.NewLine;
+            output += ",062021,DILUIÇÃO DE MENSALIDADES - DIS,Teste,201509360158,YURY KAMERON CORREA DANTAS SILVA" + Environment.NewLine;
+            output += ",062021,DILUIÇÃO DE MENSALIDADES - DIS,Teste,201512491144,NAIARA BISPO DA CRUZ" + Environment.NewLine;
 
             // act
             ConnectDbOracle();
@@ -1131,7 +1131,7 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco += ">> Variáveis" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: UserID = '1016283'" + Environment.NewLine;
+            bloco += ">loc: UserID = '1016283'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "  -name: testLoginAdmValido" + Environment.NewLine;
@@ -1168,8 +1168,8 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco += ">> Variáveis" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: UserID = '1016283'" + Environment.NewLine;
-            bloco += ">var: UserPass = ''" + Environment.NewLine;
+            bloco += ">loc: UserID = '1016283'" + Environment.NewLine;
+            bloco += ">loc: UserPass = ''" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "  -name: testLoginAdmValido" + Environment.NewLine;
@@ -1206,8 +1206,8 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco += ">> Variáveis" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: UserID = '1016283'" + Environment.NewLine;
-            bloco += ">var: UserPass = '     '" + Environment.NewLine;
+            bloco += ">loc: UserID = '1016283'" + Environment.NewLine;
+            bloco += ">loc: UserPass = '     '" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "  -name: testLoginAdmValido" + Environment.NewLine;
@@ -1244,7 +1244,7 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco += ">> Variáveis" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var:   UserID   =    '1016283'   " + Environment.NewLine;
+            bloco += ">loc:   UserID   =    '1016283'   " + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "  -name: testLoginAdmValido" + Environment.NewLine;
@@ -1273,7 +1273,7 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             output += "[ DAT] act# -db[SIA] -status: CONECTADO" + Environment.NewLine;
             output += "[ SET] act# -view[Login] -itens: 1" + Environment.NewLine;
             output += "[ERRO] Variável não encontrada ... -var: UserxID -cmd: SELECT cod_usuario, '1234as' as senha, nom_usuario FROM seg.usuario WHERE cod_usuario = #(UserxID)" + Environment.NewLine;
-            output += "[ERRO] SQL falhou ... -error: [ORA-00936: expressão não encontrada] -db[SIA] -sql: SELECT cod_usuario, '1234as' as senha, nom_usuario FROM seg.usuario WHERE cod_usuario =" + Environment.NewLine;
+            output += "[ERRO] >>>> [ORA-00936: expressão não encontrada] SQL falhou ... -error: [ORA-00936: expressão não encontrada] -db[SIA] -sql: SELECT cod_usuario, '1234as' as senha, nom_usuario FROM seg.usuario WHERE cod_usuario =" + Environment.NewLine;
             output += "[MUTE] act# -save: Silenciado com sucesso. -encoding: utf8" + Environment.NewLine;
 
             // act
@@ -1284,7 +1284,7 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco += ">> Variáveis" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: UserID = '1016283'" + Environment.NewLine;
+            bloco += ">loc: UserID = '1016283'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "  -name: testLoginAdmValido" + Environment.NewLine;
@@ -1325,16 +1325,16 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco += ">> Variáveis" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: UserID = '1016283'" + Environment.NewLine;
-            bloco += ">var: UserPass = '1234as'" + Environment.NewLine;
+            bloco += ">loc: UserID = '1016283'" + Environment.NewLine;
+            bloco += ">loc: UserPass = '1234as'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += ">> Tabela LOGIN" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: AlunoNovo = '4'" + Environment.NewLine;
-            bloco += ">var: AlunoFormado = '10'" + Environment.NewLine;
-            bloco += ">var: AlunoReprovado = '6'" + Environment.NewLine;
+            bloco += ">loc: AlunoNovo = '4'" + Environment.NewLine;
+            bloco += ">loc: AlunoFormado = '10'" + Environment.NewLine;
+            bloco += ">loc: AlunoReprovado = '6'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "  -name: testLoginAdmValido" + Environment.NewLine;
@@ -1407,16 +1407,16 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco += ">> Variáveis" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: UserID = '1016283'" + Environment.NewLine;
-            bloco += ">var: UserPass = '1234as'" + Environment.NewLine;
+            bloco += ">loc: UserID = '1016283'" + Environment.NewLine;
+            bloco += ">loc: UserPass = '1234as'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += ">> Tabela LOGIN" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: AlunoNovo = '4'" + Environment.NewLine;
-            bloco += ">var: AlunoFormado = '10'" + Environment.NewLine;
-            bloco += ">var: AlunoReprovado = '6'" + Environment.NewLine;
+            bloco += ">loc: AlunoNovo = '4'" + Environment.NewLine;
+            bloco += ">loc: AlunoFormado = '10'" + Environment.NewLine;
+            bloco += ">loc: AlunoReprovado = '6'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "  -name: LoginAdmValido" + Environment.NewLine;
@@ -1480,16 +1480,16 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco += ">> Variáveis" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: UserID = '1016283'" + Environment.NewLine;
-            bloco += ">var: UserPass = '1234as'" + Environment.NewLine;
+            bloco += ">loc: UserID = '1016283'" + Environment.NewLine;
+            bloco += ">loc: UserPass = '1234as'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += ">> Tabela LOGIN" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: AlunoNovo = '4'" + Environment.NewLine;
-            bloco += ">var: AlunoFormado = '10'" + Environment.NewLine;
-            bloco += ">var: AlunoReprovado = '6'" + Environment.NewLine;
+            bloco += ">loc: AlunoNovo = '4'" + Environment.NewLine;
+            bloco += ">loc: AlunoFormado = '10'" + Environment.NewLine;
+            bloco += ">loc: AlunoReprovado = '6'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "  -name: LoginAdmValido" + Environment.NewLine;
@@ -1550,8 +1550,8 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco += ">> Variáveis" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: UserID = '1016283'" + Environment.NewLine;
-            bloco += ">var: UserPass = '1234as'" + Environment.NewLine;
+            bloco += ">loc: UserID = '1016283'" + Environment.NewLine;
+            bloco += ">loc: UserPass = '1234as'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">break:" + Environment.NewLine;
             bloco += Environment.NewLine;
@@ -1559,9 +1559,9 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco += ">> Tabela LOGIN" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: AlunoNovo = '4'" + Environment.NewLine;
-            bloco += ">var: AlunoFormado = '10'" + Environment.NewLine;
-            bloco += ">var: AlunoReprovado = '6'" + Environment.NewLine;
+            bloco += ">loc: AlunoNovo = '4'" + Environment.NewLine;
+            bloco += ">loc: AlunoFormado = '10'" + Environment.NewLine;
+            bloco += ">loc: AlunoReprovado = '6'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Login" + Environment.NewLine;
             bloco += "  -name: testLoginAdmValido" + Environment.NewLine;
@@ -1623,8 +1623,8 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco += ">> Variáveis" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: UserID = '1016283'" + Environment.NewLine;
-            bloco += ">var: UserPass = '1234as'" + Environment.NewLine;
+            bloco += ">loc: UserID = '1016283'" + Environment.NewLine;
+            bloco += ">loc: UserPass = '1234as'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">break:" + Environment.NewLine;
             bloco += Environment.NewLine;
@@ -1647,9 +1647,9 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco += ">> Tabela ALUNO" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: AlunoNovo = '4'" + Environment.NewLine;
-            bloco += ">var: AlunoFormado = '10'" + Environment.NewLine;
-            bloco += ">var: AlunoReprovado = '6'" + Environment.NewLine;
+            bloco += ">loc: AlunoNovo = '4'" + Environment.NewLine;
+            bloco += ">loc: AlunoFormado = '10'" + Environment.NewLine;
+            bloco += ">loc: AlunoReprovado = '6'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Aluno" + Environment.NewLine;
             bloco += "        -name: ValidarInformacoesDoAluno" + Environment.NewLine;
@@ -1699,8 +1699,8 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco += ">> Variáveis" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: UserID = '1016283'" + Environment.NewLine;
-            bloco += ">var: UserPass = '1234as'" + Environment.NewLine;
+            bloco += ">loc: UserID = '1016283'" + Environment.NewLine;
+            bloco += ">loc: UserPass = '1234as'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += ">> Tabela LOGIN" + Environment.NewLine;
@@ -1719,9 +1719,9 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco += ">> Tabela ALUNO" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: AlunoNovo = '4'" + Environment.NewLine;
-            bloco += ">var: AlunoFormado = '10'" + Environment.NewLine;
-            bloco += ">var: AlunoReprovado = '6'" + Environment.NewLine;
+            bloco += ">loc: AlunoNovo = '4'" + Environment.NewLine;
+            bloco += ">loc: AlunoFormado = '10'" + Environment.NewLine;
+            bloco += ">loc: AlunoReprovado = '6'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Aluno" + Environment.NewLine;
             bloco += "        -name: ValidarInformacoesDoAluno" + Environment.NewLine;
@@ -1775,8 +1775,8 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco += Environment.NewLine;
             bloco += ">break[on]:" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: UserID = '1016283'" + Environment.NewLine;
-            bloco += ">var: UserPass = '1234as'" + Environment.NewLine;
+            bloco += ">loc: UserID = '1016283'" + Environment.NewLine;
+            bloco += ">loc: UserPass = '1234as'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += ">> Tabela LOGIN" + Environment.NewLine;
@@ -1797,9 +1797,9 @@ namespace Dooggy.Tests.FACTORY.COMMAND
             bloco += ">> Tabela ALUNO" + Environment.NewLine;
             bloco += ">>" + Environment.NewLine;
             bloco += Environment.NewLine;
-            bloco += ">var: AlunoNovo = '4'" + Environment.NewLine;
-            bloco += ">var: AlunoFormado = '10'" + Environment.NewLine;
-            bloco += ">var: AlunoReprovado = '6'" + Environment.NewLine;
+            bloco += ">loc: AlunoNovo = '4'" + Environment.NewLine;
+            bloco += ">loc: AlunoFormado = '10'" + Environment.NewLine;
+            bloco += ">loc: AlunoReprovado = '6'" + Environment.NewLine;
             bloco += Environment.NewLine;
             bloco += ">view: Aluno" + Environment.NewLine;
             bloco += "        -name: ValidarInformacoesDoAluno" + Environment.NewLine;

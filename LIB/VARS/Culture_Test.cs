@@ -1,12 +1,12 @@
-﻿using Dooggy.Tests.LIB.VARS;
-using Dooggy.Tests.LIB.VARS.FORMAT;
+﻿using BlueRocket.CORE.Tests.LIB.VARS;
+using BlueRocket.CORE.Tests.LIB.VARS.FORMAT;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace Dooggy.Tests.LIB.VARS.CULTURE
+namespace BlueRocket.CORE.Tests.LIB.VARS.CULTURE
 {
     [TestClass()]
     public class CultureByDouble_Test : xVars_Test
@@ -55,7 +55,6 @@ namespace Dooggy.Tests.LIB.VARS.CULTURE
             ActionFormatDouble(prmNumber: 87123.45, prmRegionalizacao: new CultureInfo("pt-BR"), prmCSV: true);
 
         }
-
         [TestMethod()]
         public void TST050_CultureByDouble_ValorZeroFormatoCSV_enUS()
         {

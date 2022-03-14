@@ -1,11 +1,11 @@
-﻿using Dooggy.FACTORY.UNIT;
-using Dooggy.Lib.Parse;
+﻿using BlueRocket.CORE.FACTORY.UNIT;
+using BlueRocket.CORE.Lib.Parse;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dooggy.Tests.LIB.PARSE.TUPLA
+namespace BlueRocket.CORE.Tests.LIB.PARSE
 {
     [TestClass()]
     public class TUPLA_Test : UTC
@@ -14,16 +14,16 @@ namespace Dooggy.Tests.LIB.PARSE.TUPLA
         myTuplas Tuplas;
 
         [TestMethod()]
-        public void TST010_TuplaByNew_UnicaTupla()
+        public void TST010_Tupla_UnicoPar()
         {
 
             // arrange
-            input = @"Nome=Alexandre Bartie";
+            input(@"Nome=Alexandre Bartie");
 
-            output = @"Nome: 'Alexandre Bartie'";
+            output(@"Nome: 'Alexandre Bartie'");
 
             //// act
-            Tuplas = new myTuplas(input);
+            Tuplas = new myTuplas(inputTXT);
 
             // act & assert
             AssertTUPLA();
@@ -31,48 +31,48 @@ namespace Dooggy.Tests.LIB.PARSE.TUPLA
         }
 
         [TestMethod()]
-        public void TST020_TuplaByNew_VariasTuplas()
+        public void TST020_Tupla_VariosPares()
         {
 
             // arrange
-            input = @"Nome=Alexandre Bartie, nascimento=05/06/1971, email=alexandre_bartie@hotmail.com";
+            input(@"Nome=Alexandre Bartie, nascimento=05/06/1971, email=alexandre_bartie@hotmail.com");
 
-            output = @"Nome: 'Alexandre Bartie', nascimento: '05/06/1971', email: 'alexandre_bartie@hotmail.com'";
+            output(@"Nome: 'Alexandre Bartie', nascimento: '05/06/1971', email: 'alexandre_bartie@hotmail.com'");
 
             //// act
-            Tuplas = new myTuplas(input);
+            Tuplas = new myTuplas(inputTXT);
 
             // act & assert
             AssertTUPLA();
 
         }
         [TestMethod()]
-        public void TST030_TuplaByNew_EntradaVazia()
+        public void TST030_Tupla_EntradaVazia()
         {
 
             // arrange
-            input = @"";
+            input(@"");
 
-            output = @"";
+            output(@"");
 
             //// act
-            Tuplas = new myTuplas(input);
+            Tuplas = new myTuplas(inputTXT);
 
             // act & assert
             AssertTUPLA();
 
         }
         [TestMethod()]
-        public void TST040_TuplaByNew_EntradaNull()
+        public void TST040_Tupla_EntradaNull()
         {
 
             // arrange
-            input = null;
+            input(null);
 
-            output = @"";
+            output("");
 
             //// act
-            Tuplas = new myTuplas(input);
+            Tuplas = new myTuplas(inputTXT);
 
             // act & assert
             AssertTUPLA();
@@ -80,29 +80,29 @@ namespace Dooggy.Tests.LIB.PARSE.TUPLA
         }
 
         [TestMethod()]
-        public void TST050_TuplaByNew_ListaNomes()
+        public void TST050_Tupla_ListaNomes()
         {
 
             // arrange
-            input = @"Nome, nascimento, email";
+            input(@"Nome, nascimento, email");
 
-            output = @"Nome: '', nascimento: '', email: ''";
+            output(@"Nome: '', nascimento: '', email: ''");
 
             //// act
-            Tuplas = new myTuplas(input);
+            Tuplas = new myTuplas(inputTXT);
 
             // act & assert
             AssertTUPLA();
 
         }
         [TestMethod()]
-        public void TST060_TuplaByParse_ListaNomes()
+        public void TST060_Tupla_ListaNomes()
         {
 
             // arrange
-            input = @"Nome, nascimento, email";
+            input(@"Nome, nascimento, email");
 
-            output = @"Nome: '', nascimento: '', email: ''";
+            output(@"Nome: '', nascimento: '', email: ''");
 
             //// act
             Tuplas = new myTuplas();
@@ -114,13 +114,13 @@ namespace Dooggy.Tests.LIB.PARSE.TUPLA
 
         }
         [TestMethod()]
-        public void TST070_TuplaByParse_VariasTuplas()
+        public void TST070_Tupla_VariasTuplas()
         {
 
             // arrange
-            input = @"Nome, nascimento, email";
+            input(@"Nome, nascimento, email");
 
-            output = @"Nome: 'Alexandre Bartie', nascimento: '05/06/1971', email: 'alexandre_bartie@hotmail.com'";
+            output(@"Nome: 'Alexandre Bartie', nascimento: '05/06/1971', email: 'alexandre_bartie@hotmail.com'");
 
             //// act
             Tuplas = new myTuplas();
@@ -132,16 +132,16 @@ namespace Dooggy.Tests.LIB.PARSE.TUPLA
 
         }
         [TestMethod()]
-        public void TST080_TuplaByParse_AtualizarParcialmenteTuplas()
+        public void TST080_Tupla_AtualizarParcialmente()
         {
 
             // arrange
-            input = @"Nome, nascimento, email";
+            input(@"Nome, nascimento, email");
 
-            output = @"Nome: 'Renato Andrade', nascimento: '', email: 'renato.andrade@gmail.com'";
+            output(@"Nome: 'Renato Andrade', nascimento: '', email: 'renato.andrade@gmail.com'");
 
             //// act
-            Tuplas = new myTuplas(input);
+            Tuplas = new myTuplas(inputTXT);
 
             Tuplas.Parse("Nome=Renato Andrade, email=renato.andrade@gmail.com");
 
@@ -150,16 +150,16 @@ namespace Dooggy.Tests.LIB.PARSE.TUPLA
 
         }
         [TestMethod()]
-        public void TST090_TuplaByParse_AtualizarPosicionalmenteValores()
+        public void TST090_Tupla_AtualizarPosicionalmenteValores()
         {
 
             // arrange
-            input = @"Nome, nascimento, email";
+            input(@"Nome, nascimento, email");
 
-            output = @"Nome: 'Renato Andrade', nascimento: '', email: 'renato.andrade@gmail.com'";
+            output(@"Nome: 'Renato Andrade', nascimento: '', email: 'renato.andrade@gmail.com'");
 
             //// act
-            Tuplas = new myTuplas(input);
+            Tuplas = new myTuplas(inputTXT);
 
             Tuplas.SetValues("Renato Andrade, , renato.andrade@gmail.com");
 
@@ -171,7 +171,7 @@ namespace Dooggy.Tests.LIB.PARSE.TUPLA
 
         private void AssertTUPLA(bool prmMultiplos)
         {
-            AssertTest(prmResult: Tuplas.key);
+            AssertTest(prmResult: Tuplas.log);
         }
     }
 

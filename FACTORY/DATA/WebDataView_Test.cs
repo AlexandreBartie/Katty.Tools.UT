@@ -1,14 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Dooggy.Factory.Data;
-using Dooggy.Factory;
-using Dooggy.Tests.Factory.lib;
+using BlueRocket.CORE.Factory.Data;
+using BlueRocket.CORE.Factory;
+using BlueRocket.CORE.Tests.Factory.lib;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace Dooggy.Tests.DATA.VIEW
+namespace BlueRocket.CORE.Tests.DATA.VIEW
 {
 
     [TestClass()]
@@ -20,7 +20,7 @@ namespace Dooggy.Tests.DATA.VIEW
         {
 
             // arrange
-            output = "{ 'COD_MATRICULA': '198402018831', 'NOM_RESPONSAVEL_PGTO': 'PAULO LOUREIRO FILHO' }";
+            output = "{ 'COD_MATRICULA': '199202134879', 'NOM_RESPONSAVEL_PGTO': 'RENATA P WERNECK DE FREITAS' }";
 
             // act
             ConnectDbOracle();
@@ -39,7 +39,7 @@ namespace Dooggy.Tests.DATA.VIEW
         {
 
             // arrange
-            output = "{ 'COD_MATRICULA': '198402018831', 'NOM_RESPONSAVEL_PGTO': 'PAULO LOUREIRO FILHO' }";
+            output = "{ 'COD_MATRICULA': '199202134879', 'NOM_RESPONSAVEL_PGTO': 'RENATA P WERNECK DE FREITAS' }";
 
             // act
             ConnectDbOracle();
@@ -77,7 +77,7 @@ namespace Dooggy.Tests.DATA.VIEW
         {
 
             // arrange
-            output = "{ 'COD_MATRICULA': '200717000195' }";
+            output = "{ 'COD_MATRICULA': '200918033112' }";
 
             // act
             ConnectDbOracle();
