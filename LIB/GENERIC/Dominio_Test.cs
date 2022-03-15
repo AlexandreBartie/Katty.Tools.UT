@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using BlueRocket.CORE.FACTORY.UNIT;
-using BlueRocket.CORE.Lib.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace BlueRocket.CORE.Tests.LIB.GENERIC
+namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
 {
     [TestClass()]
     public class myDominio_Test : UTC
@@ -108,6 +106,7 @@ namespace BlueRocket.CORE.Tests.LIB.GENERIC
             output("tipo: PROGRESSIVO,REGRESSIVO");
             output("analista: ALEXANDRE,LISIA,VITOR");
             output("situacao: PRONTO,EDICAO,ERRO,REFINAR");
+            output();
 
             // act & assert
             ActionGetDominios();

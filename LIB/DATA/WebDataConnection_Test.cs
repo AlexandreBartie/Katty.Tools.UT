@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Text;
 using System.Diagnostics;
-using BlueRocket.CORE;
-using BlueRocket.CORE.Lib.Data;
-using BlueRocket.CORE.Factory.Data;
-using BlueRocket.CORE.Factory;
 
-namespace BlueRocket.CORE.Tests.DATA.CONNECTION
+namespace BlueRocket.LIBRARY.TESTS.DATA.CONNECTION
 {
     [TestClass()]
     public class DataBaseConnection_Test : DataConnection_Test
@@ -48,7 +44,7 @@ namespace BlueRocket.CORE.Tests.DATA.CONNECTION
         {
 
             // assert
-            string result = GetYesNo(prmOpcao: Pool.IsDbOK);
+            string result = GetYesNo(prmOpcao: Connect.IsDbOK);
 
             // assert
             if (output != result)
@@ -63,26 +59,30 @@ namespace BlueRocket.CORE.Tests.DATA.CONNECTION
         public string input;
         public string output;
 
-        private TestFactory Fabrica;
+        private TraceLog Trace = new TraceLog();
 
-        public TestDataPool Pool => Fabrica.Pool;
+        public DataConnect Connect;
+
+        private DataBaseOracle Oracle => Connect.Assist.Oracle;
+
+        public DataConnection_Test()
+        {
+            Connect = new DataConnect(Trace);
+        }
 
         public void ConnectDbOracle() { ConnectDbOracle(prmSenha: "asdfg"); }
 
         public void ConnectDbOracle(string prmSenha)
         {
 
-            Fabrica = new TestFactory();
+            Oracle.user = "desenvolvedor_sia";
+            Oracle.password = prmSenha;
 
-            Pool.Connect.Oracle.user = "desenvolvedor_sia";
-            Pool.Connect.Oracle.password = prmSenha;
-
-            Pool.Connect.Oracle.host = "10.250.1.35";
-            Pool.Connect.Oracle.port = "1521";
-            Pool.Connect.Oracle.service = "branch_1083.prod01.redelocal.oraclevcn.com";
+            Oracle.host = "10.250.1.35";
+            Oracle.service = "branch_1083.prod01.redelocal.oraclevcn.com";
 
 
-            Pool.Connect.Oracle.Add(prmTag: "SIA");
+            Connect.AddDataBase(prmTag: "SIA", prmConexao: Oracle.GetString());
 
         }
 

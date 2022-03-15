@@ -1,11 +1,9 @@
-﻿using BlueRocket.CORE.FACTORY.UNIT;
-using BlueRocket.CORE.Lib.Parse;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BlueRocket.CORE.Tests.LIB.PARSE
+namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
 {
     [TestClass()]
     public class TUPLA_Test : UTC

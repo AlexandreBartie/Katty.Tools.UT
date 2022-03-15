@@ -1,12 +1,10 @@
-﻿using BlueRocket.CORE;
-using BlueRocket.CORE.Lib.Vars;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace BlueRocket.CORE.Tests.LIB.VARS.FORMAT
+namespace BlueRocket.LIBRARY.TESTS.LIB.VARS.FORMAT
 {
     [TestClass()]
     public class CAT_010_VarsByFormatTextString_Test : xVars_Test

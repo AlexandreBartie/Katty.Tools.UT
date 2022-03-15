@@ -1,13 +1,10 @@
-﻿using BlueRocket.CORE;
-using BlueRocket.CORE.Lib.Generic;
-using BlueRocket.CORE.Lib.Vars;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace BlueRocket.CORE.Tests.LIB.GENERIC
+namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
 {
     [TestClass()]
     public class xLista_Test

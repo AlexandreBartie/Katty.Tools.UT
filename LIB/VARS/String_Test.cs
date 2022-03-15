@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using BlueRocket.CORE;
-using BlueRocket.CORE.Lib.Generic;
-using BlueRocket.CORE.Lib.Vars;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace BlueRocket.CORE.Tests.LIB.STRING
+namespace BlueRocket.LIBRARY.TESTS.LIB.STRING
 {
 
     [TestClass()]

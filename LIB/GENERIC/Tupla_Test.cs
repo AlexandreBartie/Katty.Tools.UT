@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using BlueRocket.CORE.FACTORY.UNIT;
-using BlueRocket.CORE.Lib.Generic;
-using BlueRocket.CORE.Lib.Parse;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace BlueRocket.CORE.Tests.LIB.GENERIC
+namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
 {
     [TestClass()]
     public class myTupla_Test : UTC

@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BlueRocket.CORE.Lib.Parse;
 
-namespace BlueRocket.CORE.Tests.LIB.PARSE
+namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
 {
     [TestClass()]
     public class JSON_Test

@@ -1,11 +1,10 @@
-﻿using BlueRocket.CORE;
-using BlueRocket.CORE.Lib.Files;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using BlueRocket.LIBRARY;
 
-namespace BlueRocket.CORE.Tests.LIB.FILES
+namespace BlueRocket.LIBRARY.TESTS.LIB.FILES
 {
     [TestClass()]
     public class Diretorio_Test : Files_Test

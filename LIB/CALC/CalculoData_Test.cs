@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using BlueRocket.CORE.Lib.Vars;
-using BlueRocket.CORE.Tools.Calc;
+using BlueRocket.LIBRARY;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace BlueRocket.CORE.Tests.LIB.CALC
+namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
 {
 
     [TestClass()]

@@ -1,9 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BlueRocket.CORE.Lib.Parse;
 using System.Diagnostics;
-using System.Windows.Forms;
 
-namespace BlueRocket.CORE.Tests.LIB.PARSE
+namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
 {
     [TestClass()]
     public class ParseCSV_Test
