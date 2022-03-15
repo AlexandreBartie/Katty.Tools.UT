@@ -126,6 +126,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
             output("tipo: FACIL,MEDIO,DIFICIL");
             output("analista: ALEXANDRE,LISIA,VITOR");
             output("situacao: PRONTO,EDICAO,ERRO,REFINAR");
+            output();
 
             // act & assert
             ActionGetDominios();

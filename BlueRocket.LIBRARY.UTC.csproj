@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>BlueRocket.LIBRARY.QA</RootNamespace>
+    <RootNamespace>BlueRocket.LIBRARY.UTC</RootNamespace>
 
     <IsPackable>false</IsPackable>
 

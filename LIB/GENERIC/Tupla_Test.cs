@@ -40,7 +40,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
         {
 
             input("alex");
-            output("alex");
+            output("alex: ''");
 
             // act & assert
             ActionGetTupla();
@@ -167,7 +167,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
         {
 
             input("alex [   Aluno Novato   ]");
-            output("alex <Aluno Novato>");
+            output("alex: '' <Aluno Novato>");
 
             // act & assert
             ActionGetTupla();
@@ -254,7 +254,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
         {
 
             input("Login[testLoginAdmValido,login,senha,usuarioLogado] + Aluno[test01_ValidarInformacoesDoAluno,matricula,getNomeAluno]");
-            output("Login <testLoginAdmValido,login,senha,usuarioLogado>, Aluno <test01_ValidarInformacoesDoAluno,matricula,getNomeAluno>");
+            output("Login: '' <testLoginAdmValido,login,senha,usuarioLogado>, Aluno: '' <test01_ValidarInformacoesDoAluno,matricula,getNomeAluno>");
 
             // act & assert
             ActionGetTuplas(prmSeparador: "+");

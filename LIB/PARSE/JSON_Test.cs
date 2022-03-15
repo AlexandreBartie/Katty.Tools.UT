@@ -23,7 +23,9 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
             output =  @"[Nome]: 'Alexandre', [email]: 'alexandre_bartie@hotmail.com'";
 
             //// act
-            FlowJSON = new myJSON(); FlowJSON.Add(input);
+            FlowJSON = new myJSON(); 
+            
+            FlowJSON.Add(input);
 
             // act & assert
             AssertJSON();
