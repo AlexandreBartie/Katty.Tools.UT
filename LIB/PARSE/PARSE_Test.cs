@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 
-namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
+namespace Dooggy.LIBRARY.UTC.LIB.PARSE
 {
     [TestClass()]
     public class ParseCSV_Test
@@ -111,7 +111,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
             // act & assert
             ActionParseCSV();
         }
-        
+
         [TestMethod()]
         public void TST100_ParseCSV_Delimitado_ItemEspacos()
         {
@@ -122,7 +122,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
             // act & assert
             ActionParseCSV();
         }
-       
+
         [TestMethod()]
         public void TST110_ParseCSV_DelimitadoComVirgula_Padrao()
         {
@@ -177,7 +177,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
             // act & assert
             ActionParseCSV();
         }
-        
+
         [TestMethod()]
         public void TST160_ParseCSV_DelimitadoComVirgula_DelimitadorNoSTART()
         {

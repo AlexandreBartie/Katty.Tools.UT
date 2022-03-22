@@ -1,12 +1,10 @@
-﻿using BlueRocket.LIBRARY.TESTS.LIB.VARS;
-using BlueRocket.LIBRARY.TESTS.LIB.VARS.FORMAT;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace BlueRocket.LIBRARY.TESTS.LIB.VARS.CULTURE
+namespace Dooggy.LIBRARY.UTC.LIB.VARS
 {
     [TestClass()]
     public class CultureByDouble_Test : xVars_Test

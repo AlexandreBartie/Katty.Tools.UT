@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
+namespace Dooggy.LIBRARY.UTC.LIB.PARSE
 {
     [TestClass()]
     public class JSON_Test
@@ -20,11 +20,11 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
 
             // arrange
             input = @"{ 'Nome': 'Alexandre', 'email': 'alexandre_bartie@hotmail.com' }";
-            output =  @"[Nome]: 'Alexandre', [email]: 'alexandre_bartie@hotmail.com'";
+            output = @"[Nome]: 'Alexandre', [email]: 'alexandre_bartie@hotmail.com'";
 
             //// act
-            FlowJSON = new myJSON(); 
-            
+            FlowJSON = new myJSON();
+
             FlowJSON.Add(input);
 
             // act & assert
@@ -38,7 +38,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
 
             // arrange
             input = @"{ 'tag': 'Aluno', 'sql': 'SELECT * from Alunos WHERE situacao = ok' }";
-            output =  @"[tag]: 'Aluno', [sql]: 'SELECT * from Alunos WHERE situacao = ok'";
+            output = @"[tag]: 'Aluno', [sql]: 'SELECT * from Alunos WHERE situacao = ok'";
 
             //// act
             FlowJSON = new myJSON(); FlowJSON.Add(input);
@@ -53,8 +53,8 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
         {
 
             // arrange
-            input = @"{ 'path': 'c:\MassaTestes\', 'branch': '1084', 'porta': '1521' }";
-            output =  @"[path]: 'c:\MassaTestes\', [branch]: '1084', [porta]: '1521'";
+            input = @"{ 'path': 'c:\\MassaTestes\\', 'branch': '1084', 'porta': '1521' }";
+            output = @"[path]: 'c:\MassaTestes\', [branch]: '1084', [porta]: '1521'";
 
             //// act
             FlowJSON = new myJSON(); FlowJSON.Add(input);
@@ -70,7 +70,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
 
             // arrange
             input = @"{ 'path': 'c:\\MassaTestes\\', 'branch': '1084', 'porta': '1521' }";
-            output =  @"[path]: 'c:\MassaTestes\', [branch]: '1084', [porta]: '1521'";
+            output = @"[path]: 'c:\MassaTestes\', [branch]: '1084', [porta]: '1521'";
 
             //// act
             FlowJSON = new myJSON(); FlowJSON.Add(input);
@@ -79,14 +79,14 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
             AssertJSON();
 
         }
-        
+
         [TestMethod()]
         public void TST050_FlowSimples_ValoresComBarraInvertida()
         {
 
             // arrange
             input = @"{ 'path': 'c:/MassaTestes/', 'branch': '1084', 'porta': '1521' }";
-            output =  @"[path]: 'c:/MassaTestes/', [branch]: '1084', [porta]: '1521'";
+            output = @"[path]: 'c:/MassaTestes/', [branch]: '1084', [porta]: '1521'";
 
             //// act
             FlowJSON = new myJSON(); FlowJSON.Add(input);
@@ -121,7 +121,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
             inputA = @"{ 'Nome': 'Alexandre', 'email': 'alexandre_bartie@hotmail.com' }";
             inputB = @"{ 'Nome': 'Bartie', 'email': 'bartie.devops@outlook.com' }";
 
-            output  = "";
+            output = "";
             output += @"[ ";
             output += @"{ ""Nome"": ""Alexandre"", ""email"": ""alexandre_bartie@hotmail.com"" }, ";
             output += @"{ ""Nome"": ""Bartie"", ""email"": ""bartie.devops@outlook.com"" }";
@@ -149,7 +149,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
             output = @"[ { ""Nome"": ""Renato"", ""email"": ""alexandre_bartie@hotmail.com"" }, { ""Nome"": ""José"", ""email"": ""bartie.devops@outlook.com"" } ]";
 
             //// act
-            FlowJSON = new myJSON(); FlowJSON.Add(inputA,mestreA); FlowJSON.Add(inputB, mestreB);
+            FlowJSON = new myJSON(); FlowJSON.Add(inputA, mestreA); FlowJSON.Add(inputB, mestreB);
 
             // act & assert
             AssertJSON(prmMultiplos: true);

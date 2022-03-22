@@ -2,9 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using BlueRocket.LIBRARY;
 
-namespace BlueRocket.LIBRARY.TESTS.LIB.FILES
+namespace Dooggy.LIBRARY.UTC.LIB.FILES
 {
     [TestClass()]
     public class Diretorio_Test : Files_Test
@@ -45,7 +44,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.FILES
             ActionDiretorio(input, prmFiltro: "*.txt");
 
         }
-        
+
         [TestMethod()]
         public void TST_Diretorio_040_DiretorioInexistente()
         {
@@ -57,7 +56,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.FILES
             ActionDiretorio(input, prmFiltro: "*.txt");
 
         }
-        
+
         private void ActionDiretorio(string prmPath) => ActionDiretorio(prmPath, prmFiltro: "*.*");
         private void ActionDiretorio(string prmPath, string prmFiltro)
         {
@@ -153,7 +152,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.FILES
 
         public Diretorio GetDiretorio(string prmPath) => new Diretorio(GetPath(prmPath));
 
-        public string GetPath(string prmPath) => @"C:\MassaTestes\POC\TesteUT\" + prmPath;
+        public string GetPath(string prmPath) => @"C:\MassaTestes\QA\TesteUT\" + prmPath;
 
         public void ActionGeneric()
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace BlueRocket.LIBRARY.TESTS.LIB.STRING
+namespace Dooggy.LIBRARY.UTC.LIB.VARS
 {
 
     [TestClass()]
@@ -306,7 +306,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.STRING
 
     [TestClass()]
     public class myStringsByGetLastExt_Test : myStrings_Test
-    { 
+    {
         [TestMethod()]
         public void TST_GetLastExt_010_Padrao()
         {
@@ -904,7 +904,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.STRING
         }
     }
     public class myStrings_Test
-    { 
+    {
 
         public string mask;
 
@@ -915,11 +915,11 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.STRING
         public void ActionGetFirst()
         {
 
-        // assert
-        result = myString.GetFirst(input);
+            // assert
+            result = myString.GetFirst(input);
 
-        // assert
-        ActionGeneric();
+            // assert
+            ActionGeneric();
 
         }
         public void ActionGetFirstExt() => ActionGetFirstExt(prmTamanho: 6);
@@ -927,74 +927,74 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.STRING
         public void ActionGetFirstExt(int prmTamanho)
         {
 
-        // assert
-        result = myString.GetFirst(input, prmTamanho);
+            // assert
+            result = myString.GetFirst(input, prmTamanho);
 
-        // assert
-        ActionGeneric();
+            // assert
+            ActionGeneric();
 
         }
         public void ActionGetFirstExt(string prmDelimitador)
         {
 
-        // assert
-        result = myString.GetFirst(input, prmDelimitador);
+            // assert
+            result = myString.GetFirst(input, prmDelimitador);
 
-        // assert
-        ActionGeneric();
+            // assert
+            ActionGeneric();
 
         }
         public void ActionGetLast()
         {
 
-        // assert
-        result = myString.GetLast(input);
+            // assert
+            result = myString.GetLast(input);
 
-        // assert
-        ActionGeneric();
+            // assert
+            ActionGeneric();
 
         }
         public void ActionGetLastExt() => ActionGetLastExt(prmTamanho: 6);
         public void ActionGetLastExt(int prmTamanho)
         {
 
-        // assert
-        result = myString.GetLast(input, prmTamanho);
+            // assert
+            result = myString.GetLast(input, prmTamanho);
 
-        // assert
-        ActionGeneric();
+            // assert
+            ActionGeneric();
 
         }
         public void ActionGetLastExt(string prmDelimitador)
         {
 
-        // assert
-        result = myString.GetLast(input, prmDelimitador);
+            // assert
+            result = myString.GetLast(input, prmDelimitador);
 
-        // assert
-        ActionGeneric();
+            // assert
+            ActionGeneric();
 
         }
 
         public void ActionGetMask()
         {
 
-        // assert
-        result = myFormat.TextToString(input, mask);
+            // assert
+            result = myFormat.TextToString(input, mask);
 
-        // assert
-        ActionGeneric();
+            // assert
+            ActionGeneric();
 
         }
 
         public void ActionGetFind(string prmBuscar)
         {
 
-        // assert
-        result = myBool.IIf(myString.GetFind(input, prmBuscar), "sim", "nao");
+            // assert
+            result = myBool.IIf(myString.GetFind(input, prmBuscar), "sim", "nao");
 
-        // assert
-        ActionGeneric();
+            // assert
+            ActionGeneric();
 
         }
         public void ActionGetReverse()
@@ -1010,11 +1010,11 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.STRING
         public void ActionGetNoBlank()
         {
 
-        // assert
-        result = myString.GetNoBlank(input);
+            // assert
+            result = myString.GetNoBlank(input);
 
-        // assert
-        ActionGeneric();
+            // assert
+            ActionGeneric();
 
         }
         public void ActionGetRepetir(int prmVezes)
@@ -1027,7 +1027,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.STRING
             ActionGeneric();
 
         }
-            
+
         public void ActionGetSubstituir(string prmVelho, string prmNovo)
         {
 
@@ -1041,9 +1041,9 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.STRING
         public void ActionGeneric()
         {
 
-        // assert
-        if (output != result)
-            Assert.Fail(string.Format("Expected: <{0}>, Actual: <{1}>", output, result));
+            // assert
+            if (output != result)
+                Assert.Fail(string.Format("Expected: <{0}>, Actual: <{1}>", output, result));
 
         }
 

@@ -3,16 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
+namespace Dooggy.LIBRARY.UTC.LIB.PARSE
 {
+
     [TestClass()]
-    public class TUPLA_Test : UTC
+    public class TUPLA_Test : UTControl
     {
 
-        myTuplas Tuplas;
+        myTupla Tupla;
 
         [TestMethod()]
-        public void TST010_Tupla_UnicoPar()
+        public void TST010_Tupla_EntradaPadrao()
         {
 
             // arrange
@@ -21,7 +22,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
             output(@"Nome: 'Alexandre Bartie'");
 
             //// act
-            Tuplas = new myTuplas(inputTXT);
+            Tupla = new myTupla(GetInput());
 
             // act & assert
             AssertTUPLA();
@@ -29,7 +30,54 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
         }
 
         [TestMethod()]
-        public void TST020_Tupla_VariosPares()
+        public void TST020_Tupla_EntradaDetalhes()
+        {
+
+            // arrange
+            input(@"Nome=Alexandre Bartie[  cod_name : X(10) ] ");
+
+            output(@"Nome: 'Alexandre Bartie' [cod_name:X(10)]");
+
+            //// act
+            Tupla = new myTupla(GetInput());
+
+            // act & assert
+            AssertTUPLA();
+
+        }
+
+        private void AssertTUPLA()
+        {
+            AssertTest(prmResult: Tupla.log);
+        }
+
+    }
+
+    [TestClass()]
+    public class TUPLAS_Test : UTControl
+    {
+
+        myTuplas Tuplas;
+
+        [TestMethod()]
+        public void TST010_Tuplas_UnicoPar()
+        {
+
+            // arrange
+            input(@"Nome=Alexandre Bartie");
+
+            output(@"Nome: 'Alexandre Bartie'");
+
+            //// act
+            Tuplas = new myTuplas(GetInput());
+
+            // act & assert
+            AssertTUPLAS();
+
+        }
+
+        [TestMethod()]
+        public void TST020_Tuplas_VariosPares()
         {
 
             // arrange
@@ -38,14 +86,14 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
             output(@"Nome: 'Alexandre Bartie', nascimento: '05/06/1971', email: 'alexandre_bartie@hotmail.com'");
 
             //// act
-            Tuplas = new myTuplas(inputTXT);
+            Tuplas = new myTuplas(GetInput());
 
             // act & assert
-            AssertTUPLA();
+            AssertTUPLAS();
 
         }
         [TestMethod()]
-        public void TST030_Tupla_EntradaVazia()
+        public void TST030_Tuplas_EntradaVazia()
         {
 
             // arrange
@@ -54,14 +102,14 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
             output(@"");
 
             //// act
-            Tuplas = new myTuplas(inputTXT);
+            Tuplas = new myTuplas(GetInput());
 
             // act & assert
-            AssertTUPLA();
+            AssertTUPLAS();
 
         }
         [TestMethod()]
-        public void TST040_Tupla_EntradaNull()
+        public void TST040_Tuplas_EntradaNull()
         {
 
             // arrange
@@ -70,15 +118,15 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
             output("");
 
             //// act
-            Tuplas = new myTuplas(inputTXT);
+            Tuplas = new myTuplas(GetInput());
 
             // act & assert
-            AssertTUPLA();
+            AssertTUPLAS();
 
         }
 
         [TestMethod()]
-        public void TST050_Tupla_ListaNomes()
+        public void TST050_Tuplas_ListaNomes()
         {
 
             // arrange
@@ -87,14 +135,14 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
             output(@"Nome: '', nascimento: '', email: ''");
 
             //// act
-            Tuplas = new myTuplas(inputTXT);
+            Tuplas = new myTuplas(GetInput());
 
             // act & assert
-            AssertTUPLA();
+            AssertTUPLAS();
 
         }
         [TestMethod()]
-        public void TST060_Tupla_ListaNomes()
+        public void TST060_Tuplas_ListaNomes()
         {
 
             // arrange
@@ -108,11 +156,11 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
             Tuplas.Parse("Nome"); Tuplas.Parse("nascimento"); Tuplas.Parse("email");
 
             // act & assert
-            AssertTUPLA();
+            AssertTUPLAS();
 
         }
         [TestMethod()]
-        public void TST070_Tupla_VariasTuplas()
+        public void TST070_Tuplas_VariasTuplas()
         {
 
             // arrange
@@ -126,11 +174,11 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
             Tuplas.Parse("Nome=Alexandre Bartie"); Tuplas.Parse("nascimento=05/06/1971"); Tuplas.Parse("email=alexandre_bartie@hotmail.com");
 
             // act & assert
-            AssertTUPLA();
+            AssertTUPLAS();
 
         }
         [TestMethod()]
-        public void TST080_Tupla_AtualizarParcialmente()
+        public void TST080_Tuplas_AtualizarParcialmente()
         {
 
             // arrange
@@ -139,16 +187,16 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
             output(@"Nome: 'Renato Andrade', nascimento: '', email: 'renato.andrade@gmail.com'");
 
             //// act
-            Tuplas = new myTuplas(inputTXT);
+            Tuplas = new myTuplas(GetInput());
 
             Tuplas.Parse("Nome=Renato Andrade, email=renato.andrade@gmail.com");
 
             // act & assert
-            AssertTUPLA();
+            AssertTUPLAS();
 
         }
         [TestMethod()]
-        public void TST090_Tupla_AtualizarPosicionalmenteValores()
+        public void TST090_Tuplas_AtualizarPosicionalmenteValores()
         {
 
             // arrange
@@ -157,17 +205,15 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.PARSE
             output(@"Nome: 'Renato Andrade', nascimento: '', email: 'renato.andrade@gmail.com'");
 
             //// act
-            Tuplas = new myTuplas(inputTXT);
+            Tuplas = new myTuplas(GetInput());
 
             Tuplas.SetValues("Renato Andrade, , renato.andrade@gmail.com");
 
             // act & assert
-            AssertTUPLA();
+            AssertTUPLAS();
 
         }
-        private void AssertTUPLA() => AssertTUPLA(prmMultiplos: false);
-
-        private void AssertTUPLA(bool prmMultiplos)
+        private void AssertTUPLAS()
         {
             AssertTest(prmResult: Tuplas.log);
         }

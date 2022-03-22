@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
+namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
 {
     [TestClass()]
     public class xLista_Test
@@ -39,9 +39,20 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
             ActionLista();
 
         }
-
         [TestMethod()]
-        public void TST030_FlowCSV_Unico()
+        public void TST030_FlowCSV_ComVazios()
+        {
+
+            // arrange
+            input = " 1234 ,  , 3 ,, 78 ";
+            output = "4,0,1,0,2";
+
+            // act & assert
+            ActionLista();
+
+        }
+        [TestMethod()]
+        public void TST040_FlowCSV_Unico()
         {
 
             // arrange
@@ -54,12 +65,12 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
         }
 
         [TestMethod()]
-        public void TST040_FlowCSV_Vazio()
+        public void TST050_FlowCSV_Vazio()
         {
 
             // arrange
             input = "";
-            output = "";
+            output = "0";
 
             // act & assert
             ActionLista();
@@ -67,7 +78,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
         }
 
         [TestMethod()]
-        public void TST050_FlowCSV_Espaco()
+        public void TST060_FlowCSV_Espaco()
         {
 
             // arrange
@@ -80,7 +91,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
         }
 
         [TestMethod()]
-        public void TST060_FlowCSV_Nulo()
+        public void TST070_FlowCSV_Nulo()
         {
 
             // arrange
@@ -93,7 +104,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
         }
 
         [TestMethod()]
-        public void TST070_FlowCSV_SeparadorModificado()
+        public void TST080_FlowCSV_SeparadorModificado()
         {
 
             // arrange
@@ -104,7 +115,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
             ActionLista(prmSeparador: "$");
 
         }
-        
+
         private void ActionLista() => ActionLista(prmSeparador: ",");
         private void ActionLista(string prmSeparador)
         {
@@ -125,7 +136,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
     public class xMask_Test
     {
         string lista; string chave;
-        string input; 
+        string input;
         string output;
 
         private xMask Mask;
@@ -171,7 +182,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
             ActionMask();
 
         }
-        
+
         [TestMethod()]
         public void TST040_Mask_MascarasMultiplas()
         {

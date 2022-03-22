@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using BlueRocket.LIBRARY;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
+namespace Dooggy.LIBRARY.UTC.LIB.CALC
 {
 
     [TestClass()]
@@ -12,7 +11,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
     {
 
         [TestMethod()]
-        public void TST_DynamicDateByCalc_010_Hoje()
+        public void TST010_DynamicDateByCalc_Hoje()
         {
 
             input = "D=0";
@@ -24,7 +23,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
         }
 
         [TestMethod()]
-        public void TST_DynamicDateByCalc_020_DiaFixo()
+        public void TST020_DynamicDateByCalc_DiaFixo()
         {
 
             input = "D=15";
@@ -36,7 +35,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
         }
 
         [TestMethod()]
-        public void TST_DynamicDateByCalc_030_DiaMais()
+        public void TST030_DynamicDateByCalc_DiaMais()
         {
 
             input = "D+1";
@@ -48,7 +47,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
         }
 
         [TestMethod()]
-        public void TST_DynamicDateByCalc_040_DiaMenos()
+        public void TST040_DynamicDateByCalc_DiaMenos()
         {
 
             input = "D-1";
@@ -60,7 +59,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
         }
 
         [TestMethod()]
-        public void TST_DynamicDateByCalc_050_DiaMaisViraMes()
+        public void TST050_DynamicDateByCalc_DiaMaisViraMes()
         {
 
             input = "D+28";
@@ -71,7 +70,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
 
         }
         [TestMethod()]
-        public void TST_DynamicDateByCalc_060_DiaMenosViraMes()
+        public void TST060_DynamicDateByCalc_DiaMenosViraMes()
         {
 
             input = "D-10";
@@ -82,7 +81,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
 
         }
         [TestMethod()]
-        public void TST_DynamicDateByCalc_070_DiaFixoEstouro()
+        public void TST070_DynamicDateByCalc_DiaFixoEstouro()
         {
 
             input = "D=31";
@@ -93,7 +92,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
 
         }
         [TestMethod()]
-        public void TST_DynamicDateByCalc_100_MesFixo()
+        public void TST080_DynamicDateByCalc_MesFixo()
         {
 
             input = "M=2";
@@ -105,7 +104,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
         }
 
         [TestMethod()]
-        public void TST_DynamicDateByCalc_110_MesMais()
+        public void TST090_DynamicDateByCalc_MesMais()
         {
 
             input = "M+1";
@@ -117,7 +116,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
         }
 
         [TestMethod()]
-        public void TST_DynamicDateByCalc_120_MesMenos()
+        public void TST100_DynamicDateByCalc_MesMenos()
         {
 
             input = "M-1";
@@ -129,7 +128,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
         }
 
         [TestMethod()]
-        public void TST_DynamicDateByCalc_130_MesMaisViraAno()
+        public void TST110_DynamicDateByCalc_MesMaisViraAno()
         {
 
             input = "M+7";
@@ -141,7 +140,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
         }
 
         [TestMethod()]
-        public void TST_DynamicDateByCalc_140_MesMenosViraAno()
+        public void TST120_DynamicDateByCalc_MesMenosViraAno()
         {
 
             input = "M-6";
@@ -154,7 +153,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
 
 
         [TestMethod()]
-        public void TST_DynamicDateByCalc_150_MesEstouro()
+        public void TST130_DynamicDateByCalc_MesEstouro()
         {
 
             input = "M=13";
@@ -166,7 +165,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
         }
 
         [TestMethod()]
-        public void TST_DynamicDateByCalc_200_AnoFixo()
+        public void TST140_DynamicDateByCalc_AnoFixo()
         {
 
             input = "A=2024";
@@ -178,7 +177,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
         }
 
         [TestMethod()]
-        public void TST_DynamicDateByCalc_210_AnoMais()
+        public void TST150_DynamicDateByCalc_AnoMais()
         {
 
             input = "A+1";
@@ -190,7 +189,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
         }
 
         [TestMethod()]
-        public void TST_DynamicDateByCalc_220_AnoMenos()
+        public void TST160_DynamicDateByCalc_AnoMenos()
         {
 
             input = "A-1";
@@ -201,7 +200,19 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
 
         }
         [TestMethod()]
-        public void TST_DynamicDateByCalc_230_AnoEstouro()
+        public void TST170_DynamicDateByCalc_AnoMenos18()
+        {
+
+            input = "A-18";
+            output = "05/06/2003";
+
+            // act & assert
+            ActionDynamicDateByCalc();
+
+        }
+
+        [TestMethod()]
+        public void TST180_DynamicDateByCalc_AnoEstouro()
         {
 
             input = "A=4500";
@@ -393,7 +404,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.CALC
 
     }
 
-    public class DynamicDate_Test 
+    public class DynamicDate_Test
     {
 
 

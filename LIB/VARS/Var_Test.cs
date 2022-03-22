@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace BlueRocket.LIBRARY.TESTS.LIB.VARS.FORMAT
+namespace Dooggy.LIBRARY.UTC.LIB.VARS
 {
     [TestClass()]
     public class CAT_010_VarsByFormatTextString_Test : xVars_Test
@@ -355,7 +355,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.VARS.FORMAT
             ActionFormatRandom();
 
         }
-        
+
         [TestMethod()]
         public void TST020_VarRandom_FormatoComPrefixo()
         {
@@ -468,7 +468,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.VARS.FORMAT
             ActionFormatDouble(prmNumber: 12143123.45);
 
         }
-        
+
         [TestMethod()]
         public void TST070_VarDouble_DecimalNegativo()
         {
@@ -553,7 +553,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.VARS.FORMAT
     public class xVars_Test
     {
 
-        public DateTime date = new System.DateTime(2022, 05, 08, 01, 13, 47, 908);
+        public DateTime date = new DateTime(2022, 05, 08, 01, 13, 47, 908);
 
         public string input;
         public string output;
@@ -609,10 +609,10 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.VARS.FORMAT
             ActionGeneric();
 
         }
-        
-        public void ActionFormatDouble(Double prmNumber) => ActionFormatDouble(prmNumber, prmRegionalizacao: CultureInfo.InvariantCulture);
-        public void ActionFormatDouble(Double prmNumber, CultureInfo prmRegionalizacao) => ActionFormatDouble(prmNumber, prmRegionalizacao, prmCSV: false);
-        public void ActionFormatDouble(Double prmNumber, CultureInfo prmRegionalizacao, bool prmCSV)
+
+        public void ActionFormatDouble(double prmNumber) => ActionFormatDouble(prmNumber, prmRegionalizacao: CultureInfo.InvariantCulture);
+        public void ActionFormatDouble(double prmNumber, CultureInfo prmRegionalizacao) => ActionFormatDouble(prmNumber, prmRegionalizacao, prmCSV: false);
+        public void ActionFormatDouble(double prmNumber, CultureInfo prmRegionalizacao, bool prmCSV)
         {
 
             // assert

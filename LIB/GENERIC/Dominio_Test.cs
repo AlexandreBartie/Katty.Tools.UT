@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
+namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
 {
     [TestClass()]
-    public class myDominio_Test : UTC
+    public class myDominio_Test : UTControl
     {
 
         [TestMethod()]
@@ -38,7 +38,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
         {
 
             input("[impacto]");
-            output("impacto");
+            output("impacto:");
 
             // act & assert
             ActionGetDominio();
@@ -81,7 +81,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
         {
 
             // assert
-            myDominio dominio = new myDominio(inputTXT);
+            myDominio dominio = new myDominio(GetInput());
 
             // assert
             AssertTest(prmResult: dominio.log);
@@ -90,7 +90,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
     }
 
     [TestClass()]
-    public class myDominios_Test : UTC
+    public class myDominios_Test : UTControl
     {
 
         [TestMethod()]
@@ -105,8 +105,7 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
             output("impacto: ALTO,MEDIO,BAIXO");
             output("tipo: PROGRESSIVO,REGRESSIVO");
             output("analista: ALEXANDRE,LISIA,VITOR");
-            output("situacao: PRONTO,EDICAO,ERRO,REFINAR");
-            output();
+            output("situacao: PRONTO,EDICAO,ERRO,REFINAR", prmEnd: true);
 
             // act & assert
             ActionGetDominios();
@@ -125,14 +124,13 @@ namespace BlueRocket.LIBRARY.TESTS.LIB.GENERIC
             output("impacto: ALTO,MEDIO,BAIXO");
             output("tipo: FACIL,MEDIO,DIFICIL");
             output("analista: ALEXANDRE,LISIA,VITOR");
-            output("situacao: PRONTO,EDICAO,ERRO,REFINAR");
-            output();
-
+            output("situacao: PRONTO,EDICAO,ERRO,REFINAR", prmEnd: true);
+           
             // act & assert
             ActionGetDominios();
 
         }
-        
+
         private void ActionGetDominios()
         {
 
