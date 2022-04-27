@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Dooggy.LIBRARY.UTC.LIB.VARS
+namespace Katty.UTC.LIB.VARS
 {
 
     [TestClass()]

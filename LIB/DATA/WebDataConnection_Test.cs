@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Text;
 using System.Diagnostics;
 
-namespace Dooggy.LIBRARY.UTC.LIB.DATA
+namespace Katty.UTC.LIB.DATA
 {
     [TestClass()]
     public class DataBaseConnection_Test : DataBase_UTC
@@ -15,7 +15,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.DATA
         {
 
             // arrange
-            output("SIM");
+            output("Yes");
 
             // & assert
             VerifyDataBase();
@@ -27,7 +27,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.DATA
         {
 
             // arrange
-            output("NAO");
+            output("No");
 
             // & assert
             VerifyDataBase(prmSenha: "abcedf");
@@ -106,7 +106,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.DATA
             output("11-959-056-700,1234as,Leo");
 
             // & assert
-            VerifyDataCursorByMask(prmMask: @"cod_usuario=##-###-###-###, nome=X(3)");
+            VerifyDataCursorByMask(prmMask: @"cod_usuario: ##-###-###-###, nome: X(3)");
 
         }
 
@@ -123,7 +123,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.DATA
             output("2004-mai-07,20040625,12-04-2004");
 
             // & assert
-            VerifyDataCursorByMask(prmMask: @"dt_vencimento=AAAA-MMM-DD, dt_baixa=AAAAMMDD, dt_geracao=DD-MM-AAAA");
+            VerifyDataCursorByMask(prmMask: @"dt_vencimento: AAAA-MMM-DD, dt_baixa: AAAAMMDD, dt_geracao: DD-MM-AAAA");
 
         }
 
@@ -139,7 +139,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.DATA
             output("53869974,407.31,0.00,8.15,0.00");
 
             // & assert
-            VerifyDataCursorByMask(prmMask: @"val_a_pagar = #0.00, val_desconto = #0.00, val_multa = #0.00, val_pago = #0.00");
+            VerifyDataCursorByMask(prmMask: @"val_a_pagar: #0.00, val_desconto: #0.00, val_multa: #0.00, val_pago: #0.00");
 
         }
 
@@ -155,10 +155,24 @@ namespace Dooggy.LIBRARY.UTC.LIB.DATA
             output("11-959-056-700,1234as,Leo");
 
             // & assert
-            VerifyDataCursorByMask(prmMask: @"usuario[cod_usuario:##-###-###-###], nome=X(3)");
+            VerifyDataCursorByMask(prmMask: @"usuario[cod_usuario: ##-###-###-###], nome: X(3)");
 
         }
+        [TestMethod()]
+        public void TST050_DataCursorByMask_SQLMaskAliasOculto()
+        {
 
+            // arrange
+            inputText("SELECT cod_usuario as usuario, '1234as' as senha, 'Leonardo' as nome");
+            inputText(" FROM seg.usuario");
+            inputText(" WHERE cod_usuario = '11959056700'");
+
+            output("11-959-056-700,1234as,Leo");
+
+            // & assert
+            VerifyDataCursorByMask(prmMask: @"usuario[:##-###-###-###], nome: X(3)");
+
+        }
 
     }
 
@@ -218,7 +232,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.DATA
 
             Oracle.host = "10.250.1.35";
             Oracle.port = "1521";
-            Oracle.service = "branch_1083.prod01.redelocal.oraclevcn.com";
+            Oracle.service = "INTEGRATION.prod01.redelocal.oraclevcn.com";
 
             Connect.AddDataBase(prmTag: "SIA", prmConexao: Oracle.GetString());
 

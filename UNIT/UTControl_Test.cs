@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dooggy.LIBRARY.UTC.UNIT
+namespace Katty.UTC.UNIT
 {
 
     [TestClass()]

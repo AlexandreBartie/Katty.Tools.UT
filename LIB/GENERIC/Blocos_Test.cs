@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
+namespace Katty.UTC.LIB.GENERIC
 {
     [TestClass()]
     public class xBloco_Test
@@ -657,7 +657,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
         {
 
             // assert
-            result = Prefixo.GetPrefixo(input, prmSinal, prmDelimitador, prmPreserve);
+            result = BlocoPrefixo.GetPrefixo(input, prmSinal, prmDelimitador, prmPreserve);
 
             // assert
             ActionGeneric();

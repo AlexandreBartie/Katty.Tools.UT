@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
+namespace Katty.UTC.LIB.GENERIC
 {
     [TestClass()]
     public class myDominio_Test : UTControl
     {
 
         [TestMethod()]
-        public void TST_GetDominio_010_Padrao()
+        public void TST_010_GetDominio_Normal()
         {
 
-            input("[impacto] ALTO,MEDIO,BAIXO");
+            input("impacto { ALTO,MEDIO,BAIXO }");
             output("impacto: ALTO,MEDIO,BAIXO");
 
             // act & assert
@@ -22,10 +22,10 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
         }
 
         [TestMethod()]
-        public void TST_GetDominio_020_SemKey()
+        public void TST_020_GetDominio_SemKey()
         {
 
-            input("ALTO,MEDIO,BAIXO");
+            input("{ ALTO,MEDIO,BAIXO }");
             output("ALTO,MEDIO,BAIXO");
 
             // act & assert
@@ -34,29 +34,90 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
         }
 
         [TestMethod()]
-        public void TST_GetDominio_030_SemLista()
+        public void TST_030_GetDominio_NormalValorPadrao()
         {
 
-            input("[impacto]");
-            output("impacto:");
+            input("impacto[ALTO] { ALTO,MEDIO,BAIXO }");
+            output("impacto[ALTO]: ALTO,MEDIO,BAIXO");
 
             // act & assert
             ActionGetDominio();
 
         }
+
         [TestMethod()]
-        public void TST_GetDominio_040_Espacamentos()
+        public void TST_040_GetDominio_NormalValorPadraoInexistente()
         {
 
-            input("    [   impacto   ]     ALTO   ,   MEDIO   ,   BAIXO   ");
+            input("impacto[MED] { ALTO,MEDIO,BAIXO }");
             output("impacto: ALTO,MEDIO,BAIXO");
 
             // act & assert
             ActionGetDominio();
 
         }
+
         [TestMethod()]
-        public void TST_GetDominio_050_Vazio()
+        public void TST_050_GetDominio_NormalValorPadraoPosicional()
+        {
+
+            input("impacto[2] { ALTO,MEDIO,BAIXO }");
+            output("impacto[MEDIO]: ALTO,MEDIO,BAIXO");
+
+            // act & assert
+            ActionGetDominio();
+
+        }
+
+        [TestMethod()]
+        public void TST_060_GetDominio_NormalValorPadraoPosicionalErrado()
+        {
+
+            input("impacto[4] { ALTO,MEDIO,BAIXO }");
+            output("impacto: ALTO,MEDIO,BAIXO");
+
+            // act & assert
+            ActionGetDominio();
+
+        }
+
+        [TestMethod()]
+        public void TST_070_GetDominio_SemLista()
+        {
+
+            input("impacto");
+            output("impacto");
+
+            // act & assert
+            ActionGetDominio();
+
+        }
+
+        [TestMethod()]
+        public void TST_080_GetDominio_SemListaValorPadrao()
+        {
+
+            input("impacto[ALTO]");
+            output("impacto");
+
+            // act & assert
+            ActionGetDominio();
+
+        }
+
+        [TestMethod()]
+        public void TST_090_GetDominio_Espacamentos()
+        {
+
+            input("       impacto  [   ALTO    ]   {   ALTO   ,   MEDIO   ,   BAIXO   }  ");
+            output("impacto[ALTO]: ALTO,MEDIO,BAIXO");
+
+            // act & assert
+            ActionGetDominio();
+
+        }
+        [TestMethod()]
+        public void TST_100_GetDominio_Vazio()
         {
 
             input("");
@@ -67,7 +128,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
 
         }
         [TestMethod()]
-        public void TST_GetDominio_060_Nulos()
+        public void TST_110_GetDominio_Nulos()
         {
 
             input(null);
@@ -94,37 +155,57 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
     {
 
         [TestMethod()]
-        public void TST_GetDominios_010_Padrao()
+        public void TST_010_GetDominios_TagsOpcoes()
         {
 
-            input("[ impacto] ALTO, MEDIO, BAIXO");
-            input("[    tipo] PROGRESSIVO, REGRESSIVO");
-            input("[analista] ALEXANDRE, LISIA, VITOR");
-            input("[situacao] PRONTO, EDICAO, ERRO, REFINAR");
+            input(" impacto { ALTO, MEDIO, BAIXO }");
+            input("   tipo  { PROGRESSIVO, REGRESSIVO }");
+            input("analista { ALEXANDRE, LISIA, VITOR }");
+            input("situacao { PRONTO, EDICAO, ERRO, REFINAR }");
 
             output("impacto: ALTO,MEDIO,BAIXO");
             output("tipo: PROGRESSIVO,REGRESSIVO");
             output("analista: ALEXANDRE,LISIA,VITOR");
-            output("situacao: PRONTO,EDICAO,ERRO,REFINAR", prmEnd: true);
+            output("situacao: PRONTO,EDICAO,ERRO,REFINAR");
 
             // act & assert
             ActionGetDominios();
 
         }
+
         [TestMethod()]
-        public void TST_GetDominios_020_TagsRepetidas()
+        public void TST_020_GetDominios_TagsOpcoesPadrao()
         {
 
-            input("[ impacto] ALTO, MEDIO, BAIXO");
-            input("[    tipo] PROGRESSIVO, REGRESSIVO");
-            input("[analista] ALEXANDRE, LISIA, VITOR");
-            input("[    tipo] FACIL, MEDIO, DIFICIL");
-            input("[situacao] PRONTO, EDICAO, ERRO, REFINAR");
+            input("      impacto[2] { ALTO, MEDIO, BAIXO }");
+            input("tipo[REGRESSIVO] { PROGRESSIVO, REGRESSIVO }");
+            input("     analista[2] { ALEXANDRE, LISIA, VITOR }");
+            input("  situacao[ERRO] { PRONTO, EDICAO, ERRO, REFINAR }");
+
+            output("impacto[MEDIO]: ALTO,MEDIO,BAIXO");
+            output("tipo[REGRESSIVO]: PROGRESSIVO,REGRESSIVO");
+            output("analista[LISIA]: ALEXANDRE,LISIA,VITOR");
+            output("situacao[ERRO]: PRONTO,EDICAO,ERRO,REFINAR");
+
+            // act & assert
+            ActionGetDominios();
+
+        }
+
+        [TestMethod()]
+        public void TST_030_GetDominios_TagsRepetidas()
+        {
+
+            input(" impacto { ALTO, MEDIO, BAIXO }");
+            input("    tipo { PROGRESSIVO, REGRESSIVO }");
+            input("analista { ALEXANDRE, LISIA, VITOR }");
+            input("    tipo { FACIL, MEDIO, DIFICIL }");
+            input("situacao { PRONTO, EDICAO, ERRO, REFINAR }");
 
             output("impacto: ALTO,MEDIO,BAIXO");
             output("tipo: FACIL,MEDIO,DIFICIL");
             output("analista: ALEXANDRE,LISIA,VITOR");
-            output("situacao: PRONTO,EDICAO,ERRO,REFINAR", prmEnd: true);
+            output("situacao: PRONTO,EDICAO,ERRO,REFINAR");
            
             // act & assert
             ActionGetDominios();

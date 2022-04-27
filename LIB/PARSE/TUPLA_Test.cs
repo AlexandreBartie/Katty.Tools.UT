@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Dooggy.LIBRARY.UTC.LIB.PARSE
+namespace Katty.UTC.LIB.PARSE.TUPLA
 {
 
     [TestClass()]
@@ -19,7 +19,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.PARSE
             // arrange
             input(@"Nome=Alexandre Bartie");
 
-            output(@"Nome: 'Alexandre Bartie'");
+            output(@"Nome:= 'Alexandre Bartie'");
 
             //// act
             Tupla = new myTupla(GetInput());
@@ -36,7 +36,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.PARSE
             // arrange
             input(@"Nome=Alexandre Bartie[  cod_name : X(10) ] ");
 
-            output(@"Nome: 'Alexandre Bartie' [cod_name:X(10)]");
+            output(@"Nome:= 'Alexandre Bartie' [cod_name:X(10)]");
 
             //// act
             Tupla = new myTupla(GetInput());
@@ -66,7 +66,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.PARSE
             // arrange
             input(@"Nome=Alexandre Bartie");
 
-            output(@"Nome: 'Alexandre Bartie'");
+            output(@"Nome:= 'Alexandre Bartie'");
 
             //// act
             Tuplas = new myTuplas(GetInput());
@@ -83,7 +83,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.PARSE
             // arrange
             input(@"Nome=Alexandre Bartie, nascimento=05/06/1971, email=alexandre_bartie@hotmail.com");
 
-            output(@"Nome: 'Alexandre Bartie', nascimento: '05/06/1971', email: 'alexandre_bartie@hotmail.com'");
+            output(@"Nome:= 'Alexandre Bartie', nascimento:= '05/06/1971', email:= 'alexandre_bartie@hotmail.com'");
 
             //// act
             Tuplas = new myTuplas(GetInput());
@@ -132,7 +132,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.PARSE
             // arrange
             input(@"Nome, nascimento, email");
 
-            output(@"Nome: '', nascimento: '', email: ''");
+            output(@"Nome:= '', nascimento:= '', email:= ''");
 
             //// act
             Tuplas = new myTuplas(GetInput());
@@ -148,7 +148,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.PARSE
             // arrange
             input(@"Nome, nascimento, email");
 
-            output(@"Nome: '', nascimento: '', email: ''");
+            output(@"Nome:= '', nascimento:= '', email:= ''");
 
             //// act
             Tuplas = new myTuplas();
@@ -166,7 +166,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.PARSE
             // arrange
             input(@"Nome, nascimento, email");
 
-            output(@"Nome: 'Alexandre Bartie', nascimento: '05/06/1971', email: 'alexandre_bartie@hotmail.com'");
+            output(@"Nome:= 'Alexandre Bartie', nascimento:= '05/06/1971', email:= 'alexandre_bartie@hotmail.com'");
 
             //// act
             Tuplas = new myTuplas();
@@ -184,7 +184,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.PARSE
             // arrange
             input(@"Nome, nascimento, email");
 
-            output(@"Nome: 'Renato Andrade', nascimento: '', email: 'renato.andrade@gmail.com'");
+            output(@"Nome:= 'Renato Andrade', nascimento:= '', email:= 'renato.andrade@gmail.com'");
 
             //// act
             Tuplas = new myTuplas(GetInput());
@@ -202,7 +202,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.PARSE
             // arrange
             input(@"Nome, nascimento, email");
 
-            output(@"Nome: 'Renato Andrade', nascimento: '', email: 'renato.andrade@gmail.com'");
+            output(@"Nome:= 'Renato Andrade', nascimento:= '', email:= 'renato.andrade@gmail.com'");
 
             //// act
             Tuplas = new myTuplas(GetInput());

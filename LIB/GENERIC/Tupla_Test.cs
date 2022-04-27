@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
+namespace Katty.UTC.LIB.GENERIC
 {
     [TestClass()]
     public class myTupla_Test : UTControl
@@ -16,7 +16,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
         {
 
             input("alex=1234");
-            output("alex: '1234'");
+            output("alex:= '1234'");
 
             // act & assert
             ActionGetTupla();
@@ -28,7 +28,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
         {
 
             input("alex = 1234");
-            output("alex: '1234'");
+            output("alex:= '1234'");
 
             // act & assert
             ActionGetTupla();
@@ -40,7 +40,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
         {
 
             input("alex");
-            output("alex: ''");
+            output("alex:= ''");
 
             // act & assert
             ActionGetTupla();
@@ -100,10 +100,10 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
         {
 
             input("alex $ 1234");
-            output("alex: '1234'");
+            output("alex:= '1234'");
 
             // act & assert
-            ActionGetTupla(prmSeparador: "$");
+            ActionGetTupla(prmConector: "$");
 
         }
         [TestMethod()]
@@ -111,10 +111,10 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
         {
 
             input("alex $$ 1234");
-            output("alex: '1234'");
+            output("alex:= '1234'");
 
             // act & assert
-            ActionGetTupla(prmSeparador: "$$");
+            ActionGetTupla(prmConector: "$$");
 
         }
         [TestMethod()]
@@ -122,7 +122,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
         {
 
             input("alex = 1234 [Aluno Novato]");
-            output("alex: '1234' [Aluno Novato]");
+            output("alex:= '1234' [Aluno Novato]");
 
             // act & assert
             ActionGetTupla();
@@ -133,7 +133,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
         {
 
             input("alex =[   Aluno Novato   ] 1234 ");
-            output("alex: '1234' [Aluno Novato]");
+            output("alex:= '1234' [Aluno Novato]");
 
             // act & assert
             ActionGetTupla();
@@ -144,7 +144,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
         {
 
             input("[   Aluno Novato   ] alex =1234 ");
-            output("alex: '1234' [Aluno Novato]");
+            output("alex:= '1234' [Aluno Novato]");
 
             // act & assert
             ActionGetTupla();
@@ -155,7 +155,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
         {
 
             input("alex = 1234 [   Aluno Novato   ]");
-            output("alex: '1234' [Aluno Novato]");
+            output("alex:= '1234' [Aluno Novato]");
 
             // act & assert
             ActionGetTupla();
@@ -167,7 +167,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
         {
 
             input("alex [   Aluno Novato   ]");
-            output("alex: '' [Aluno Novato]");
+            output("alex:= '' [Aluno Novato]");
 
             // act & assert
             ActionGetTupla();
@@ -195,12 +195,12 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
             ActionGetTupla();
 
         }
-        private void ActionGetTupla() => ActionGetTupla(prmSeparador: "=");
-        private void ActionGetTupla(string prmSeparador)
+        private void ActionGetTupla() => ActionGetTupla(prmConector: "=");
+        private void ActionGetTupla(string prmConector)
         {
 
             // assert
-            tupla = new myTupla(GetInput(), prmSeparador);
+            tupla = new myTupla(GetInput(), prmConector);
 
             // assert
             AssertTest(prmResult: tupla.log);
@@ -220,7 +220,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
         {
 
             input("alex=1234,gomes=2321,jorge=9841");
-            output("alex: '1234', gomes: '2321', jorge: '9841'");
+            output("alex:= '1234', gomes:= '2321', jorge:= '9841'");
 
             // act & assert
             ActionGetTuplas();
@@ -232,7 +232,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
         {
 
             input("  alex  =  1234  ,  gomes  =  2321  ,  jorge  =  9841  ");
-            output("alex: '1234', gomes: '2321', jorge: '9841'");
+            output("alex:= '1234', gomes:= '2321', jorge:= '9841'");
 
             // act & assert
             ActionGetTuplas();
@@ -243,7 +243,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
         {
 
             input("  alex  =  1234 [zzz]  ,  gomes  =  2321 [bbb] ,  jorge  =  9841 [jjjjj] ");
-            output("alex: '1234' [zzz], gomes: '2321' [bbb], jorge: '9841' [jjjjj]");
+            output("alex:= '1234' [zzz], gomes:= '2321' [bbb], jorge:= '9841' [jjjjj]");
 
             // act & assert
             ActionGetTuplas();
@@ -254,7 +254,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
         {
 
             input("Login[testLoginAdmValido,login,senha,usuarioLogado] + Aluno[test01_ValidarInformacoesDoAluno,matricula,getNomeAluno]");
-            output("Login: '' [testLoginAdmValido,login,senha,usuarioLogado], Aluno: '' [test01_ValidarInformacoesDoAluno,matricula,getNomeAluno]");
+            output("Login:= '' [testLoginAdmValido,login,senha,usuarioLogado], Aluno:= '' [test01_ValidarInformacoesDoAluno,matricula,getNomeAluno]");
 
             // act & assert
             ActionGetTuplas(prmSeparador: "+");

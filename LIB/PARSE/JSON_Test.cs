@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Dooggy.LIBRARY.UTC.LIB.PARSE
+namespace Katty.UTC.LIB.PARSE
 {
     [TestClass()]
     public class JSON_Test

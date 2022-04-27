@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 
-namespace Dooggy.LIBRARY.UTC.LIB.PARSE
+namespace Katty.UTC.LIB.PARSE
 {
     [TestClass()]
     public class ParseCSV_Test

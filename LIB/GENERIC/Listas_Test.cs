@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
+namespace Katty.UTC.LIB.GENERIC
 {
     [TestClass()]
     public class xLista_Test
@@ -132,111 +132,4 @@ namespace Dooggy.LIBRARY.UTC.LIB.GENERIC
         }
     }
 
-    [TestClass()]
-    public class xMask_Test
-    {
-        string lista; string chave;
-        string input;
-        string output;
-
-        private xMask Mask;
-
-        [TestMethod()]
-        public void TST010_Mask_MascaraPadrao()
-        {
-            // arrange
-            lista = "COD_MATRICULA = ####.##.#####-#"; chave = "COD_MATRICULA";
-
-            input = "198402018831";
-            output = "1984.02.01883-1";
-
-            // act & assert
-            ActionMask();
-
-        }
-
-        [TestMethod()]
-        public void TST020_Mask_MascaraMaiorValor()
-        {
-            // arrange
-            lista = "COD_MATRICULA = ##-#####.##.#####-#"; chave = "COD_MATRICULA";
-
-            input = "198402018831";
-            output = "1984.02.01883-1";
-
-            // act & assert
-            ActionMask();
-
-        }
-
-        [TestMethod()]
-        public void TST030_Mask_MascaraMenorValor()
-        {
-            // arrange
-            lista = "COD_MATRICULA = ##.##.#####-#"; chave = "COD_MATRICULA";
-
-            input = "198402018831";
-            output = "84.02.01883-1";
-
-            // act & assert
-            ActionMask();
-
-        }
-
-        [TestMethod()]
-        public void TST040_Mask_MascarasMultiplas()
-        {
-            // arrange
-            lista = "COD_MATRICULA = ####.##.#####-#, CPF = ###.###.###-##, CNPJ = ###.###.###-##"; chave = "CPF";
-
-            input = "14029092845";
-            output = "140.290.928-45";
-
-            // act & assert
-            ActionMask();
-
-        }
-
-        [TestMethod()]
-        public void TST050_Mask_MascaraVazia()
-        {
-            // arrange
-            lista = ""; chave = "CPF";
-
-            input = "14029092845";
-            output = "14029092845";
-
-            // act & assert
-            ActionMask();
-
-        }
-
-        [TestMethod()]
-        public void TST060_Mask_KeyInexistente()
-        {
-            // arrange
-            lista = "COD_MATRICULA = ####.##.#####-#, CPF = ###.###.###-##, CNPJ = ###.###.###-##"; chave = "RG";
-
-            input = "14029092845";
-            output = "14029092845";
-
-            // act & assert
-            ActionMask();
-
-        }
-        private void ActionMask()
-        {
-
-            Mask = new xMask(lista);
-
-            // assert
-            string result = Mask.TextToString(chave, input);
-
-            // assert
-            if (output != result)
-                Assert.Fail(string.Format("Expected: <{0}>, Actual: <{1}>, Lista: <{2}>", output, result));
-
-        }
-
-    }
 }

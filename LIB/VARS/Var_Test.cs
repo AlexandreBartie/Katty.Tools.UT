@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace Dooggy.LIBRARY.UTC.LIB.VARS
+namespace Katty.UTC.LIB.VARS
 {
     [TestClass()]
     public class CAT_010_VarsByFormatTextString_Test : xVars_Test
@@ -55,7 +55,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.VARS
 
         }
         [TestMethod()]
-        public void TST050_FormatTextString_FormatoCaixaBaixa()
+        public void TST050_FormatTextString_FormatoNaoPadrao()
         {
 
             input = "ALEXANDRE BARTIE";
@@ -81,19 +81,18 @@ namespace Dooggy.LIBRARY.UTC.LIB.VARS
         {
 
             input = "ALEXANDRE BARTIE";
-            output = "";
+            output = "ALEXANDRE BARTIE";
 
             // act & assert
             ActionFormatText("x()");
 
         }
-
         [TestMethod()]
         public void TST080_FormatTextString_DelimitadorNaoEncontrado()
         {
 
             input = "ALEXANDRE BARTIE";
-            output = "";
+            output = "ALEXANDRE BARTIE";
 
             // act & assert
             ActionFormatText("X");
@@ -104,14 +103,13 @@ namespace Dooggy.LIBRARY.UTC.LIB.VARS
         {
 
             input = "ALEXANDRE BARTIE";
-            output = "";
+            output = "ALEXANDRE BARTIE";
 
             // act & assert
             ActionFormatText("X(ff)");
 
         }
     }
-
     [TestClass()]
     public class CAT_020_VarsByFormatTextSubstring_Test : xVars_Test
     {
@@ -140,7 +138,57 @@ namespace Dooggy.LIBRARY.UTC.LIB.VARS
         }
     }
     [TestClass()]
-    public class CAT_030_VarsByFormatTextMask_Test : xVars_Test
+    public class CAT_030_VarsByFormatTextEffect_Test : xVars_Test
+    {
+
+        [TestMethod()]
+        public void TST010_FormatTextEffect_FormatoUpper()
+        {
+
+            input = "Alexandre Bartie";
+            output = "ALEXANDRE BARTIE";
+
+            // act & assert
+            ActionFormatText("X@Upper");
+
+        }
+        [TestMethod()]
+        public void TST020_FormatTextEffect_FormatoLower()
+        {
+
+            input = "Alexandre Bartie";
+            output = "alexandre bartie";
+
+            // act & assert
+            ActionFormatText("X@Lower");
+
+        }
+
+        [TestMethod()]
+        public void TST030_FormatTextEffect_FormatoUpperCombinado()
+        {
+
+            input = "Alexandre Bartie";
+            output = "ANDRE";
+
+            // act & assert
+            ActionFormatText("X(5+5)@Upper");
+
+        }
+        [TestMethod()]
+        public void TST040_FormatTextEffect_FormatoLowerCombinado()
+        {
+
+            input = "Alexandre Bartie";
+            output = "exandre bart";
+
+            // act & assert
+            ActionFormatText("X(3*14)@Lower");
+
+        }
+    }
+    [TestClass()]
+    public class CAT_040_VarsByFormatTextMask_Test : xVars_Test
     {
 
         [TestMethod()]
@@ -204,7 +252,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.VARS
         }
     }
     [TestClass()]
-    public class CAT_040_VarsByFormatDate_Test : xVars_Test
+    public class CAT_050_VarsByFormatDate_Test : xVars_Test
     {
 
         [TestMethod()]
@@ -267,7 +315,7 @@ namespace Dooggy.LIBRARY.UTC.LIB.VARS
         }
     }
     [TestClass()]
-    public class CAT_050_VarsByFormatTime_Test : xVars_Test
+    public class CAT_060_VarsByFormatTime_Test : xVars_Test
     {
 
         [TestMethod()]
@@ -339,59 +387,6 @@ namespace Dooggy.LIBRARY.UTC.LIB.VARS
             ActionFormatTime();
 
         }
-    }
-    [TestClass()]
-    public class CAT_060_VarsByFormatRandom_Test : xVars_Test
-    {
-
-        [TestMethod()]
-        public void TST010_VarRandom_FormatoSemPrefixo()
-        {
-
-            input = "5";
-            output = "90847";
-
-            // act & assert
-            ActionFormatRandom();
-
-        }
-
-        [TestMethod()]
-        public void TST020_VarRandom_FormatoComPrefixo()
-        {
-
-            input = "CEP:[5]";
-            output = "CEP:90847";
-
-            // act & assert
-            ActionFormatRandom();
-
-        }
-
-        [TestMethod()]
-        public void TST030_VarRandom_FormatoExtendido()
-        {
-
-            input = "Fone: (35) [11]";
-            output = "Fone: (35) 90847130108";
-
-            // act & assert
-            ActionFormatRandom();
-
-        }
-
-        [TestMethod()]
-        public void TST040_VarRandom_FormatoVazio()
-        {
-
-            input = "";
-            output = "90847130108052022";
-
-            // act & assert
-            ActionFormatRandom();
-
-        }
-
     }
     [TestClass()]
     public class CAT_070_VarsByFormatDouble_Test : xVars_Test
@@ -549,6 +544,112 @@ namespace Dooggy.LIBRARY.UTC.LIB.VARS
         }
 
     }
+    [TestClass()]
+    public class CAT_080_VarsByFormatRandom_Test : xVars_Test
+    {
+
+        [TestMethod()]
+        public void TST010_VarRandom_FormatoSemPrefixo()
+        {
+
+            input = "5";
+            output = "90847";
+
+            // act & assert
+            ActionFormatRandom();
+
+        }
+
+        [TestMethod()]
+        public void TST020_VarRandom_FormatoComPrefixo()
+        {
+
+            input = "CEP:[5]";
+            output = "CEP:90847";
+
+            // act & assert
+            ActionFormatRandom();
+
+        }
+
+        [TestMethod()]
+        public void TST030_VarRandom_FormatoExtendido()
+        {
+
+            input = "Fone: (35) [11]";
+            output = "Fone: (35) 90847130108";
+
+            // act & assert
+            ActionFormatRandom();
+
+        }
+
+        [TestMethod()]
+        public void TST040_VarRandom_FormatoVazio()
+        {
+
+            input = "";
+            output = "";
+
+            // act & assert
+            ActionFormatRandom();
+
+        }
+
+    }
+    [TestClass()]
+    public class CAT_090_VarsByFormatRandomDate_Test : xVars_Test
+    {
+
+        [TestMethod()]
+        public void TST010_VarRandomDate_FormatoSemPrefixo()
+        {
+
+            input = "5";
+            output = "90847";
+
+            // act & assert
+            ActionFormatRandomDate();
+
+        }
+
+        [TestMethod()]
+        public void TST020_VarRandomDate_FormatoComPrefixo()
+        {
+
+            input = "CEP:[5]";
+            output = "CEP:90847";
+
+            // act & assert
+            ActionFormatRandomDate();
+
+        }
+
+        [TestMethod()]
+        public void TST030_VarRandomDate_FormatoExtendido()
+        {
+
+            input = "Fone: (35) [11]";
+            output = "Fone: (35) 90847130108";
+
+            // act & assert
+            ActionFormatRandomDate();
+
+        }
+
+        [TestMethod()]
+        public void TST040_VarRandomDate_FormatoVazio()
+        {
+
+            input = "";
+            output = "90847130108052022";
+
+            // act & assert
+            ActionFormatRandomDate();
+
+        }
+
+    }
 
     public class xVars_Test
     {
@@ -603,7 +704,17 @@ namespace Dooggy.LIBRARY.UTC.LIB.VARS
         {
 
             // assert
-            result = myFormat.RandomToString(date, input);
+            result = myRandom.Next(input);
+
+            // assert
+            ActionGeneric(prmCheck: false);
+
+        }
+        public void ActionFormatRandomDate()
+        {
+
+            // assert
+            result = myRandomDate.Next(date, input);
 
             // assert
             ActionGeneric();
@@ -622,11 +733,12 @@ namespace Dooggy.LIBRARY.UTC.LIB.VARS
             ActionGeneric();
 
         }
-        public void ActionGeneric()
-        {
 
+        public void ActionGeneric() => ActionGeneric(prmCheck: true);
+        public void ActionGeneric(bool prmCheck)
+        {
             // assert
-            if (output != result)
+            if ((output != result) && prmCheck)
                 Assert.Fail(string.Format("{2} Expected: <{0}> {2}   Actual: <{1}>", output, result, Environment.NewLine));
 
         }
