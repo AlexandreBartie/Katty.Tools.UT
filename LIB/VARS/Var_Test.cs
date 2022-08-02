@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace Katty.UTC.LIB.VARS
+namespace Katty.QA.LIB.VARS
 {
     [TestClass()]
     public class CAT_010_VarsByFormatTextString_Test : xVars_Test

@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Katty.UTC.LIB.PARSE.TUPLA
+namespace Katty.QA.LIB.PARSE.TUPLA
 {
 
     [TestClass()]
-    public class TUPLA_Test : UTControl
+    public class TUPLA_Test : TestUnit
     {
 
         myTupla Tupla;
@@ -22,7 +22,7 @@ namespace Katty.UTC.LIB.PARSE.TUPLA
             output(@"Nome:= 'Alexandre Bartie'");
 
             //// act
-            Tupla = new myTupla(GetInput());
+            Tupla = new myTupla(Input.txt);
 
             // act & assert
             AssertTUPLA();
@@ -39,7 +39,7 @@ namespace Katty.UTC.LIB.PARSE.TUPLA
             output(@"Nome:= 'Alexandre Bartie' [cod_name:X(10)]");
 
             //// act
-            Tupla = new myTupla(GetInput());
+            Tupla = new myTupla(Input.txt);
 
             // act & assert
             AssertTUPLA();
@@ -54,7 +54,7 @@ namespace Katty.UTC.LIB.PARSE.TUPLA
     }
 
     [TestClass()]
-    public class TUPLAS_Test : UTControl
+    public class TUPLAS_Test : TestUnit
     {
 
         myTuplas Tuplas;
@@ -69,7 +69,7 @@ namespace Katty.UTC.LIB.PARSE.TUPLA
             output(@"Nome:= 'Alexandre Bartie'");
 
             //// act
-            Tuplas = new myTuplas(GetInput());
+            Tuplas = new myTuplas(Input.txt);
 
             // act & assert
             AssertTUPLAS();
@@ -86,7 +86,7 @@ namespace Katty.UTC.LIB.PARSE.TUPLA
             output(@"Nome:= 'Alexandre Bartie', nascimento:= '05/06/1971', email:= 'alexandre_bartie@hotmail.com'");
 
             //// act
-            Tuplas = new myTuplas(GetInput());
+            Tuplas = new myTuplas(Input.txt);
 
             // act & assert
             AssertTUPLAS();
@@ -102,7 +102,7 @@ namespace Katty.UTC.LIB.PARSE.TUPLA
             output(@"");
 
             //// act
-            Tuplas = new myTuplas(GetInput());
+            Tuplas = new myTuplas(Input.txt);
 
             // act & assert
             AssertTUPLAS();
@@ -118,7 +118,7 @@ namespace Katty.UTC.LIB.PARSE.TUPLA
             output("");
 
             //// act
-            Tuplas = new myTuplas(GetInput());
+            Tuplas = new myTuplas(Input.txt);
 
             // act & assert
             AssertTUPLAS();
@@ -135,7 +135,7 @@ namespace Katty.UTC.LIB.PARSE.TUPLA
             output(@"Nome:= '', nascimento:= '', email:= ''");
 
             //// act
-            Tuplas = new myTuplas(GetInput());
+            Tuplas = new myTuplas(Input.txt);
 
             // act & assert
             AssertTUPLAS();
@@ -187,7 +187,7 @@ namespace Katty.UTC.LIB.PARSE.TUPLA
             output(@"Nome:= 'Renato Andrade', nascimento:= '', email:= 'renato.andrade@gmail.com'");
 
             //// act
-            Tuplas = new myTuplas(GetInput());
+            Tuplas = new myTuplas(Input.txt);
 
             Tuplas.Parse("Nome=Renato Andrade, email=renato.andrade@gmail.com");
 
@@ -205,7 +205,7 @@ namespace Katty.UTC.LIB.PARSE.TUPLA
             output(@"Nome:= 'Renato Andrade', nascimento:= '', email:= 'renato.andrade@gmail.com'");
 
             //// act
-            Tuplas = new myTuplas(GetInput());
+            Tuplas = new myTuplas(Input.txt);
 
             Tuplas.SetValues("Renato Andrade, , renato.andrade@gmail.com");
 

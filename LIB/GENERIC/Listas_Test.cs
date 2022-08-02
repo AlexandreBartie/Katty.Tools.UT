@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace Katty.UTC.LIB.GENERIC
+namespace Katty.QA.LIB.GENERIC
 {
     [TestClass()]
-    public class xLista_Test
+    public class myList_Test
     {
         string input;
         string output;
 
-        xLista Lista = new xLista();
+        myList Lista = new myList();
 
         [TestMethod()]
         public void TST010_FlowCSV_Padrao()

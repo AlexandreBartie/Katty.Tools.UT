@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Katty.UTC.LIB.VARS
+namespace Katty.QA.LIB.VARS
 {
 
     [TestClass()]
@@ -80,7 +80,7 @@ namespace Katty.UTC.LIB.VARS
         public void TST_GetFirstExt_010_Padrao()
         {
 
-            input = "Alexandre Bloco Bartie";
+            input = "Alexandre myBrick Bartie";
             output = "Alexan";
 
             // act & assert
@@ -311,7 +311,7 @@ namespace Katty.UTC.LIB.VARS
         public void TST_GetLastExt_010_Padrao()
         {
 
-            input = "Alexandre Bloco Bartie";
+            input = "Alexandre myBrick Bartie";
             output = "Bartie";
 
             // act & assert

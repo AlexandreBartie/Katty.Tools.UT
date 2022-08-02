@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 
-namespace Katty.UTC.LIB.PARSE
+namespace Katty.QA.LIB.PARSE.CSV
 {
     [TestClass()]
     public class ParseCSV_Test
@@ -9,7 +9,7 @@ namespace Katty.UTC.LIB.PARSE
         string input;
         string output;
 
-        xParseCSV ParseCSV = new xParseCSV();
+        myParseCSV CSV = new myParseCSV();
 
         [TestMethod()]
         public void TST010_ParseCSV_Padrao()
@@ -224,13 +224,13 @@ namespace Katty.UTC.LIB.PARSE
         {
 
             // assert
-            ParseCSV.Parse(input, prmSeparador: ",", prmDelimitador: "|");
+            CSV.Parse(input, prmSeparador: ",", prmDelimitador: "|");
 
-            string result = ParseCSV.log;
+            string result = CSV.log;
 
             // assert
             if (output != result)
-                Assert.Fail(string.Format("Expected: <{0}>, Actual: <{1}>, Memo: <{2}>", output, result, ParseCSV.csv));
+                Assert.Fail(string.Format("Expected: <{0}>, Actual: <{1}>, Memo: <{2}>", output, result, CSV.csv));
 
         }
 

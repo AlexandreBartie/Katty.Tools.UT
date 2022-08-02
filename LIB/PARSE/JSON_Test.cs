@@ -3,29 +3,19 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Katty.UTC.LIB.PARSE
+namespace Katty.QA.LIB.PARSE.JSON
 {
     [TestClass()]
-    public class JSON_Test
+    public class JSON_SimpleFlow_Test : TestUnit
     {
-
-        string input; string inputA; string inputB; string mestreA; string mestreB;
-        string output;
-
-        myJSON FlowJSON;
 
         [TestMethod()]
         public void TST010_FlowSimples_Padrao()
         {
 
             // arrange
-            input = @"{ 'Nome': 'Alexandre', 'email': 'alexandre_bartie@hotmail.com' }";
-            output = @"[Nome]: 'Alexandre', [email]: 'alexandre_bartie@hotmail.com'";
-
-            //// act
-            FlowJSON = new myJSON();
-
-            FlowJSON.Add(input);
+            input(@"{ 'Nome': 'Alexandre', 'email': 'alexandre_bartie@hotmail.com' }");
+            output(@"[Nome]: 'Alexandre', [email]: 'alexandre_bartie@hotmail.com'");
 
             // act & assert
             AssertJSON();
@@ -37,11 +27,8 @@ namespace Katty.UTC.LIB.PARSE
         {
 
             // arrange
-            input = @"{ 'tag': 'Aluno', 'sql': 'SELECT * from Alunos WHERE situacao = ok' }";
-            output = @"[tag]: 'Aluno', [sql]: 'SELECT * from Alunos WHERE situacao = ok'";
-
-            //// act
-            FlowJSON = new myJSON(); FlowJSON.Add(input);
+            input(@"{ 'tag': 'Aluno', 'sql': 'SELECT * from Alunos WHERE situacao = ok' }");
+            output(@"[tag]: 'Aluno', [sql]: 'SELECT * from Alunos WHERE situacao = ok'");
 
             // act & assert
             AssertJSON();
@@ -53,11 +40,8 @@ namespace Katty.UTC.LIB.PARSE
         {
 
             // arrange
-            input = @"{ 'path': 'c:\\MassaTestes\\', 'branch': '1084', 'porta': '1521' }";
-            output = @"[path]: 'c:\MassaTestes\', [branch]: '1084', [porta]: '1521'";
-
-            //// act
-            FlowJSON = new myJSON(); FlowJSON.Add(input);
+            input(@"{ 'path': 'c:\\MassaTestes\\', 'branch': '1084', 'porta': '1521' }");
+            output(@"[path]: 'c:\MassaTestes\', [branch]: '1084', [porta]: '1521'");
 
             // act & assert
             AssertJSON();
@@ -69,11 +53,8 @@ namespace Katty.UTC.LIB.PARSE
         {
 
             // arrange
-            input = @"{ 'path': 'c:\\MassaTestes\\', 'branch': '1084', 'porta': '1521' }";
-            output = @"[path]: 'c:\MassaTestes\', [branch]: '1084', [porta]: '1521'";
-
-            //// act
-            FlowJSON = new myJSON(); FlowJSON.Add(input);
+            input(@"{ 'path': 'c:\\MassaTestes\\', 'branch': '1084', 'porta': '1521' }");
+            output(@"[path]: 'c:\MassaTestes\', [branch]: '1084', [porta]: '1521'");
 
             // act & assert
             AssertJSON();
@@ -85,11 +66,8 @@ namespace Katty.UTC.LIB.PARSE
         {
 
             // arrange
-            input = @"{ 'path': 'c:/MassaTestes/', 'branch': '1084', 'porta': '1521' }";
-            output = @"[path]: 'c:/MassaTestes/', [branch]: '1084', [porta]: '1521'";
-
-            //// act
-            FlowJSON = new myJSON(); FlowJSON.Add(input);
+            input(@"{ 'path': 'c:/MassaTestes/', 'branch': '1084', 'porta': '1521' }");
+            output(@"[path]: 'c:/MassaTestes/', [branch]: '1084', [porta]: '1521'");
 
             // act & assert
             AssertJSON();
@@ -102,11 +80,42 @@ namespace Katty.UTC.LIB.PARSE
         {
 
             // arrange
-            input = @"{'COD_MATRICULA': ####.##.#####-#' }";
-            output = @"";
+            input(@"{'COD_MATRICULA': ####.##.#####-#' }");
+            output(@"");
 
-            //// act
-            FlowJSON = new myJSON(); ; FlowJSON.Add(input);
+            // act & assert
+            AssertJSON();
+
+        }
+
+        private void AssertJSON()
+        {
+
+            // act
+            myJSON Dados = new myJSON(Input.txt); Dados.Save();
+
+            // assert
+            AssertTest(Dados.lines);
+
+        }
+    }
+
+    [TestClass()]
+    public class JSON_MultipleFlow_Test : TestUnit
+    {
+
+        [TestMethod()]
+        public void TST010_FlowMultiplo_Padrao()
+        {
+
+            // arrange
+            input(@"{ 'Nome': 'Alexandre', 'email': 'alexandre_bartie@hotmail.com' }");
+            input(@"{ 'Nome': 'Bartie', 'email': 'bartie.devops@outlook.com' }");
+
+            outputText(@"[ ");
+            outputText(@"{ ""Nome"": ""Alexandre"", ""email"": ""alexandre_bartie@hotmail.com"" }, ");
+            outputText(@"{ ""Nome"": ""Bartie"", ""email"": ""bartie.devops@outlook.com"" } ");
+            outputText(@"]");
 
             // act & assert
             AssertJSON();
@@ -114,86 +123,54 @@ namespace Katty.UTC.LIB.PARSE
         }
 
         [TestMethod()]
-        public void TST070_FlowMultiplo_Padrao()
+        public void TST020_FlowMultiplo_FlowCombinado()
         {
 
             // arrange
-            inputA = @"{ 'Nome': 'Alexandre', 'email': 'alexandre_bartie@hotmail.com' }";
-            inputB = @"{ 'Nome': 'Bartie', 'email': 'bartie.devops@outlook.com' }";
+            input("{ 'Nome': 'Alexandre', 'email': 'alexandre_bartie@hotmail.com' }", prmArg: @"{ 'Nome': 'Renato' }");
+            input("{ 'Nome': 'Bartie', 'email': 'bartie.devops@outlook.com' }", prmArg: @"{ 'Nome': 'José' }");
 
-            output = "";
-            output += @"[ ";
-            output += @"{ ""Nome"": ""Alexandre"", ""email"": ""alexandre_bartie@hotmail.com"" }, ";
-            output += @"{ ""Nome"": ""Bartie"", ""email"": ""bartie.devops@outlook.com"" }";
-            output += @" ]";
-
-            //// act
-            FlowJSON = new myJSON(); FlowJSON.Add(inputA); FlowJSON.Add(inputB);
+            outputText(@"[ ");
+            outputText(@"{ ""Nome"": ""Renato"", ""email"": ""alexandre_bartie@hotmail.com"" }, ");
+            outputText(@"{ ""Nome"": ""José"", ""email"": ""bartie.devops@outlook.com"" } ");
+            outputText(@"]");
 
             // act & assert
-            AssertJSON(prmMultiplos: true);
+            AssertJSON();
 
         }
 
         [TestMethod()]
-        public void TST080_FlowMultiplo_FlowCombinado()
+        public void TST030_FlowMultiplo_FlowCombinadoExtendido()
         {
 
             // arrange
-            inputA = @"{ 'Nome': 'Alexandre', 'email': 'alexandre_bartie@hotmail.com' }";
-            inputB = @"{ 'Nome': 'Bartie', 'email': 'bartie.devops@outlook.com' }";
+            input(@"{ 'Nome': 'Alexandre', 'email': 'alexandre_bartie@hotmail.com' }", prmArg: @"{ 'Nome': 'Renato', 'sobrenome': 'Andrade' }");
+            input(@"{ 'Nome': 'Bartie', 'email': 'bartie.devops@outlook.com' }", prmArg: @"{ 'Nome': 'José', 'sobrenome': 'da Silva' }");
 
-            mestreA = @"{ 'Nome': 'Renato' }";
-            mestreB = @"{ 'Nome': 'José' }";
-
-            output = @"[ { ""Nome"": ""Renato"", ""email"": ""alexandre_bartie@hotmail.com"" }, { ""Nome"": ""José"", ""email"": ""bartie.devops@outlook.com"" } ]";
-
-            //// act
-            FlowJSON = new myJSON(); FlowJSON.Add(inputA, mestreA); FlowJSON.Add(inputB, mestreB);
+            outputText(@"[ ");
+            outputText(@"{ ""Nome"": ""Renato"", ""email"": ""alexandre_bartie@hotmail.com"", ""sobrenome"": ""Andrade"" }, ");
+            outputText(@"{ ""Nome"": ""José"", ""email"": ""bartie.devops@outlook.com"", ""sobrenome"": ""da Silva"" } ");
+            outputText(@"]");
 
             // act & assert
-            AssertJSON(prmMultiplos: true);
+            AssertJSON();
 
         }
 
-        [TestMethod()]
-        public void TST090_FlowMultiplo_FlowCombinadoExtendido()
+        private void AssertJSON()
         {
 
-            // arrange
-            inputA = @"{ 'Nome': 'Alexandre', 'email': 'alexandre_bartie@hotmail.com' }";
-            inputB = @"{ 'Nome': 'Bartie', 'email': 'bartie.devops@outlook.com' }";
+            // act
+            myJSON Dados = new myJSON();
 
-            mestreA = @"{ 'Nome': 'Renato', 'sobrenome': 'Andrade' }";
-            mestreB = @"{ 'Nome': 'José', 'sobrenome': 'da Silva' }";
+            foreach (TestLine Line in Input)
+                Dados.Add(Line.txt, Line.arg);
 
-            output = @"[ { ""Nome"": ""Renato"", ""email"": ""alexandre_bartie@hotmail.com"", ""sobrenome"": ""Andrade"" }, { ""Nome"": ""José"", ""email"": ""bartie.devops@outlook.com"", ""sobrenome"": ""da Silva"" } ]";
-
-            //// act
-            FlowJSON = new myJSON(); FlowJSON.Add(inputA, mestreA); FlowJSON.Add(inputB, mestreB);
-
-            // act & assert
-            AssertJSON(prmMultiplos: true);
-
-        }
-
-        private void AssertJSON() => AssertJSON(prmMultiplos: false);
-
-        private void AssertJSON(bool prmMultiplos)
-        {
-
-            FlowJSON.Save();
-
-            string result;
-
-            if (prmMultiplos)
-                result = FlowJSON.Flow;
-            else
-                result = FlowJSON.tuplas;
+            Dados.Save();
 
             // assert
-            if (output != result)
-                Assert.Fail(string.Format("Expected: <{0}>, Actual: <{1}>", output, result));
+            AssertTest(Dados.flows);
 
         }
     }

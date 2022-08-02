@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Katty.UTC.LIB.FILES
+namespace Katty.QA.LIB.FILES
 {
     [TestClass()]
     public class Diretorio_Test : Files_Test

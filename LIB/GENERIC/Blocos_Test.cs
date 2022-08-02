@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Katty.UTC.LIB.GENERIC
+namespace Katty.QA.LIB.GENERIC
 {
     [TestClass()]
-    public class xBloco_Test
+    public class myBrick_Test
     {
 
         string input;
@@ -14,522 +14,521 @@ namespace Katty.UTC.LIB.GENERIC
         string result;
 
         [TestMethod()]
-        public void TST_GetBloco_020_Inexistente()
+        public void TST_Get_020_Inexistente()
         {
 
             input = "Alexandre << *1234* >> Bartie";
             output = "";
 
             // act & assert
-            ActionGetBloco();
+            ActionGet();
 
         }
 
         [TestMethod()]
-        public void TST_GetBloco_030_Espaco()
+        public void TST_Get_030_Espaco()
         {
 
             input = "Alexandre <<* *>> Bartie";
             output = " ";
 
             // act & assert
-            ActionGetBloco();
+            ActionGet();
 
         }
 
         [TestMethod()]
-        public void TST_GetBloco_040_Vazio()
+        public void TST_Get_040_Vazio()
         {
 
             input = "Alexandre <<**>> Bartie";
             output = "";
 
             // act & assert
-            ActionGetBloco();
+            ActionGet();
 
         }
 
         [TestMethod()]
-        public void TST_GetBloco_050_TextoVazio()
+        public void TST_Get_050_TextoVazio()
         {
 
             input = "";
             output = "";
 
             // act & assert
-            ActionGetBloco();
+            ActionGet();
 
         }
 
         [TestMethod()]
-        public void TST_GetBloco_060_Null()
+        public void TST_Get_060_Null()
         {
 
             input = null;
             output = "";
 
             // act & assert
-            ActionGetBloco();
+            ActionGet();
 
         }
 
         [TestMethod()]
-        public void TST_GetBloco_070_DelimitadorUnico()
+        public void TST_Get_070_DelimitadorUnico()
         {
 
             input = "Alexandre ##D+0## Bartie";
             output = "D+0";
 
             // act & assert
-            ActionGetBloco(prmDelimitador: "##", prmPreserve: false);
+            ActionGet(prmDelimitador: "##", prmPreserve: false);
 
         }
 
         [TestMethod()]
-        public void TST_GetBloco_080_DelimitadorPreservado()
+        public void TST_Get_080_DelimitadorPreservado()
         {
 
             input = "Alexandre ##D+0## Bartie";
             output = "##D+0##";
 
             // act & assert
-            ActionGetBloco(prmDelimitador: "##", prmPreserve: true);
+            ActionGet(prmDelimitador: "##", prmPreserve: true);
 
         }
 
         [TestMethod()]
-        public void TST_GetBloco_090_DelimitadoresSobrepostosCompleto()
+        public void TST_Get_090_DelimitadoresSobrepostosCompleto()
         {
 
             input = "Alexandre <<***>> Bartie";
             output = "*";
 
             // act & assert
-            ActionGetBloco();
+            ActionGet();
 
         }
 
         [TestMethod()]
-        public void TST_GetBloco_100_DelimitadoresSobrepostosIncompleto()
+        public void TST_Get_100_DelimitadoresSobrepostosIncompleto()
         {
 
             input = "Alexandre <<*>> Bartie";
             output = "";
 
             // act & assert
-            ActionGetBloco();
+            ActionGet();
 
         }
 
         [TestMethod()]
-        public void TST_GetBloco_110_DelimitadoresSobrepostosCompletoPreservado()
+        public void TST_Get_110_DelimitadoresSobrepostosCompletoPreservado()
         {
 
             input = "Alexandre <<***>> Bartie";
             output = "<<***>>";
 
             // act & assert
-            ActionGetBloco(prmPreserve: true);
+            ActionGet(prmPreserve: true);
 
         }
 
         [TestMethod()]
-        public void TST_GetBloco_120_DelimitadoresSobrepostosIncompletoPreservado()
+        public void TST_Get_120_DelimitadoresSobrepostosIncompletoPreservado()
         {
 
             input = "Alexandre <<*>> Bartie";
             output = "<<**>>";
 
             // act & assert
-            ActionGetBloco(prmPreserve: true);
+            ActionGet(prmPreserve: true);
 
         }
 
         [TestMethod()]
-        public void TST_GetBloco_130_DelimitadorNaoEncontrado()
+        public void TST_Get_130_DelimitadorNaoEncontrado()
         {
 
             input = "Alexandre ##D+0## Bartie";
             output = "";
 
             // act & assert
-            ActionGetBloco(prmDelimitador: "|");
+            ActionGet(prmDelimitador: "|");
 
         }
 
         [TestMethod()]
-        public void TST_GetBloco_140_DelimitadorFinalNaoEncontrado()
+        public void TST_Get_140_DelimitadorFinalNaoEncontrado()
         {
 
             input = "Alexandre [D+0[ Bartie";
             output = "";
 
             // act & assert
-            ActionGetBloco(prmDelimitadorInicial: "[", prmDelimitadorFinal: "]");
+            ActionGet(prmDelimitadorInicial: "[", prmDelimitadorFinal: "]");
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoRemove_010_DelimitadorRemovido()
+        public void TST_GetRemove_010_DelimitadorRemovido()
         {
 
             input = "Alexandre #D+10# Bartie";
             output = "Alexandre  Bartie";
 
             // act & assert
-            ActionGetBlocoRemove(prmDelimitador: "#");
+            ActionGetRemove(prmDelimitador: "#");
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoRemove_020_DelimitadorRemovidoTrim()
+        public void TST_GetRemove_020_DelimitadorRemovidoTrim()
         {
 
             input = "Alexandre #D+10# Bartie";
             output = "Alexandre Bartie";
 
             // act & assert
-            ActionGetBlocoRemove(prmDelimitador: "#", prmTRIM: true);
+            ActionGetRemove(prmDelimitador: "#", prmTRIM: true);
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoRemove_030_DelimitadorUnidoRemovido()
+        public void TST_GetRemove_030_DelimitadorUnidoRemovido()
         {
 
             input = "Alexandre ##D+0## Bartie";
             output = "Alexandre  Bartie";
 
             // act & assert
-            ActionGetBlocoRemove(prmDelimitador: "##");
+            ActionGetRemove(prmDelimitador: "##");
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoAntes_010_Padrao()
+        public void TST_GetBefore_010_Padrao()
         {
 
             input = "Alexandre #D+0# Bartie";
             output = "Alexandre ";
 
             // act & assert
-            ActionGetBlocoAntes(prmBloco: "#D+0#");
+            ActionGetBefore(prmmyBrick: "#D+0#");
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoAntes_020_PosicaoInicio()
+        public void TST_GetBefore_020_PosicaoInicio()
         {
 
             input = "#D+0# Alexandre Bartie";
             output = "";
 
             // act & assert
-            ActionGetBlocoAntes(prmBloco: "#D+0#");
+            ActionGetBefore(prmmyBrick: "#D+0#");
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoAntes_030_PosicaoInicioTRIM()
+        public void TST_GetBefore_030_PosicaoInicioTRIM()
         {
 
             input = "#D+0# Alexandre Bartie";
             output = "";
 
             // act & assert
-            ActionGetBlocoAntes(prmBloco: "#D+0#", prmTRIM: true);
+            ActionGetBefore(prmmyBrick: "#D+0#", prmTRIM: true);
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoAntes_040_PosicaoFinal()
+        public void TST_GetBefore_040_PosicaoFinal()
         {
 
             input = "Alexandre Bartie #D+0#";
             output = "Alexandre Bartie ";
 
             // act & assert
-            ActionGetBlocoAntes(prmBloco: "#D+0#");
+            ActionGetBefore(prmmyBrick: "#D+0#");
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoAntes_050_PosicaoFinalTRIM()
+        public void TST_GetBefore_050_PosicaoFinalTRIM()
         {
 
             input = "Alexandre Bartie #D+0#";
             output = "Alexandre Bartie";
 
             // act & assert
-            ActionGetBlocoAntes(prmBloco: "#D+0#", prmTRIM: true);
+            ActionGetBefore(prmmyBrick: "#D+0#", prmTRIM: true);
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoAntes_060_Vazio()
+        public void TST_GetBefore_060_Vazio()
         {
 
             input = "";
             output = "";
 
             // act & assert
-            ActionGetBlocoAntes(prmBloco: "#D+0#");
+            ActionGetBefore(prmmyBrick: "#D+0#");
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoAntes_070_Null()
+        public void TST_GetBefore_070_Null()
         {
 
             input = null;
             output = "";
 
             // act & assert
-            ActionGetBlocoAntes(prmBloco: "#D+0#");
+            ActionGetBefore(prmmyBrick: "#D+0#");
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoAntes_080_BlocoNull()
+        public void TST_GetBefore_080_myBrickNull()
         {
 
             input = "Alexandre Bartie";
             output = "Alexandre Bartie";
 
             // act & assert
-            ActionGetBlocoAntes(prmBloco: null);
+            ActionGetBefore(prmmyBrick: null);
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoAntes_090_BlocoVazio()
+        public void TST_GetBefore_090_myBrickVazio()
         {
 
             input = "Alexandre Bartie";
             output = "Alexandre Bartie";
 
             // act & assert
-            ActionGetBlocoAntes(prmBloco: "");
+            ActionGetBefore(prmmyBrick: "");
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoAntes_100_BlocoNaoEncontrado()
+        public void TST_GetBefore_100_myBrickNaoEncontrado()
         {
 
             input = "Alexandre Bartie";
             output = "Alexandre Bartie";
 
             // act & assert
-            ActionGetBlocoAntes(prmBloco: "#");
+            ActionGetBefore(prmmyBrick: "#");
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoDepois_010_Padrao()
+        public void TST_GetAfter_010_Padrao()
         {
 
             input = "Alexandre #D+0# Bartie";
             output = " Bartie";
 
             // act & assert
-            ActionGetBlocoDepois(prmBloco: "#D+0#");
+            ActionGetAfter(prmmyBrick: "#D+0#");
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoDepois_020_PosicaoInicio()
+        public void TST_GetAfter_020_PosicaoInicio()
         {
 
             input = "#D+0# Alexandre Bartie";
             output = " Alexandre Bartie";
 
             // act & assert
-            ActionGetBlocoDepois(prmBloco: "#D+0#");
+            ActionGetAfter(prmmyBrick: "#D+0#");
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoDepois_030_PosicaoInicioTRIM()
+        public void TST_GetAfter_030_PosicaoInicioTRIM()
         {
 
             input = "#D+0# Alexandre Bartie";
             output = "Alexandre Bartie";
 
             // act & assert
-            ActionGetBlocoDepois(prmBloco: "#D+0#", prmTRIM: true);
+            ActionGetAfter(prmmyBrick: "#D+0#", prmTRIM: true);
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoDepois_040_PosicaoFinal()
+        public void TST_GetAfter_040_PosicaoFinal()
         {
 
             input = "Alexandre Bartie #D+0#";
             output = "";
 
             // act & assert
-            ActionGetBlocoDepois(prmBloco: "#D+0#");
+            ActionGetAfter(prmmyBrick: "#D+0#");
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoDepois_050_PosicaoFinalTRIM()
+        public void TST_GetAfter_050_PosicaoFinalTRIM()
         {
 
             input = "Alexandre Bartie #D+0#";
             output = "";
 
             // act & assert
-            ActionGetBlocoDepois(prmBloco: "#D+0#", prmTRIM: true);
+            ActionGetAfter(prmmyBrick: "#D+0#", prmTRIM: true);
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoDepois_060_Vazio()
+        public void TST_GetAfter_060_Vazio()
         {
 
             input = "";
             output = "";
 
             // act & assert
-            ActionGetBlocoDepois(prmBloco: "#D+0#");
+            ActionGetAfter(prmmyBrick: "#D+0#");
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoDepois_070_Null()
+        public void TST_GetAfter_070_Null()
         {
 
             input = null;
             output = "";
 
             // act & assert
-            ActionGetBlocoDepois(prmBloco: "#D+0#");
+            ActionGetAfter(prmmyBrick: "#D+0#");
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoDepois_080_BlocoNull()
+        public void TST_GetAfter_080_myBrickNull()
         {
 
             input = "Alexandre Bartie";
             output = "";
 
             // act & assert
-            ActionGetBlocoDepois(prmBloco: null);
+            ActionGetAfter(prmmyBrick: null);
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoDepois_090_BlocoVazio()
+        public void TST_GetAfter_090_myBrickVazio()
         {
 
             input = "Alexandre Bartie";
             output = "";
 
             // act & assert
-            ActionGetBlocoDepois(prmBloco: "");
+            ActionGetAfter(prmmyBrick: "");
 
         }
 
         [TestMethod()]
-        public void TST_GetBlocoDepois_100_BlocoNaoEncontrado()
+        public void TST_GetAfter_100_myBrickNaoEncontrado()
         {
 
             input = "Alexandre Bartie";
             output = "";
 
             // act & assert
-            ActionGetBlocoDepois(prmBloco: "#");
+            ActionGetAfter(prmmyBrick: "#");
 
         }
 
         [TestMethod()]
-        public void TST_GetTroca_010_Padrao()
+        public void TST_GetChange_010_Padrao()
         {
 
             input = "Alexandre ##D+0## Bartie";
             output = "Alexandre 'D+0' Bartie";
 
             // act & assert
-            ActionGetBlocoTroca(prmDelimitadorVelho: "##", prmDelimitadorNovo: "'");
+            ActionGetChange(prmDelimitador: "##", prmDelimitadorNovo: "'");
 
         }
         [TestMethod()]
-        public void TST_GetTroca_020_Multiplos()
+        public void TST_GetChange_020_Multiplos()
         {
 
             input = "##um## Alexandre ##D+0## Bartie ##zero##";
             output = "'um' Alexandre 'D+0' Bartie 'zero'";
 
             // act & assert
-            ActionGetBlocoTroca(prmDelimitadorVelho: "##", prmDelimitadorNovo: "'");
+            ActionGetChange(prmDelimitador: "##", prmDelimitadorNovo: "'");
 
         }
 
-        private void ActionGetBloco() => ActionGetBloco(prmPreserve: false);
-        private void ActionGetBloco(bool prmPreserve) => ActionGetBloco(prmDelimitadorInicial: "<<*", prmDelimitadorFinal: "*>>", prmPreserve);
-        private void ActionGetBloco(string prmDelimitador) => ActionGetBloco(prmDelimitador, prmPreserve: false);
-        private void ActionGetBloco(string prmDelimitador, bool prmPreserve) => ActionGetBloco(prmDelimitador, prmDelimitador, prmPreserve);
-        private void ActionGetBloco(string prmDelimitadorInicial, string prmDelimitadorFinal) => ActionGetBloco(prmDelimitadorInicial, prmDelimitadorFinal, prmPreserve: false);
-        private void ActionGetBloco(string prmDelimitadorInicial, string prmDelimitadorFinal, bool prmPreserve)
+        private void ActionGet() => ActionGet(prmPreserve: false);
+        private void ActionGet(bool prmPreserve) => ActionGet(prmDelimitadorInicial: "<<*", prmDelimitadorFinal: "*>>", prmPreserve);
+        private void ActionGet(string prmDelimitador) => ActionGet(prmDelimitador, prmPreserve: false);
+        private void ActionGet(string prmDelimitador, bool prmPreserve) => ActionGet(prmDelimitador, prmDelimitador, prmPreserve);
+        private void ActionGet(string prmDelimitadorInicial, string prmDelimitadorFinal) => ActionGet(prmDelimitadorInicial, prmDelimitadorFinal, prmPreserve: false);
+        private void ActionGet(string prmDelimitadorInicial, string prmDelimitadorFinal, bool prmPreserve)
         {
 
             // assert
-            result = Bloco.GetBloco(input, prmDelimitadorInicial, prmDelimitadorFinal, prmPreserve);
+            result = myBrick.Get(input, prmDelimitadorInicial, prmDelimitadorFinal, prmPreserve);
 
             // assert
             ActionGeneric();
 
         }
 
-        private void ActionGetBlocoRemove() => ActionGetBlocoRemove(prmDelimitadorInicial: "<<*", prmDelimitadorFinal: "*>>");
-        private void ActionGetBlocoRemove(string prmDelimitador) => ActionGetBlocoRemove(prmDelimitador, prmTRIM: false);
-        private void ActionGetBlocoRemove(string prmDelimitador, bool prmTRIM) => ActionGetBlocoRemove(prmDelimitador, prmDelimitador, prmTRIM);
+        private void ActionGetRemove() => ActionGetRemove(prmDelimitadorInicial: "<<*", prmDelimitadorFinal: "*>>");
+        private void ActionGetRemove(string prmDelimitador) => ActionGetRemove(prmDelimitador, prmTRIM: false);
+        private void ActionGetRemove(string prmDelimitador, bool prmTRIM) => ActionGetRemove(prmDelimitador, prmDelimitador, prmTRIM);
 
-        private void ActionGetBlocoRemove(string prmDelimitadorInicial, string prmDelimitadorFinal) => ActionGetBlocoRemove(prmDelimitadorInicial, prmDelimitadorFinal, prmTRIM: false);
-        private void ActionGetBlocoRemove(string prmDelimitadorInicial, string prmDelimitadorFinal, bool prmTRIM)
+        private void ActionGetRemove(string prmDelimitadorInicial, string prmDelimitadorFinal) => ActionGetRemove(prmDelimitadorInicial, prmDelimitadorFinal, prmTRIM: false);
+        private void ActionGetRemove(string prmDelimitadorInicial, string prmDelimitadorFinal, bool prmTRIM)
         {
 
             // assert
-            result = Bloco.GetBlocoRemove(input, prmDelimitadorInicial, prmDelimitadorFinal, prmTRIM);
+            result = myBrick.Remove(input, prmDelimitadorInicial, prmDelimitadorFinal, prmTRIM);
 
             // assert
             ActionGeneric();
 
         }
 
-        private void ActionGetBlocoAntes(string prmBloco) => ActionGetBlocoAntes(prmBloco, prmTRIM: false);
-        private void ActionGetBlocoAntes(string prmBloco, bool prmTRIM)
+        private void ActionGetBefore(string prmmyBrick) => ActionGetBefore(prmmyBrick, prmTRIM: false);
+        private void ActionGetBefore(string prmmyBrick, bool prmTRIM)
         {
 
             // assert
-            result = Bloco.GetBlocoAntes(input, prmBloco, prmTRIM);
+            result = myBrick.GetBefore(input, prmmyBrick, prmTRIM);
 
             // assert
             ActionGeneric();
 
         }
 
-        private void ActionGetBlocoDepois(string prmBloco) => ActionGetBlocoDepois(prmBloco, prmTRIM: false);
-        private void ActionGetBlocoDepois(string prmBloco, bool prmTRIM)
+        private void ActionGetAfter(string prmmyBrick) => ActionGetAfter(prmmyBrick, prmTRIM: false);
+        private void ActionGetAfter(string prmmyBrick, bool prmTRIM)
         {
 
             // assert
-            result = Bloco.GetBlocoDepois(input, prmBloco, prmTRIM);
+            result = myBrick.GetAfter(input, prmmyBrick, prmTRIM);
 
             // assert
             ActionGeneric();
 
         }
 
-        private void ActionGetBlocoTroca(string prmDelimitadorVelho, string prmDelimitadorNovo) => ActionGetBlocoTroca(prmDelimitadorVelho, prmDelimitadorVelho, prmDelimitadorNovo);
-        private void ActionGetBlocoTroca(string prmDelimitadorInicial, string prmDelimitadorFinal, string prmDelimitadorNovo)
+        private void ActionGetChange(string prmDelimitador, string prmDelimitadorNovo) 
         {
 
             // assert
-            result = Bloco.GetBlocoTroca(input, prmDelimitadorInicial, prmDelimitadorFinal, prmDelimitadorNovo);
+            result = myBrick.GetChange(input, prmDelimitador, prmDelimitadorNovo);
 
             // assert
             ActionGeneric();
@@ -548,7 +547,7 @@ namespace Katty.UTC.LIB.GENERIC
 
 
     [TestClass()]
-    public class xPrefixo_Test
+    public class myPrefixo_Test
     {
 
         string input;
@@ -657,7 +656,7 @@ namespace Katty.UTC.LIB.GENERIC
         {
 
             // assert
-            result = BlocoPrefixo.GetPrefixo(input, prmSinal, prmDelimitador, prmPreserve);
+            result = myBrickPrefixo.GetPrefixo(input, prmSinal, prmDelimitador, prmPreserve);
 
             // assert
             ActionGeneric();

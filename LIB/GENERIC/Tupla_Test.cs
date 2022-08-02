@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Katty.UTC.LIB.GENERIC
+namespace Katty.QA.LIB.GENERIC
 {
     [TestClass()]
-    public class myTupla_Test : UTControl
+    public class myTupla_Test : TestUnit
     {
 
         myTupla tupla;
@@ -200,7 +200,7 @@ namespace Katty.UTC.LIB.GENERIC
         {
 
             // assert
-            tupla = new myTupla(GetInput(), prmConector);
+            tupla = new myTupla(Input.txt, prmConector);
 
             // assert
             AssertTest(prmResult: tupla.log);
@@ -210,7 +210,7 @@ namespace Katty.UTC.LIB.GENERIC
     }
 
     [TestClass()]
-    public class myTuplas_Test : UTControl
+    public class myTuplas_Test : TestUnit
     {
 
         myTuplas lista;
@@ -266,7 +266,7 @@ namespace Katty.UTC.LIB.GENERIC
         {
 
             // assert
-            lista = new myTuplas(GetInput(), prmSeparador);
+            lista = new myTuplas(Input.txt, prmSeparador);
 
             // assert
             AssertTest(prmResult: lista.log);

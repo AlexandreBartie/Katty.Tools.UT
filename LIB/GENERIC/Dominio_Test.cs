@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Katty.UTC.LIB.GENERIC
+namespace Katty.QA.LIB.GENERIC
 {
     [TestClass()]
-    public class myDominio_Test : UTControl
+    public class myDominio_Test : TestUnit
     {
 
         [TestMethod()]
@@ -142,7 +142,7 @@ namespace Katty.UTC.LIB.GENERIC
         {
 
             // assert
-            myDominio dominio = new myDominio(GetInput());
+            myDominio dominio = new myDominio(Input.txt);
 
             // assert
             AssertTest(prmResult: dominio.log);
@@ -151,7 +151,7 @@ namespace Katty.UTC.LIB.GENERIC
     }
 
     [TestClass()]
-    public class myDominios_Test : UTControl
+    public class myDominios_Test : TestUnit
     {
 
         [TestMethod()]
@@ -218,7 +218,7 @@ namespace Katty.UTC.LIB.GENERIC
             // assert
             myDominios dominios = new myDominios();
 
-            dominios.AddItens(inputList);
+            dominios.AddItens(Input.GetList());
 
             // assert
             AssertTest(prmResult: dominios.log);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Katty.UTC.LIB.CALC
+namespace Katty.QA.LIB.CALC
 {
 
     [TestClass()]

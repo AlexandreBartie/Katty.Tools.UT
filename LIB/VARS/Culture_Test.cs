@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace Katty.UTC.LIB.VARS
+namespace Katty.QA.LIB.VARS
 {
     [TestClass()]
     public class CultureByDouble_Test : xVars_Test

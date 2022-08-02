@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Text;
 using System.Diagnostics;
 
-namespace Katty.UTC.LIB.DATA
+namespace Katty.QA.LIB.BASE
 {
     [TestClass()]
     public class DataBaseConnection_Test : DataBase_UTC
@@ -49,7 +49,7 @@ namespace Katty.UTC.LIB.DATA
             inputText(" FROM seg.usuario");
             inputText(" WHERE cod_usuario = '11959056700'");
 
-            output("[ SQL] -db[SIA] -sql: " + GetInput());
+            output("[SQL] -db[SIA] -sql: " + Input.txt);
 
             // & assert
             VerifyDataCursorByLog();
@@ -64,8 +64,8 @@ namespace Katty.UTC.LIB.DATA
             inputText("  FROM seg.usuario");
             inputText("  WHERE cod_usuario = '1'");
 
-            outputText("[ERRO] >>>> [ZERO Results] -db[SIA] -sql: ");
-            outputText(GetInput());
+            outputText("[ERR] >>>> [NO Results] -db[SIA] -sql: ");
+            outputText(Input.txt);
 
             // & assert
             VerifyDataCursorByLog();
@@ -80,9 +80,9 @@ namespace Katty.UTC.LIB.DATA
             inputText("  FROM seg.usuario");
             inputText(" WHERE cod_usuario = '11959056700'");
 
-            outputText(@"[ERRO] >>>> [ORA-00904: ""COD_USUSARIO"": identificador inválido] ");
+            outputText(@"[ERR] >>>> [ORA-00904: ""COD_USUSARIO"": identificador inválido] ");
             outputText(@"SQL falhou ... -db[SIA] -sql: ");
-            outputText(GetInput());
+            outputText(Input.txt);
 
             // & assert
             VerifyDataCursorByLog();
@@ -177,7 +177,7 @@ namespace Katty.UTC.LIB.DATA
     }
 
 
-    public class DataBase_UTC : UTControl
+    public class DataBase_UTC : TestUnit
     {
 
         private TraceLog Trace = new TraceLog();
@@ -208,7 +208,7 @@ namespace Katty.UTC.LIB.DATA
 
             ConnectDbOracle(prmSenha: "asdfg");
 
-            DataCursor cursor = Base.GetCursor(prmSQL: GetInput(), prmMask: "");
+            DataCursor cursor = Base.GetCursor(prmSQL: Input.txt);
 
             AssertTest(prmResult: cursor.Log.txt);
         }
@@ -218,7 +218,7 @@ namespace Katty.UTC.LIB.DATA
 
             ConnectDbOracle(prmSenha: "asdfg");
 
-             DataCursor cursor = Base.GetCursor(prmSQL: GetInput(), prmMask);
+             DataCursor cursor = Base.GetCursor(prmSQL: Input.txt, prmMask);
 
             AssertTest(prmResult: cursor.csv());
         }

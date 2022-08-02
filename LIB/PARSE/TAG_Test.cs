@@ -4,10 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Katty.UTC.LIB.TAGS
+namespace Katty.QA.LIB.TAGS
 {
     [TestClass()]
-    public class NewTAGS_Test : UTControl
+    public class NewTAGS_Test : TestUnit
     {
 
         [TestMethod()]
@@ -76,8 +76,8 @@ namespace Katty.UTC.LIB.TAGS
 
             myTags Tags = new myTags();
 
-            foreach (string input in inputList)
-                Tags.Add(input);
+            foreach (TestLine line in Input)
+                Tags.Add(line.txt);
 
             AssertTest(prmResult: Tags.txt);
         }
@@ -85,7 +85,7 @@ namespace Katty.UTC.LIB.TAGS
     }
 
     [TestClass()]
-    public class SetTAGS_Test : UTControl
+    public class SetTAGS_Test : TestUnit
     { 
         [TestMethod()]
         public void TST010_SetTags_SetPadrao()
@@ -153,8 +153,8 @@ namespace Katty.UTC.LIB.TAGS
 
             myTags Tags = new myTags();
 
-            foreach (string input in inputList)
-                Tags.Add(input);
+            foreach (TestLine line in Input)
+                Tags.Add(line.txt);
 
             AssertTest(prmResult: Tags.log);
         }
