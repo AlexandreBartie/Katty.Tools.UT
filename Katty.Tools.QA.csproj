@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\KATTY\Katty.csproj" />
+    <ProjectReference Include="..\..\DEV\KATTY\Katty.Tools\Katty.Tools.csproj" />
   </ItemGroup>
 
 </Project>

@@ -395,7 +395,7 @@ namespace Katty.QA.LIB.CALC
         {
 
             input = "MMM-AAAA";
-            output = "jun-2021";
+            output = "Jun-2021";
 
             // act & assert
             ActionDynamicDateByStatic();
