@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Katty.QA.LIB.FILES
+namespace Katty.Tools.UT.LIB.FILES
 {
     [TestClass()]
     public class Diretorio_Test : Files_Test
@@ -152,7 +152,7 @@ namespace Katty.QA.LIB.FILES
 
         public Diretorio GetDiretorio(string prmPath) => new Diretorio(GetPath(prmPath));
 
-        public string GetPath(string prmPath) => Environment.CurrentDirectory + @"\..\..\..\TestData\" + prmPath; 
+        public string GetPath(string prmPath) => Environment.CurrentDirectory + @"\..\..\..\DATA\TestData\" + prmPath; 
 
         public void ActionGeneric()
         {

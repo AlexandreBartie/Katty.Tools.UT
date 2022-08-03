@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Katty.QA.LIB.PARSE.JSON
+namespace Katty.Tools.UT.LIB.PARSE.JSON
 {
     [TestClass()]
     public class JSON_SimpleFlow_Test : TestUnit

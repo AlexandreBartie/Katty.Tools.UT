@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Katty.QA.LIB.DATA
+namespace Katty.Tools.UT.LIB.DATA
 {
     [TestClass()]
     public class CAT_010_DataMatrixSet : DataMatrix_Test

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Katty.Tools.QA", "Katty.Tools.QA.csproj", "{A5E1627B-A1DE-4DF6-BA99-44C04B6FF20C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Katty.Tools.UT", "Katty.Tools.UT.csproj", "{A5E1627B-A1DE-4DF6-BA99-44C04B6FF20C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Katty.Tools", "..\..\DEV\KATTY\Katty.Tools\Katty.Tools.csproj", "{EAF6C815-CE57-4343-84C6-587E60BD8C0D}"
 EndProject

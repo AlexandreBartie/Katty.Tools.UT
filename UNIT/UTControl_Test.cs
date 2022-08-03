@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Katty.QA.UNIT
+namespace Katty.Tools.UT.UNIT
 {
 
     [TestClass()]

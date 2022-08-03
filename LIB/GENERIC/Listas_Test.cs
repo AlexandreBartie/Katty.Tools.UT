@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-namespace Katty.QA.LIB.GENERIC
+namespace Katty.Tools.UT.LIB.GENERIC
 {
     [TestClass()]
     public class myList_Test

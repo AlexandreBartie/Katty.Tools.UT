@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 
-namespace Katty.QA.LIB.PARSE.CSV
+namespace Katty.Tools.UT.LIB.PARSE.CSV
 {
     [TestClass()]
     public class ParseCSV_Test

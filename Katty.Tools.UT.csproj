@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Katty.QA</RootNamespace>
+    <RootNamespace>Katty.Tools.UT</RootNamespace>
 
     <IsPackable>false</IsPackable>
 

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Katty.QA.LIB.PARSE.TUPLA
+namespace Katty.Tools.UT.LIB.PARSE.TUPLA
 {
 
     [TestClass()]

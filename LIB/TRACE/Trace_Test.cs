@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Katty.QA.LIB.TRACE
+namespace Katty.Tools.UT.LIB.TRACE
 {
     [TestClass()]
     public class CAT_010_TraceByFormatTextString_Test : TestUnit

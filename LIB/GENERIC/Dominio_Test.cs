@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Katty.QA.LIB.GENERIC
+namespace Katty.Tools.UT.LIB.GENERIC
 {
     [TestClass()]
     public class myDominio_Test : TestUnit

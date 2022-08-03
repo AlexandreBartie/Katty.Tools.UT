@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Katty.QA.LIB.TAGS
+namespace Katty.Tools.UT.LIB.TAGS
 {
     [TestClass()]
     public class NewTAGS_Test : TestUnit

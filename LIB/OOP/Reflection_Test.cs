@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Katty.QA.LIB.OOP
+namespace Katty.Tools.UT.LIB.OOP
 {
     internal class Reflection_Test
     {

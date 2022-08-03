@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Katty.QA.LIB.PARSE.MASK
+namespace Katty.Tools.UT.LIB.PARSE.MASK
 {
     [TestClass()]
     public class myMask_Test : TestUnit
