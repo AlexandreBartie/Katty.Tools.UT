@@ -152,7 +152,7 @@ namespace Katty.QA.LIB.FILES
 
         public Diretorio GetDiretorio(string prmPath) => new Diretorio(GetPath(prmPath));
 
-        public string GetPath(string prmPath) => @"C:\MassaTestes\QA\TesteUT\" + prmPath;
+        public string GetPath(string prmPath) => Environment.CurrentDirectory + @"\..\..\..\TestData\" + prmPath; 
 
         public void ActionGeneric()
         {
